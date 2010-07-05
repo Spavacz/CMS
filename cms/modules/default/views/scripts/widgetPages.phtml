@@ -1,0 +1,12 @@
+<div id="<?=$this->instanceId?>" class="widget movable collapsable removable closeconfirm">
+	<div class="widget-header">  
+		<h2>Strony w bazie</h2>  
+	</div>
+	<div class="widget-content">
+		<ul>
+			<?foreach($this->pages as $page):?>
+				<li><a href="<?=$this->baseUrl($page->getPath())?>"><?=$page->getPath()?></a></li>
+			<?endforeach;?>
+		</ul>
+	</div>
+</div>

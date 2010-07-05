@@ -1,0 +1,12 @@
+<?phpclass Cms_Model_Mapper_Widget{	protected $_dbTable;	public function setDbTable($dbTable)	{		if (is_string($dbTable)) 		{			$dbTable = new $dbTable();		}
+		if (!$dbTable instanceof Zend_Db_Table_Abstract) 		{			throw new Exception('Invalid table data gateway provided');		}		$this->_dbTable = $dbTable;		return $this;	}
+	public function getDbTable()	{		if (null === $this->_dbTable) 		{			$this->setDbTable('Cms_Model_DbTable_Widgets');		}		return $this->_dbTable;	}
+	public function save(Cms_Model_Widget $widget)	{		$this->getDbTable()->save($widget);	}
+	public function find($id, Cms_Model_Widget $widget)	{		$result = $this->getDbTable()->find($id);		if (0 == count($result)) 		{			return;		}		$row = $result->current();		$widget->setId($row->id)			->setName($row->name)			->setController($row->controller)			->setAction($row->action)			->setView($row->view);	}
+	public function fetchAll()	{		$resultSet = $this->getDbTable()->fetchAll();		$entries   = array();		foreach ($resultSet as $row) 		{			$entry = new Cms_Model_Widget();			$entry->setId($row->id)				->setName($row->name)				->setController($row->controller)				->setAction($row->action);			$entries[] = $entry;		}		return $entries;	}
+	public function findOnPage( $idInstance )	{		$row = $this->getDbTable()->findOnPage( $idInstance );		$entry = new Cms_Model_Widget();		$entry->setId($row->id)			->setInstanceId($row->instanceId)			->setName($row->name)			->setController($row->controller)			->setAction($row->action)			->setView( $row->view )			->setParams( unserialize($row->params) )			->setPlaceholder( $row->placeholder )			->setPriority( $row->priority );		return $entry;	}
+	public function fetchAllInBlock( $block )	{		$resultSet = $this->getDbTable()->fetchAllInBlock( $block );		$entries   = array();		foreach ($resultSet as $row) 		{			$entry = new Cms_Model_Widget();			$entry->setId($row->id)				->setInstanceId($row->instanceId)				->setName($row->name)				->setController($row->controller)				->setAction($row->action)				->setView( $row->view )				->setParams( unserialize($row->params) )				->setPriority( $row->priority );			$entries[] = $entry;		}
+		return $entries;	}
+	public function updateInBlock( $block )	{		return $this->getDbTable()->updateInBlock( $block );	}
+	public function deleteFromBlock( Cms_Model_Widget $widget )	{		$this->getDbTable()->deleteFromBlock( $widget );	}
+}

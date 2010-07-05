@@ -1,0 +1,94 @@
+<?=$this->doctype()?>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />		
+		<?=$this->headTitle()?>
+		<?=$this->headLink()?>
+		<?=$this->headStyle()?>
+		<link rel="stylesheet" href="<?=$this->baseUrl('css/style.css')?>" type="text/css" />
+		<link rel="stylesheet" href="<?=$this->baseUrl('css/panel.css')?>" type="text/css" />
+		<link rel="stylesheet" href="<?=$this->baseUrl('css/spav-theme/jquery-ui-1.8.1.custom.css')?>" type="text/css" />
+		<script type="text/javascript" src="<?=$this->baseUrl('js/jquery-1.4.2.min.js')?>"></script>    
+		<script type="text/javascript" src="<?=$this->baseUrl('js/jquery-ui-1.8.1.custom.min.js')?>"></script>
+		<script type="text/javascript" src="<?=$this->baseUrl('js/jquery.zend.jsonrpc.js')?>"></script>
+		<script type="text/javascript" src="<?=$this->baseUrl('js/json2.js')?>"></script>
+		<script type="text/javascript" src="<?=$this->baseUrl('js/jquery.easywidgets.js')?>"></script>
+		<script type="text/javascript">
+			// rpc server
+			var _pageId = <?=$this->layout()->pageId?>;
+			var _baseUrl = '<?=$this->baseUrl()?>';
+			var client = jQuery.Zend.jsonrpc({url: '<?=$this->baseUrl('rpc')?>'});
+			$(document).ready(function(){});
+		</script>
+		<?=$this->headScript()?>
+		
+	</head>
+	<body>
+
+		
+	
+		<a name="top"></a>
+		<!-- wrap starts here -->
+		<div id="wrap">
+
+			<!-- header -->
+			<div id="header">			
+					
+				<span id="slogan"> no to jazda...</span>
+			
+				<!-- tabs -->
+				<ul>
+					<li id="current"><a href="<?=$this->baseUrl()?>"><span>Strona Główna</span></a></li>
+				</ul>
+											
+			</div>
+		
+			<div id="header-logo">			
+			
+				<div id="logo">Spav<span class="red">.com.pl</span></div>		
+			
+				<form method="post" class="search" action="#">
+					<p><input name="search_query" class="textbox" type="text" />
+  					<input name="search" class="searchbutton" value="Szukaj" type="submit" /></p>
+				</form>
+						
+			</div>
+		
+			<div id="left_col" class="sidebar widget-place">
+				<?
+					/*$this->placeholder('sidebar')->setPrefix("")->setSeparator("")->setPostfix("");*/
+				?>
+				<?=$this->placeholder('left_col')?>
+			</div>
+			
+			<div id="right_col" class="sidebar float-right widget-place">
+				<?=$this->placeholder('right_col')?>
+			</div>			
+		
+			<div id="main">				
+				<?=$this->layout()->content?>
+				<br />					
+			</div>
+			
+		
+		<!-- wrap ends here -->
+		</div>
+		
+		<!-- footer starts here -->
+		<div class="footer">
+
+			<p>	
+			&copy; 2008 <strong>Patryk Grandt</strong> &nbsp;&nbsp;	 
+			Design by: <a href="http://www.styleshout.com/">styleshout</a> 
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="<?=$this->baseUrl()?>">Strona Główna</a> 
+			</p>
+
+		</div>	
+		<?=$this->adminPanel()?>
+		
+	</body>
+</html>
+
+
+

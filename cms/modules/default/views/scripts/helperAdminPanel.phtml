@@ -1,0 +1,51 @@
+<div id="panel">
+	<h2>Dodaj Widget</h2>
+	<div class="panel-contener">
+		<div id="newWidget_1" class="widget-tile widget draggable movable">
+			<div class="widget-header">  
+				<h3>Pages</h3>  
+			</div>
+			<div class="widget-content-loading"></div> 
+		</div>
+		<div id="newWidget_2" class="widget-tile widget draggable movable">
+			<div class="widget-header">  
+				<h3>Widgets</h3>  
+			</div>
+			<div class="widget-content-loading"></div> 
+		</div>
+ 		<div id="newWidget_3" class="widget-tile widget draggable movable">
+			<div class="widget-header">  
+				<h3>Lorem ipsum</h3>  
+			</div>
+			<div class="widget-content-loading"></div> 
+		</div>
+		<div id="newWidget_4" class="widget-tile widget draggable movable">
+			<div class="widget-header">  
+				<h3>Userbox</h3>  
+			</div>
+			<div class="widget-content-loading"></div> 
+		</div>
+	</div>
+	<h2>Strona</h2>
+	<div class="panel-contener">
+		<a id="panel-page-add-btn" href="<?=$this->baseUrl('admin')?>">Nowa strona</a>
+	</div>
+</div>
+<div id="panel-page-add" title="Dodaj nowa strone">
+	<p class="validateTips">Wszystkie pola sa wymagane.</p>
+	<form>
+		<fieldset>
+			<label for="panel-page-add-title">Title</label>
+			<input type="text" name="title" id="panel-page-add-title" class="text ui-widget-content ui-corner-all" />
+			<label for="panel-page-add-url">Url</label>
+			<?=$this->baseUrl()?>/<input type="text" name="url" id="panel-page-add-url" class="text ui-widget-content ui-corner-all" />
+			<label for="panel-page-add-layout">Szablon</label>
+			<input type="text" name="layout" id="panel-page-add-layout" class="text ui-widget-content ui-corner-all" />
+			<label for="panel-page-add-component">Komponent</label>
+			<input type="text" name="component" id="panel-page-add-component" class="text ui-widget-content ui-corner-all" />
+		</fieldset>
+	</form>
+</div>
+	
+</div>
+<a href="#" class="panel_slide_button" >A<br/>D<br/>M<br/>I<br/>N</a>

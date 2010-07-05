@@ -1,0 +1,27 @@
+<div id="<?=$this->instanceId?>" class="widget movable collapsable removable editable closeconfirm">
+	<div class="widget-header">  
+		<h2>Userbox</h2>  
+	</div>
+	<div class="widget-content">
+		<?if(!$this->logged):?>
+			<form class="login" name="login" method="POST">
+				<p class="message"></p>
+				<ul>
+					<li>
+						<label for="login">login:</label><input type="text" name="login"/>
+					</li><li>
+						<label for="password">haslo:</label><input type="password" name="password"/>
+					</li><li>
+						<input type="checkbox" id="rememberme" name="rememberme"/><label class="checkbox" for="rememberme">zapamietaj&nbsp;mnie</label>
+					</li><li>
+						<input type="submit" value="zaloguj"/>
+					</li>
+				</ul>
+			</form>
+		<?else:?>
+			ZALOGOWANY
+			<a class="logout" href="#logout">wyloguj</a>
+		<?endif;?>
+		<div style="clear:both"></div>
+	</div>
+</div>

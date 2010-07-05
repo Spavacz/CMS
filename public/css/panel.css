@@ -1,0 +1,36 @@
+@CHARSET "UTF-8";
+
+.panel_slide_button
+{
+	display: block;
+	height: 90px;
+	width: 20px;
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	color: #000;
+	text-decoration: none;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 10px;
+	background-color: #bbb;
+}
+
+#panel_main_menu a
+{
+	color: #fff;
+	text-decoration: none;
+}
+
+#panel h3 {
+	color: #fff;
+}
+
+#panel .widget-tile {
+	background: #aaa;
+	margin: 0 auto;
+	cursor: move;
+}
+.ui-dialog {
+	overflow: visible !important;
+}
