@@ -53,8 +53,8 @@ INSERT INTO `pages` (`id`, `path`, `controller`, `action`, `params`) VALUES
 -- Zrzut danych tabeli `users`
 --
 
-INSERT INTO `users` (`id`, `login`, `password`) VALUES
-(1, 'admin', MD5('admin'));
+INSERT INTO `users` (`id`, `email`, `password`, `name`, `surname`, `phone`, `job`, `photo`, `description`, `status`) VALUES
+(1, 'admin@cms.com', MD5('admin'), 'Administrator', '', NULL, NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 --

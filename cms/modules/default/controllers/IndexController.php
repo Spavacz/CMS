@@ -10,14 +10,13 @@ class IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        // action body
-        //$pagesTable = new Zend_Db_Table( 'pages' );
-        //_d($pagesTable->find(1));
+		
     }
 
     public function testAction()
     {
-    	
+    	echo '<h2>Cms_Action_Helper_User - aktualnie zalogowany user:</h2>';
+    	_d($this->_helper->user());
     }
 
 }

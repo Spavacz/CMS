@@ -82,12 +82,19 @@ CREATE TABLE IF NOT EXISTS `pages` (
 --
 -- Struktura tabeli dla  `users`
 --
-
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `login` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `password` char(32) NOT NULL,
-  PRIMARY KEY (`id`)
+  `name` varchar(50) NOT NULL,
+  `surname` varchar(50) NOT NULL,
+  `phone` int(11) DEFAULT NULL,
+  `job` varchar(100) DEFAULT NULL,
+  `photo` varchar(255) DEFAULT NULL,
+  `description` varchar(500) DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------

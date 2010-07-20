@@ -6,7 +6,7 @@ class Cms_Rpc_Auth
 		$authAdapter = new Cms_Auth_Adapter_DbTable(
 		    Zend_Db_Table_Abstract::getDefaultAdapter(),
 		    'users',
-		    'login',
+		    'email',
 		    'password',
 		    'MD5(?)'
 		);

@@ -2,76 +2,122 @@
 
 class Cms_Model_User extends Cms_Model
 {
-	protected $id;
-	protected $imie;
-	protected $nazwisko;
-	protected $email;
-	protected $telefon;
-	protected $stanowisko;
+	protected $_id;
+	protected $_name;
+	protected $_surname;
+	protected $_email;
+	protected $_phone;
+	protected $_job;
+	protected $_photo;
+	protected $_roles;
+	protected $_description;
 	
 	public function setId( $id )
 	{
-		$this->id = (int)$id;
+		$this->_id = is_numeric($id) ? (int)$id : null;
 		return $this;
 	}
 	
 	public function getId()
 	{
-		return $this->id;
+		return $this->_id;
 	}
 	
-	public function setImie( $imie )
+	/**
+	 * Ustawia liste roli uzytkownika
+	 * 
+	 * @param array $roles
+	 */
+	public function setRoles( $roles )
 	{
-		// @TODO
+		$this->_roles = is_array($roles) ? $roles : null;
+		return $this;
+	}
+	/**
+	 * Zwraca liste roli uzytkownika
+	 * 
+	 * @return array
+	 */
+	public function getRoles()
+	{
+		return $this->_roles;
+	}
+	
+	public function setName( $name )
+	{
+		$this->_name = !empty($name) ? $name : null;
 		return $this;
 	}
 	
-	public function getImie()
+	public function getName()
 	{
-		// @TODO
+		return $this->_name;
 	}
 	
-	public function setNazwisko( $nazwisko )
+	public function setSurname( $surname )
 	{
-		// @TODO
+		$this->_surname = !empty($surname) ? $surname : null;
 		return $this;
 	}
 	
-	public function getNazwisko()
+	public function getSurname()
 	{
-		// @TODO
+		return $this->_surname;
 	}
 	
 	public function setEmail( $email )
 	{
-		// @TODO
+		$validator = new Zend_Validate_EmailAddress();
+		$this->_email = $validator->isValid($email) ? $email : null;
 		return $this;
 	}
 	
 	public function getEmail()
 	{
-		// @TODO
+		return $this->_email;
 	}
 	
-	public function setTelefon( $telefon )
+	public function setPhone( $phone )
 	{
-		// @TODO
+		$this->_phone = !empty($phone) ? $phone : null;
 		return $this;
 	}
 	
-	public function getTelefon()
+	public function getPhone()
 	{
-		// @TODO
+		return $this->_phone;
 	}
 	
-	public function setStanowisko( $stanowisko )
+	public function setJob( $job )
 	{
-		// @TODO
+		$this->_job = !empty($job) ? $job : null;
 		return $this;
 	}
 	
-	public function getStanowisko()
+	public function getJob()
 	{
-		// @TODO
+		return $this->_job;
+	}
+	
+	public function setPhoto( $photo )
+	{
+		$this->_photo = !empty($photo) ? $photo : null;
+		return $this;
+	}
+	
+	public function getPhoto()
+	{
+		return $this->_photo;
+	}
+	
+	public function setDescription( $description )
+	{
+		$this->_description = !empty($description) ? $description : null;
+		return $this;
+	}
+	
+	public function getDescription()
+	{
+		return $this->_description;
 	}
 }
