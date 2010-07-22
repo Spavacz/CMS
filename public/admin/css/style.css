@@ -1,0 +1,91 @@
+/** 	Przyciski 	**/
+.is-add {background-image: url(../images/icons/add.png) !important;}
+.is-edit {background-image: url(../images/icons/pencil.png) !important;}
+.is-delete {background-image: url(../images/icons/delete.png) !important;}
+
+.is-image {background-image: url(../images/icons/image.png) !important;}
+
+.is-portal {background-image: url(../images/icons/image.png) !important;}
+.is-products {background-image: url(../images/icons/brick.png) !important;}
+.is-cms {background-image: url(../images/icons/page_world.png) !important;}
+.is-extra-fields {background-image: url(../images/icons/application_form_add.png) !important;}
+.is-users {background-image: url(../images/icons/user_suit.png) !important;}
+.is-help {background-image: url(../images/icons/help.png) !important;}
+
+.is-upload {background-image: url(../images/icons/arrow_up.png) !important;}
+.is-cancel {background-image: url(../images/icons/cancel.png) !important;}
+
+.is-show-all {background-image: url(../images/icons/table.png) !important;}
+.is-logout {background-image: url(../images/icons/stop.png) !important;}
+.is-upload {background-image: url(../images/icons/arrow_up.png) !important;}
+.is-search {background-image: url(../images/icons/magnifier.png) !important;}
+/* 		//// 		*/
+
+
+
+/*		Zakadki		*/
+.is-price {background-image: url(../images/icons/coins.png) !important;}
+.is-description {background-image: url(../images/icons/page_white_text.png) !important;}
+.is-info {background-image: url(../images/icons/information.png) !important;}
+/*		////		*/
+
+
+
+/* 		// MESSAGES // 		*/
+.msg .x-box-mc { font-size:14px; }
+#msg-div {
+    position:absolute;
+    left:35%;
+    top:10px;
+    width:250px;
+    z-index:20000;
+}
+.overAllMsg { z-index: 90000 !important;	 }
+/* 		//// 		*/
+
+
+
+/*		STATUSY UPLOADU		*/
+.is-ux-uploaddialog-uploadstopbtn { background: url(../images/icons/stop.png) no-repeat left center !important; }
+.is-ux-uploaddialog-uploadstartbtn { background: url(../images/icons/arrow_up.png) no-repeat left center !important;}
+
+.ext-ux-uploaddialog-indicator-stoped {
+	width: 16px;
+	height: 16px;
+	background: url('../images/icons/done.gif') no-repeat center center;
+}
+
+.ext-ux-uploaddialog-indicator-processing {
+	width: 16px;
+	height: 16px;	
+	background: url('../images/icons/loading.gif') no-repeat center center;
+}
+
+.ext-ux-uploaddialog-state {
+	text-align: center;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+/* Queued */
+.ext-ux-uploaddialog-state-0 { background-image: url('../images/icons/uncheck.gif'); }
+/* Finished */
+.ext-ux-uploaddialog-state-1 { background-image: url('../images/icons/check.gif'); }
+/* Failed */
+.ext-ux-uploaddialog-state-2 { background-image: url('../images/icons/failed.gif'); }
+/* Processing */
+.ext-ux-uploaddialog-state-3 { background-image: url('../images/icons/file-uploading.gif');	 }
+/* Progress bar fix */
+.ext-ie7 .ext-ux-uploaddialog-dialog .x-progress-bar .x-progress-text div {	display: none; }
+
+.ext-ie7 .ext-ux-uploaddialog-dialog .x-progress-text-back {
+	position: absolute;
+	left: 0px;
+	right: 0px;
+}
+
+.ext-ie7 .ext-ux-uploaddialog-dialog .x-progress-text-back div {
+	width: auto !important;
+	white-space: nowrap;
+}
+/*			////			*/

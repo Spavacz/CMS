@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title> ImbaShop :: Administration Zone </title>
+	<link rel="stylesheet" type="text/css" href="css/loading.css" />	
+</head>
+<body>
+	<div id="loading-mask" style=""></div>
+	<div id="loading">
+		<div class="loading-indicator">
+			<img src="extjs/resources/images/default/shared/blue-loading.gif" width="32" height="32" style="margin-right:8px;float:left;vertical-align:top;" alt="imbashop" />
+			 <a href="http://www.imbashop.pl/">ImbaShop</a>
+		<br />
+		<span id="loading-msg">Ładowanie styli i obrazków...</span>
+		</div>
+	</div>
+	
+	
+	
+	<link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/lang.css" />    
+	<link rel="stylesheet" type="text/css" href="css/image-chooser-view.css" />
+	
+	
+	
+	<!-- JEZYKI -->
+	
+	<script type="text/javascript" src="js/ImbaShop/lang/is-lang-pl_PL.js"></script>
+	<!--<script type="text/javascript" src="js/ImbaShop/lang/is-lang-en_US.js"></script>-->
+	  
+	
+	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Ładowanie API';</script>
+    
+	<!-- LIBS -->
+    <script type="text/javascript" src="extjs/adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="extjs/ext-all-debug.js"></script>
+	
+	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Ładowanie wtyczek';</script>
+	<!-- USER EXTENSIONS -->
+	<script type="text/javascript" src="extjs/ux/Ext.ux.util.js"></script>
+	<script type="text/javascript" src="extjs/ux/Ext.ux.UploadDialog.js"></script>
+	<script type="text/javascript" src="extjs/ux/DataView-more.js"></script>
+	<script type="text/javascript" src="extjs/ux/Ext.ux.DataView.LightBox.js"></script>
+	<script type="text/javascript" src="extjs/ux/Ext.ux.grid.Search.js"></script>
+	
+	
+	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Ładowanie modułów';</script>    	
+	<!-- MODULES -->
+	<script type="text/javascript" src="js/ImbaShop/utils/Exceptions.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/TopMenu.js"></script>
+    <script type="text/javascript" src="js/ImbaShop/AdminPanel.js"></script>
+    <script type="text/javascript" src="js/ImbaShop/Products.js"></script>
+    <script type="text/javascript" src="js/ImbaShop/Help.js"></script>
+    <script type="text/javascript" src="js/ImbaShop/Dashboard.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/Cms.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/ExtraFields.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/Users.js"></script>    
+	<script type="text/javascript" src="js/ImbaShop/Loading.js"></script>
+	
+	
+	
+	<!-- ITEMS -->
+	<script type="text/javascript" src="js/ImbaShop/items/ProductsGrid.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/items/CmsGrid.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/items/CategoryTree.js"></script>
+	
+	<script type="text/javascript" src="js/ImbaShop/items/ExtraFieldsGrid.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/items/ExtraFields.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/items/UsersGrid.js"></script>
+	
+	
+	<!-- BUTTONS -->
+	<script type="text/javascript" src="js/ImbaShop/items/buttons/ImageButton.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/items/buttons/AddButton.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/items/buttons/EditButton.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/items/buttons/DeleteButton.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/items/buttons/DisableButton.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/items/buttons/ShowAllButton.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/items/buttons/ShowPreviewButton.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/items/buttons/HelpButton.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/items/buttons/CloseButton.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/items/buttons/ConfigButton.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/items/buttons/PublishButton.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/items/buttons/UnpublishButton.js"></script>
+	
+	
+	
+	<script type="text/javascript" src="js/ImbaShop/items/tabs/ImageTab.js"></script>
+	
+	<!-- UTILS -->
+	<script type="text/javascript" src="js/ImbaShop/utils/Language.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/utils/Window.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/utils/ConfirmDelete.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/utils/LanguageTabs.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/utils/log.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/utils/MultilanguageTabPanel.js"></script>
+	
+	<script type="text/javascript" src="js/ImbaShop/utils/Ajax.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/utils/Hax.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/utils/Format.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/utils/Vtypes.js"></script>	
+	
+	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Ładowanie języka';</script>
+   <script type="text/javascript" src="extjs/src/locale/ext-lang-pl.js"></script>
+			
+	<script type="text/javascript" src="extjs/ux/Ext.ux.IconCombo.js"></script>
+	<script type="text/javascript" src="js/ImbaShop/Login.js"></script>
+
+	
+	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Uruchomienie systemu';</script>
+	<script type="text/javascript">
+	  	Ext.onReady(function(){  
+			Ext.BLANK_IMAGE_URL = 'extjs/resources/images/default/s.gif';
+			Ext.QuickTips.init();		
+			
+			Loading = new ImbaShop.utils.Loading();
+			Loading.init();			
+	      	Is = new ImbaShop.AdminPanel();
+			Is.LANGUAGE = 'pl_PL';			
+			Is.north.getTopToolbar().products.toggle();			
+		});
+	</script>
+
+	<div id="infoPanel" style="display: block;  width: 100%; position: absolute; top:28px;"></div>
+</body>
+</html>

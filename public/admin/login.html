@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
+<head>
+	
+	<!-- JEZYKI -->
+	<script type="text/javascript" src="js/ImbaShop/lang/is-lang-pl_PL.js"></script>
+	<!--<script type="text/javascript" src="js/ImbaShop/lang/is-lang-en_US.js"></script>-->
+	
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
+  <title> ImbaShop :: Administration Zone - Entrence </title>
+  <link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css" />
+  <link rel="stylesheet" type="text/css" href="css/lang.css" />
+</head>
+	<body>
+		<script type="text/javascript" src="extjs/adapter/ext/ext-base.js"></script>
+		<script type="text/javascript" src="extjs/ext-all-debug.js"></script>
+  		
+		<!-- JEZYKI -->
+		<script type="text/javascript" src="extjs/src/locale/ext-lang-pl.js"></script>
+		<script type="text/javascript" src="js/ImbaShop/lang/is-lang-pl_PL.js"></script>
+
+		<script type="text/javascript" src="extjs/ux/Ext.ux.Direct.ZendFrameworkProvider.js"></script>
+		<script type="text/javascript" src="extjs/ux/Ext.ux.IconCombo.js"></script>
+
+		<!-- UTILS -->
+		<script type="text/javascript" src="js/ImbaShop/utils/Language.js"></script>
+		<script type="text/javascript" src="js/ImbaShop/utils/Window.js"></script>
+		<script type="text/javascript" src="js/ImbaShop/utils/Exceptions.js"></script>
+		<script type="text/javascript" src="js/ImbaShop/utils/Hax.js"></script>
+		
+		
+		<script type="text/javascript" src="js/ImbaShop/Login.js"></script>
+		
+		
+		<script type="text/javascript">
+			Ext.onReady(function(){  
+				Ext.BLANK_IMAGE_URL = 'extjs/resources/images/default/s.gif';
+				Ext.QuickTips.init();
+				cp = new Ext.state.CookieProvider({
+				       path: '/imba/',
+				       expires: new Date(new Date().getTime()+(1000*60*60*24*30)), //30 days
+				       domain: document.domain
+				});
+				Ext.state.Manager.setProvider(cp);				   
+				new ImbaShop.Login();						
+			});
+		</script>
+		
+		<noscript><div class="noscript">&nbsp;&nbsp;&nbsp;System wymaga przeglądarki z obsługą JavaScript.&nbsp;&nbsp;&nbsp;</div></noscript>
+	</body>
+</html>
+
