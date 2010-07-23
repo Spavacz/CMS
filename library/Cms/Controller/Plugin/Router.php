@@ -14,6 +14,12 @@ class Cms_Controller_Plugin_Router extends Zend_Controller_Plugin_Abstract
     	
 		//$router->removeDefaultRoutes();
 		
+        // regula rest
+		$router->addRoute(
+			'rest',
+			new Zend_Rest_Route($front, array('page' => 'cms'), array('rest'))
+		);
+        
     	// regula panelu admina
     	$router->addRoute(
 		    'cms',
@@ -35,8 +41,8 @@ class Cms_Controller_Plugin_Router extends Zend_Controller_Plugin_Abstract
 				    new Zend_Controller_Router_Route( $page->getPath().'*', array(
 				    	'controller'	=> $page->getController(),
 						'action' 		=> $page->getAction(),
-				    	'page'			=> $page)
-				    )
+				    	'page'			=> $page
+				    ) )
 				);
         	}
         }
