@@ -1,16 +1,3 @@
-Ext.app.JSONRPC_API = {"transport":"POST","envelope":"JSON-RPC-2.0","contentType":"application\/json","SMDVersion":"2.0","target":"rpc","services":{"remove":{"envelope":"JSON-RPC-2.0","transport":"POST","parameters":[{"type":"any","name":"idInstance","optional":false}],"returns":"null"},"update":{"envelope":"JSON-RPC-2.0","transport":"POST","parameters":[{"type":"any","name":"idPage","optional":false},{"type":"any","name":"data","optional":false}],"returns":"null"},"edit":{"envelope":"JSON-RPC-2.0","transport":"POST","parameters":[{"type":"any","name":"idPage","optional":false},{"type":"any","name":"idInstance","optional":false},{"type":"any","name":"data","optional":false}],"returns":"null"},"login":{"envelope":"JSON-RPC-2.0","transport":"POST","parameters":[{"type":"any","name":"login","optional":false},{"type":"any","name":"password","optional":false},{"type":"any","name":"remember","optional":true,"default":false}],"returns":["null","null"]},"logout":{"envelope":"JSON-RPC-2.0","transport":"POST","parameters":[],"returns":"null"},"addPage":{"envelope":"JSON-RPC-2.0","transport":"POST","parameters":[{"type":"any","name":"title","optional":false},{"type":"any","name":"url","optional":false},{"type":"any","name":"layout","optional":false},{"type":"any","name":"component","optional":true}],"returns":["null","null"]}},"methods":{"remove":{"envelope":"JSON-RPC-2.0","transport":"POST","parameters":[{"type":"any","name":"idInstance","optional":false}],"returns":"null"},"update":{"envelope":"JSON-RPC-2.0","transport":"POST","parameters":[{"type":"any","name":"idPage","optional":false},{"type":"any","name":"data","optional":false}],"returns":"null"},"edit":{"envelope":"JSON-RPC-2.0","transport":"POST","parameters":[{"type":"any","name":"idPage","optional":false},{"type":"any","name":"idInstance","optional":false},{"type":"any","name":"data","optional":false}],"returns":"null"},"login":{"envelope":"JSON-RPC-2.0","transport":"POST","parameters":[{"type":"any","name":"login","optional":false},{"type":"any","name":"password","optional":false},{"type":"any","name":"remember","optional":true,"default":false}],"returns":["null","null"]},"logout":{"envelope":"JSON-RPC-2.0","transport":"POST","parameters":[],"returns":"null"},"addPage":{"envelope":"JSON-RPC-2.0","transport":"POST","parameters":[{"type":"any","name":"title","optional":false},{"type":"any","name":"url","optional":false},{"type":"any","name":"layout","optional":false},{"type":"any","name":"component","optional":true}],"returns":["null","null"]}}};
-
-
-
-var dupa = Ext.Direct.addProvider(Ext.apply(Ext.app.JSONRPC_API, {
-        'type'     : 'zfprovider',
-        'url'      : Ext.app.JSONRPC_API
-        ,paramsAsHash :false
-    }));
-
-
-
-
 Ext.namespace('ImbaShop.Login');
 
 /**
@@ -36,7 +23,7 @@ ImbaShop.Login = function (config){
 	 */
 	this.loginForm = new Ext.form.FormPanel({
 	    labelWidth: 85
-	    //,url: '/api/login'	    
+	    ,url: '../rest/login'	    
 		,border:false
 		,bodyStyle:'padding:10px;'
 		,defaults:{xtype:'textfield',allowBlank: false,anchor:'-20'}
@@ -97,7 +84,7 @@ ImbaShop.Login = function (config){
 	 */
 	this.passwordForm = new Ext.form.FormPanel({
 		labelWidth: 85
-		//,url: '/api/login'
+		,url: '/api/login'
 		,width: 230
 		,border:false
 		,bodyStyle:'padding:10px;'
@@ -183,13 +170,64 @@ Ext.extend(ImbaShop.Login, ImbaShop.utils.Window,{
 	,submit:function(){
 		loginForm = this.items.items[0];
 		if (loginForm.getForm().isValid()) {
-		
+			Ext.MessageBox.progress(i18n.LOGININ,i18n.WAIT,i18n.CONNECTING);	
+			Ext.MessageBox.updateProgress(0.05,i18n.CONNECTED);
+			Ext.MessageBox.updateProgress(0.10,'Autoryzacja');
+						
 			loginForm.getForm().submit({
-				method: 'POST',    	
-				params: {
-                    foo: 'bar',
-                    uid: 34
-                }
+				method: 'POST',    			 
+				success: function(response, back){    					
+					Ext.MessageBox.updateProgress(0.15,'Autoryzowano');
+					
+					if (this.redirect) {
+						var redirect = 'index.html';
+						window.location = redirect;
+						var x = 0.10;
+			            for(var i = 1; i < 100; i++){
+			               setTimeout(function(){
+	      					   	x += 0.20;
+	      					   	Ext.MessageBox.updateProgress(x, 'Trwa przekierowywanie');
+	      					   }, i*3000);
+			            }
+					}
+					else {
+						this.destroy();
+						Ext.MessageBox.hide();
+					} 			
+		            
+				},
+				scope:this,
+				failure: function(form, action){
+					
+					Ext.MessageBox.updateProgress(0.15,'Brak autoryzacji');				
+					
+					obj = Ext.util.JSON.decode(action.response.responseText);
+					
+					if (action.failureType == 'server') {						
+						msg = i18n.LOGIN_FAILD;
+					}
+					else if (action.failureType === Ext.form.Action.CONNECT_FAILURE) {
+						msg = 'Status:'+action.response.status+': '+ action.response.statusText;
+	                }
+					else if (action.failureType === Ext.form.Action.SERVER_INVALID){
+	                    // server responded with success = false
+	                    msg = action.result.errormsg;
+	                }
+	                else {
+	                	msg = i18n.SERVER_ERROR;
+					}
+                	
+					Ext.Msg.show({
+						   title:i18n.LOGININ,
+						   msg: msg,
+						   buttons: Ext.Msg.OK,
+						   icon: Ext.MessageBox.ERROR
+					});					
+					
+					loginForm.getForm().setValues({username:'',password:''})
+				}
+
+
 			});
 		}
 		
@@ -201,9 +239,9 @@ Ext.extend(ImbaShop.Login, ImbaShop.utils.Window,{
 	 */
 	,logout:function(){																
 		ImbaShop.utils.Ajax({
-			url: '/api/logout',
+			url: '../rest/login?_method=DELETE',
 			success: function(a,b,c){
-				window.location.href = '/';
+				window.location.href = 'login.html';
 			}
 		});
 	}	
