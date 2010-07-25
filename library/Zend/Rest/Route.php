@@ -129,10 +129,11 @@ class Zend_Rest_Route extends Zend_Controller_Router_Route_Module
         $this->_request = $request;
         $this->_setRequestKeys();
 
-        $path   = $request->getPathInfo();
-        $params = $request->getParams();
-        $values = array();
-        $path   = trim($path, self::URI_DELIMITER);
+        $path     = $request->getPathInfo();
+        $params   = $request->getParams();
+        $values   = array();
+        $path     = trim($path, self::URI_DELIMITER);
+        $pathOrig = $path;
 
         if ($path != '') {
 
@@ -223,14 +224,22 @@ class Zend_Rest_Route extends Zend_Controller_Router_Route_Module
             }
 
         }
-        $this->_values = $values + $params;
 
-        $result = $this->_values + $this->_defaults;
+        if ($pathOrig != '' || $this->_allRestful()) {
 
-        if ($partial && $result)
-            $this->setMatchedPath($request->getPathInfo());
+            $this->_values = $values + $params;
 
-        return $result;
+            $result = $this->_values + $this->_defaults;
+
+            if ($partial && $result) {
+                $this->setMatchedPath($request->getPathInfo());
+            }
+
+            return $result;
+
+        }
+
+        return false;
     }
 
     /**
