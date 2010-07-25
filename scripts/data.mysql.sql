@@ -17,7 +17,8 @@ INSERT INTO `blocks` (`id`, `name`) VALUES
 
 INSERT INTO `blocks_pages` (`id`, `idBlock`, `idPage`, `placeholder`, `params`, `priority`) VALUES
 (1, 1, 1, 'left_col', NULL, 0),
-(2, 1, 1, 'right_col', NULL, 0);
+(2, 2, 1, 'right_col', NULL, 0),
+(3, 1, 2, 'left_col', NULL, 0);;
 
 -- --------------------------------------------------------
 --
@@ -45,7 +46,7 @@ INSERT INTO `components` (`id`, `name`, `controller`, `action`) VALUES
 --
 
 INSERT INTO `pages` (`id`, `path`, `controller`, `action`, `params`) VALUES
-(1, '/', 'index', 'test', NULL),
+(1, '/', 'index', 'index', NULL),
 (2, 'test/', 'index', 'test', NULL);
 
 -- --------------------------------------------------------
