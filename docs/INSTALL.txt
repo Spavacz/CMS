@@ -5,4 +5,3 @@ Instalacja CMS
 3. Ustawic RewriteBase w /public/.htaccess
 4. Utowrzyc strukture bazy uruchamiajac (np w bash): # php scripts/setup.php
 5. (Opcjonalny) Zaimportowac przykladowe dane do bazy uruchamiajac: # php scripts/setup.php -d
-6. glhf
