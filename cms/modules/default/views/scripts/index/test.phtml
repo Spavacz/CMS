@@ -1,3 +1,6 @@
 <h1>Testy</h1>
-<h2>Cms_View_Helper_User - aktualnie zalogowany user:</h2>
-<?php _d($this->user()) ?>
+<?if( $this->testGroup == 1 ):?>
+	<h2>Cms_View_Helper_User - aktualnie zalogowany user:</h2>
+	<?_d($this->user())?>
+<?endif?>
+<?=$this->output?>

@@ -65,6 +65,34 @@ CREATE TABLE IF NOT EXISTS `components` (
 -- --------------------------------------------------------
 
 --
+-- Struktura tabeli dla  `items_parameters`
+--
+
+CREATE TABLE IF NOT EXISTS `items_parameters` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `type` varchar(30) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `description` varchar(300) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla  `items_parameters_options`
+--
+
+CREATE TABLE IF NOT EXISTS `items_parameters_options` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `idParameter` int(10) unsigned NOT NULL,
+  `value` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idParameter` (`idParameter`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Struktura tabeli dla  `pages`
 --
 
@@ -76,6 +104,36 @@ CREATE TABLE IF NOT EXISTS `pages` (
   `params` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla  `products`
+--
+
+CREATE TABLE IF NOT EXISTS `products` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `description` text,
+  `date_created` datetime NOT NULL,
+  `date_modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` tinyint(1) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `status` (`status`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla  `products_parameters`
+--
+
+CREATE TABLE IF NOT EXISTS `products_parameters` (
+  `idProduct` int(11) NOT NULL,
+  `idParameter` int(11) NOT NULL,
+  `value` varchar(255) NOT NULL,
+  UNIQUE KEY `idProduct` (`idProduct`,`idParameter`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 

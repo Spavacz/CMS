@@ -17,7 +17,7 @@ INSERT INTO `blocks` (`id`, `name`) VALUES
 
 INSERT INTO `blocks_pages` (`id`, `idBlock`, `idPage`, `placeholder`, `params`, `priority`) VALUES
 (1, 1, 1, 'left_col', NULL, 0),
-(2, 1, 1, 'right_col', NULL, 0);
+(2, 2, 1, 'right_col', NULL, 0);
 
 -- --------------------------------------------------------
 --
@@ -39,14 +39,53 @@ INSERT INTO `blocks_widgets` (`id`, `idBlock`, `idWidget`, `view`, `params`, `pr
 INSERT INTO `components` (`id`, `name`, `controller`, `action`) VALUES
 (1, 'Lorem Ipsum', 'index', 'test');
 
+
+-- --------------------------------------------------------
+--
+-- Zrzut danych tabeli `items_parameters`
+--
+
+INSERT INTO `items_parameters` (`id`, `type`, `name`, `description`) VALUES
+(1, 'Checkbox', 'Parameter One', 'Description for Parameter One'),
+(2, 'Selectbox', 'Parameter Two', 'Description for Parameter Two'),
+(3, 'Checkbox', 'Parameter Three', 'Description for Parameter Three');
+
+-- --------------------------------------------------------
+
+--
+-- Zrzut danych tabeli `items_parameters_options`
+--
+
+INSERT INTO `items_parameters_options` (`id`, `idParameter`, `value`) VALUES
+(1, 1, 'Option One'),
+(2, 1, 'Option Two');
+
 -- --------------------------------------------------------
 --
 -- Zrzut danych tabeli `pages`
 --
 
 INSERT INTO `pages` (`id`, `path`, `controller`, `action`, `params`) VALUES
-(1, '/', 'index', 'test', NULL),
+(1, '/', 'index', 'index', NULL),
 (2, 'test/', 'index', 'test', NULL);
+
+-- --------------------------------------------------------
+--
+-- Zrzut danych tabeli `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `description`, `date_created`, `status`) VALUES
+(1, 'Product One', 'Description for Product One', NOW(), 1),
+(2, 'Product Two', 'Description for Product Two', NOW(), 1);
+
+-- --------------------------------------------------------
+--
+-- Zrzut danych tabeli `products_parameters`
+--
+
+INSERT INTO `products_parameters` (`idProduct`, `idParameter`, `value`) VALUES
+(1, 1, '1'),
+(1, 2, '2');
 
 -- --------------------------------------------------------
 --
