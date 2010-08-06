@@ -1,4 +1,9 @@
 <h1>Testy</h1>
+<ul>
+	<li><a href="<?=$this->baseUrl('/test/group/1')?>">Users</a></li>
+	<li><a href="<?=$this->baseUrl('/test/group/2')?>">Parameters</a></li>
+	<li><a href="<?=$this->baseUrl('/test/group/3')?>">Products</a></li>
+</ul>
 <?if( $this->testGroup == 1 ):?>
 	<h2>Cms_View_Helper_User - aktualnie zalogowany user:</h2>
 	<?_d($this->user())?>
