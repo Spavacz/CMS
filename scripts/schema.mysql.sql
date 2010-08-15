@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `blocks_pages` (
 --
 
 CREATE TABLE IF NOT EXISTS `blocks_widgets` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `idBlock` int(10) unsigned NOT NULL,
   `idWidget` int(10) unsigned NOT NULL,
   `view` varchar(255) NOT NULL,
@@ -46,6 +46,24 @@ CREATE TABLE IF NOT EXISTS `blocks_widgets` (
   `priority` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `idPage` (`idBlock`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla  `categories`
+--
+
+CREATE TABLE IF NOT EXISTS `categories` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `idParent` int(10) unsigned NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `description` text,
+  `date_created` datetime NOT NULL,
+  `date_modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`),
+  KEY `idParent` (`idParent`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
