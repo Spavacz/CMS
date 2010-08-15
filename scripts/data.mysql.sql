@@ -8,7 +8,8 @@
 
 INSERT INTO `blocks` (`id`, `name`) VALUES
 (1, 'left column'),
-(2, 'right column');
+(2, 'right column'),
+(3, 'Tests Block');
 
 -- --------------------------------------------------------
 --
@@ -17,7 +18,9 @@ INSERT INTO `blocks` (`id`, `name`) VALUES
 
 INSERT INTO `blocks_pages` (`id`, `idBlock`, `idPage`, `placeholder`, `params`, `priority`) VALUES
 (1, 1, 1, 'left_col', NULL, 0),
-(2, 2, 1, 'right_col', NULL, 0);
+(2, 2, 1, 'right_col', NULL, 0),
+(3, 3, 2, 'left_col', NULL, 0),
+(4, 3, 3, 'left_col', NULL, 0);
 
 -- --------------------------------------------------------
 --
@@ -29,7 +32,8 @@ INSERT INTO `blocks_widgets` (`id`, `idBlock`, `idWidget`, `view`, `params`, `pr
 (2, 1, 4, 'widgetUserbox', NULL, 0),
 (3, 1, 2, 'widgetWidgets', NULL, 2),
 (4, 2, 1, 'widgetPages', NULL, 0),
-(5, 2, 3, 'widgetLorem', 'a:2:{s:6:"param1";s:4:"lorem";s:6:"param2";s:3:"ipsum";}', 1);
+(5, 2, 3, 'widgetLorem', 'a:2:{s:6:"param1";s:4:"lorem";s:6:"param2";s:3:"ipsum";}', 1),
+(6, 3, 5, 'widgetTests', NULL, 0);
 
 -- --------------------------------------------------------
 --
@@ -67,7 +71,8 @@ INSERT INTO `items_parameters_options` (`id`, `idParameter`, `value`) VALUES
 
 INSERT INTO `pages` (`id`, `path`, `controller`, `action`, `params`) VALUES
 (1, '/', 'index', 'index', NULL),
-(2, 'test/', 'index', 'test', NULL);
+(2, 'test/', 'test', 'index', NULL),
+(3, 'test/rest-products/', 'test', 'rest-products', NULL);
 
 -- --------------------------------------------------------
 --
@@ -104,4 +109,5 @@ INSERT INTO `widgets` (`id`, `name`, `controller`, `action`, `view`) VALUES
 (1, 'Pages', 'pages', 'pages', 'widgetPages'),
 (2, 'Widgets', 'widgets', 'widgets', 'widgetWidgets'),
 (3, 'Lorem Ipsum', 'lorem', 'lorem', 'widgetLorem'),
-(4, 'Userbox', 'userbox', 'userbox', 'widgetUserbox');
+(4, 'Userbox', 'userbox', 'userbox', 'widgetUserbox'),
+(5, 'Tests', 'tests', 'tests', 'widgetTests');

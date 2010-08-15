@@ -1,0 +1,91 @@
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#index-test').bind('click', function(event) {
+		event.preventDefault();
+		jQuery.getJSON( '<?=$this->baseUrl('rest/products')?>', function(data, textData) {
+			console.log(data);
+			$('#index-test-response').html(textData);
+		});
+	});
+
+	$('#get-test').bind('click', function(event) {
+		event.preventDefault();
+		if( $('#form-test-id').val() != '' ) {
+			// tu moze tez byc w get '?id=X
+			jQuery.getJSON( '<?=$this->baseUrl('rest/products')?>/' + $('#form-test-id').val(), function(data) {
+				console.log(data); 
+				if(data.success) {
+					$('#form-test-id').val( data.data.id );
+					$('#form-test-name').val( data.data.name );
+					$('#form-test-description').val( data.data.description );
+				} else {
+					alert( 'nie udalo sie wczytac produktu');
+				}
+			});
+		} else {
+			alert( 'podaj ID produktu do wczytania' );
+		}
+	});
+
+	$('#post-test').bind('click', function(event) {
+		event.preventDefault();
+		jQuery.post( '<?=$this->baseUrl('rest/products')?>', 
+			{
+				'id'			: $('#form-test-id').val(),
+				'name'			: $('#form-test-name').val(),
+				'description'	: $('#form-test-description').val()
+			},
+			function(data) {
+				console.log(data);
+				if( data.success ) {
+					alert( 'zapisano poprawnie' );
+				} else {
+					alert( 'blad zapisu' );
+				}
+			},
+			"json"
+		);
+	});
+
+	$('#delete-test').bind('click', function(event) {
+		event.preventDefault();
+		if( $('#form-test-id').val() != '' ) {
+			jQuery.post( '<?=$this->baseUrl('rest/products')?>/' + $('#form-test-id').val(), 
+				{
+					'_method' : 'DELETE'
+				}, 
+				function(data) {
+					console.log(data); 
+					if(data.success) {
+						$('#form-test')[0].reset();
+						alert('Produkt usuniety');
+					} else {
+						alert( 'nie udalo sie usunac produktu');
+					}
+				},
+				'json'
+			);
+		}
+	});
+		
+});
+</script>
+
+<h1>Testy</h1>
+
+<h2>INDEX Test (lista w console.log)</h2>
+<a name="index-test" id="index-test" href="#index-test">Pobierz liste</a>
+<p id="index-test-response"></p>
+
+<h2>GET, POST, DELETE Test</h2>
+<div id="get-test-response">
+	<form id="form-test">
+		Id: <input id="form-test-id" type="text"/><br/>
+		Name: <input id="form-test-name" type="text"/><br/>
+		Description: <textarea id="form-test-description"></textarea><br/>
+		<input id="get-test" type="button" value="Get"> 
+		<input id="post-test" type="button" value="Post">
+		<input id="delete-test" type="button" value="Delete">
+		<input type="reset" value="Reset">  
+	</form>
+</div>
