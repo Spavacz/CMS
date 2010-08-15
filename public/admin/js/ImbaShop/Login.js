@@ -239,8 +239,11 @@ Ext.extend(ImbaShop.Login, ImbaShop.utils.Window,{
 	 */
 	,logout:function(){																
 		ImbaShop.utils.Ajax({
-			url: '../rest/login?_method=DELETE',
-			success: function(a,b,c){
+			url: '../rest/login'
+			,params: {
+				_method : 'DELETE'
+			}
+			,success: function(a,b,c){
 				window.location.href = 'login.html';
 			}
 		});
