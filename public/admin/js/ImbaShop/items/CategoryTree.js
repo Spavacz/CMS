@@ -17,7 +17,7 @@ ImbaShop.items.CategoryTree = function(config){
 			,title: i18n.CATEGORY_TITLE
 	        ,loader: new Ext.tree.TreeLoader({
 				clearOnLoad: false
-				,dataUrl: '/rest/categories/'
+				,dataUrl: '../rest/categories/'
 				,requestMethod:'GET'
 				,nodeParameter: 'idParent'		
 			})
@@ -207,7 +207,7 @@ Ext.extend(ImbaShop.items.CategoryTree, Ext.tree.TreePanel,{
 		//wyslanie zadania
 		
 		ImbaShop.utils.Ajax({
-			url: '/rest/categories/'
+			url: '../rest/categories/'
 			,jsonData: this.formAddDialog.getFormObject()
 			,success: function(resp,scope){
 				
@@ -387,7 +387,7 @@ Ext.extend(ImbaShop.items.CategoryTree, Ext.tree.TreePanel,{
 				if(answer=="yes"){
 					
 					ImbaShop.utils.Ajax({
-						url: '/rest/Categories'
+						url: '../rest/categories'
 						,success: function(resp,scope){
 							this.pathToExpand = this.selModel.getSelectedNode().getPath();
 							this.getRootNode().reload();
