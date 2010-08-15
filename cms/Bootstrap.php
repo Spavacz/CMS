@@ -26,6 +26,13 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         	->setSeparator(' - ')->append( $this->getOption('appname') );
     }
     
+    protected function _initRequest()
+    {
+    	$this->bootstrap( 'FrontController' );
+    	$request = new Cms_Controller_Request_Http();
+    	$this->getResource('FrontController')->setRequest($request);
+    }
+    
     protected function _initRouter()
     {
     	// potrzebny bedzie FrontController i baza

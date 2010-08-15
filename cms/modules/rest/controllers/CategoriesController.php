@@ -68,8 +68,7 @@ class Rest_CategoriesController extends Zend_Rest_Controller
 	
 	public function postAction()
 	{
-		//TODO - zrobic pro :>
-		$post = json_decode(file_get_contents("php://input"), true);		
+		$post = $this->_getParam('jsonObj');
 		
 		$data = array(
 			'id'			=> (isset($post[1]['id'])) ? $post[1]['id'] : null,
@@ -77,7 +76,6 @@ class Rest_CategoriesController extends Zend_Rest_Controller
 			'name'			=> $post[1]['name'],
 			'description'	=> $post[1]['description']
 		);
-		//
 		
 		$category = new Cms_Model_Category_Product( $data );
 		$categories = new Cms_Model_Mapper_Category_Product();
@@ -98,9 +96,9 @@ class Rest_CategoriesController extends Zend_Rest_Controller
 	{
 		$id = $this->_getParam('id');
 		$mapper = new Cms_Model_Mapper_Category_Product();
-		if( $mapper->find( $id, $product = new Cms_Model_Category_Product() ) )
+		if( $mapper->find( $id, $category = new Cms_Model_Category_Product() ) )
 		{
-			$mapper->delete($product);
+			$mapper->delete($category);
 			$response = array( 'success' => true );
 		}
 		else
