@@ -37,6 +37,15 @@ INSERT INTO `blocks_widgets` (`id`, `idBlock`, `idWidget`, `view`, `params`, `pr
 
 -- --------------------------------------------------------
 --
+-- Zrzut danych tabeli `categories`
+--
+
+INSERT INTO `categories` (`id`, `idParent`, `name`, `description`, `date_created`, `status`) VALUES
+(1, 0, 'Main Category One', 'Description of Main Category One', NOW(), 1),
+(2, 0, 'Main Category Two', 'Description of Main Category Two', NOW(), 1);;
+
+-- --------------------------------------------------------
+--
 -- Zrzut danych tabeli `components`
 --
 

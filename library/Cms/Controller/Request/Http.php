@@ -15,8 +15,6 @@ class Cms_Controller_Request_Http extends Zend_Controller_Request_Http
     public function getParam($key, $default = null)
     {
     	$param = parent::getParam($key, $default);
-    	
-    	// @todo - json
     	if( empty($param) && $key == 'jsonObj' && preg_match('/application\/json/', $_SERVER['CONTENT_TYPE']) )
     	{
     		$param = json_decode(@file_get_contents("php://input"), true);
@@ -35,8 +33,10 @@ class Cms_Controller_Request_Http extends Zend_Controller_Request_Http
     {
     	$params = parent::getParams();
     	
-    	// @todo - json
-    	//_d($_SERVER);
+    	if( preg_match('/application\/json/', $_SERVER['CONTENT_TYPE']) )
+    	{
+    		$params['jsonObj'] = json_decode(@file_get_contents("php://input"), true);
+    	}
     	
         return $params;
     }
