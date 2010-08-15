@@ -3,7 +3,7 @@ php_value "short_open_tag" "on"
 SetEnv APPLICATION_ENV development
 
 RewriteEngine On
-RewriteBase /cms/public
+RewriteBase /
 
 RewriteRule ^rpc\/?$ rpc.php [NC,L]
 

@@ -17,15 +17,15 @@ ImbaShop.items.CategoryTree = function(config){
 			,title: i18n.CATEGORY_TITLE
 	        ,loader: new Ext.tree.TreeLoader({
 				clearOnLoad: false
-				,dataUrl: '/api/getChilds'
-				,nodeParameter: 'id'
-				,baseParams: {}
+				,dataUrl: '/rest/categories/'
+				,requestMethod:'GET'
+				,nodeParameter: 'idParent'		
 			})
 			,root: {
 				nodeType: 'async',
 				draggable: false,
-				id: '1', // tak jest akurat u mnie w bazie, LK - powinno dzialac w wiekszosci przypadkow
-				category_id: 1,
+				id: '0', // tak jest akurat u mnie w bazie, LK - powinno dzialac w wiekszosci przypadkow
+				//category_id: 1,
 				expanded: true
 			}
 	        ,rootVisible: false
@@ -61,7 +61,7 @@ ImbaShop.items.CategoryTree = function(config){
 				movenode: function(tree, node, oldParent, newParent, index){
 					var params = {
 							category_id: node.attributes.category_id,
-							parent_id: newParent.attributes.category_id,
+							idParent: newParent.attributes.category_id,
 							sort: index 
 					}
 					
@@ -147,18 +147,20 @@ Ext.extend(ImbaShop.items.CategoryTree, Ext.tree.TreePanel,{
 			border: false
 			,inactive: true
 			,form: [{
-					name: 'text'
+					name: 'name'
 					,fieldLabel: i18n.CATEGORY_NAME
 					,xtype: 'textfield'
 					,anchor: '-20px'							
 				},{
-					name: 'category_state'
-					,xtype: 'hidden'
-					,value: record ? record.category_state : 'A'
+					name: 'description'
+					,fieldLabel: i18n.CATEGORY_DESCRIPTION
+					,xtype: 'htmleditor'
+					,height: 200
+					,anchor: '-20px'							
 				},{
-					name: 'parent_id'
+					name: 'idParent'
 					,xtype: 'hidden'
-					,value: record ? record.parent_id : (!Ext.isEmpty(this.selModel.getSelectedNode()) ? this.selModel.getSelectedNode().attributes.category_id : this.getRootNode().attributes.category_id)
+					,value: record ? record.idParent : (!Ext.isEmpty(this.selModel.getSelectedNode()) ? this.selModel.getSelectedNode().id : this.getRootNode().id)
 			}]
 		});
 
@@ -166,6 +168,7 @@ Ext.extend(ImbaShop.items.CategoryTree, Ext.tree.TreePanel,{
 			title: Ext.isDefined(record) ? i18n.CATEGORY_EDIT : i18n.CATEGORY_ADD
 			,items: this.formAddDialog
 			,resizable:true
+			,width: 650
 			,buttons: [{
 				text: i18n.SAVE
 				,scope: this
@@ -204,7 +207,7 @@ Ext.extend(ImbaShop.items.CategoryTree, Ext.tree.TreePanel,{
 		//wyslanie zadania
 		
 		ImbaShop.utils.Ajax({
-			url: record ? '/api/editCategory' : '/api/insertCategory'
+			url: '/rest/categories/'
 			,jsonData: this.formAddDialog.getFormObject()
 			,success: function(resp,scope){
 				
@@ -250,7 +253,9 @@ Ext.extend(ImbaShop.items.CategoryTree, Ext.tree.TreePanel,{
 				this.ownerCt.Grid.disable();
 				
 			}
-			,params: {category_id: !Ext.isEmpty(this.selModel.getSelectedNode()) ? this.selModel.getSelectedNode().attributes.category_id : null}
+			,params: {
+				id: !Ext.isEmpty(this.selModel.getSelectedNode()) ? this.selModel.getSelectedNode().attributes.category_id : null
+			}
 			,displayResult: true
 			,scope: this
 		});
@@ -382,35 +387,19 @@ Ext.extend(ImbaShop.items.CategoryTree, Ext.tree.TreePanel,{
 				if(answer=="yes"){
 					
 					ImbaShop.utils.Ajax({
-						url: '/api/removeCategory'
+						url: '/rest/Categories'
 						,success: function(resp,scope){
 							this.pathToExpand = this.selModel.getSelectedNode().getPath();
 							this.getRootNode().reload();
 						}
-						,params: {id:this.selModel.getSelectedNode().attributes.category_id}
+						,params: {
+							id:this.selModel.getSelectedNode().id
+							,_method: 'DELETE'
+						}
 						,displayResult: true
 						,scope: this
 					});
 					
-					/*Ext.Ajax.request({
-						url: '/api/delCategory',
-						scope: this,
-						success: function(response){
-							var resp = Ext.util.JSON.decode(response.responseText);
-							if (resp.success){
-								this.pathToExpand = this.selModel.getSelectedNode().getPath();
-								this.getRootNode().reload();
-								ImbaShop.utils.Exceptions.success(resp, true);
-							}
-							else 
-								Ext.Msg.alert(i18n.ERROR, i18n.CATEGORY_DELETING_FAILED);
-							
-						},
-						failure: function(){
-							Ext.Msg.alert(i18n.ERROR, i18n.CATEGORY_DELETING_FAILED);
-						},
-						params: {id:this.selModel.getSelectedNode().id}
-					});*/
 				}
 			}
 		});

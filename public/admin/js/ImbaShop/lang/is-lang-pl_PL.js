@@ -43,6 +43,7 @@ var i18n = {
 	
 	CATEGORY_MOVING_FAILED: 'Nie udało się przenieść kategorii',
 	CATEGORY_NAME: 'Nazwa',
+	CATEGORY_DESCRIPTION: 'Opis',
 	CATEGORY_ADD: 'Dodaj kategorię',
 	CATEGORY_EDIT: 'Edytuj kategorię',
 
