@@ -2,21 +2,21 @@
 
 class Rest_CategoriesController extends Zend_Rest_Controller
 {
-	
+
 	public function init()
 	{
 		// nie chcemy widokow
 		$this->_helper->layout()->disableLayout();
 		$this->_helper->viewRenderer->setNoRender(true);
 	}
-	
+
 	public function indexAction()
 	{
 		$mapper = new Cms_Model_Mapper_Category_Product();
-		
-		$idParent = $this->_getParam('idParent');		
+
+		$idParent = $this->_getParam('idParent');
 		$list = $mapper->fetchAll('idParent = '.$idParent);
-		
+
 		$categories = array();
 		foreach( $list as $category )
 		{
@@ -26,8 +26,9 @@ class Rest_CategoriesController extends Zend_Rest_Controller
 					'id' 			=> $category->getId(),
 					'idParent'		=> $category->getIdParent(),
 					'text'			=> $category->getName(),
+					'leaf'			=> !$category->hasChildren(),
 					//TODO - ,'leaf'	=> ($category->getId()=="nie ma dzieci") ? true : false, // wtedy nie bedzie mozliwosci rozwiniecia noda
-					'cls'			=> 'folder',
+					'iconCls'			=> 'folder',
 					'qtip'			=> $category->getDescription()
 				);
 			}
@@ -35,12 +36,12 @@ class Rest_CategoriesController extends Zend_Rest_Controller
 
 		echo trim(json_encode($categories),'{}');
 	}
-	
+
 	public function getAction()
 	{
 		$id = $this->_getParam('id');
 		$mapper = new Cms_Model_Mapper_Item_Product();
-		
+
 		if( !$mapper->find( $id, $product = new Cms_Model_Item_Product() ) )
 		{
 			$response = array( 'success' => false );
@@ -56,27 +57,27 @@ class Rest_CategoriesController extends Zend_Rest_Controller
 				);
 				$response = array( 'success' => true, 'data' => $data );
 			}
-			else 
+			else
 			{
 				$response = array( 'success' => false );
 			}
 		}
 		echo json_encode($response);
 	}
-	
+
 	public function putAction(){}
-	
+
 	public function postAction()
 	{
 		$post = $this->_getParam('jsonObj');
-		
+
 		$data = array(
 			'id'			=> (isset($post[1]['id'])) ? $post[1]['id'] : null,
 			'idParent'		=> $post[1]['idParent'],
 			'name'			=> $post[1]['name'],
 			'description'	=> $post[1]['description']
 		);
-		
+
 		$category = new Cms_Model_Category_Product( $data );
 		$categories = new Cms_Model_Mapper_Category_Product();
 
@@ -88,10 +89,10 @@ class Rest_CategoriesController extends Zend_Rest_Controller
 		{
 			$response = array('success' => false);
 		}
-		
+
 		echo json_encode($response);
 	}
-	
+
 	public function deleteAction()
 	{
 		$id = $this->_getParam('id');
@@ -105,8 +106,8 @@ class Rest_CategoriesController extends Zend_Rest_Controller
 		{
 			$response = array( 'success' => false );
 		}
-		
+
 		echo json_encode($response);
 	}
-	
+
 }

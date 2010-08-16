@@ -18,56 +18,56 @@ class Cms_Model_Widget extends Cms_Model
         $this->_name = (string) $path;
         return $this;
     }
- 
+
     public function getName()
     {
         return $this->_name;
     }
- 
+
     public function setController($controller)
     {
         $this->_controller = (string) $controller;
         return $this;
     }
- 
+
     public function getController()
     {
         return 'Cms_Widget_' . ucfirst($this->_controller);
     }
- 
+
     public function setAction($action)
     {
         $this->_action = $action;
         return $this;
     }
- 
+
     public function getAction()
     {
         return $this->_action . 'Action';
     }
- 
+
     public function setId($id)
     {
         $this->_id = (int) $id;
         return $this;
     }
- 
+
     public function getId()
     {
         return $this->_id;
     }
-    
+
     public function getInstanceId()
     {
     	return $this->_instanceId;
     }
-    
+
     public function setInstanceId( $instanceId )
     {
     	$this->_instanceId = (int) $instanceId;
     	return $this;
     }
-    
+
     public function setView( $view )
     {
     	$this->_view = $view;
@@ -81,7 +81,7 @@ class Cms_Model_Widget extends Cms_Model
     {
     	return $this->_view . '.phtml';
     }
-    
+
     public function setParams( $params )
     {
     	$this->_params = $params;
@@ -99,7 +99,7 @@ class Cms_Model_Widget extends Cms_Model
     	}
     	return $default;
     }
-    
+
     public function setPlaceholder( $placeholder )
     {
     	$this->_placeholder = $placeholder;
@@ -109,7 +109,7 @@ class Cms_Model_Widget extends Cms_Model
     {
     	return $this->_placeholder;
     }
-    
+
     public function setPriority( $priority )
     {
     	$this->_priority = (int)$priority;
@@ -119,7 +119,7 @@ class Cms_Model_Widget extends Cms_Model
     {
     	return $this->_priority;
     }
-    
+
 	public function setPage( $page )
     {
     	$this->_page = $page;
