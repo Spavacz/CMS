@@ -15,7 +15,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
             )
         ));
 	}
-	
+
 	protected function _initHeaders()
     {
 		// Upewniam sie ze mamy juz widok
@@ -23,40 +23,42 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
         // Ustawiam title
         $this->getResource( 'View' )->headTitle()
-        	->setSeparator(' - ')->append( $this->getOption('appname') );
+        	->setSeparator(' - ')
+        	->setDefaultAttachOrder(Zend_View_Helper_Placeholder_Container_Abstract::PREPEND);
+        $this->getResource( 'View' )->headTitle()->append( $this->getOption('appname') );
     }
-    
+
     protected function _initRequest()
     {
     	$this->bootstrap( 'FrontController' );
     	$request = new Cms_Controller_Request_Http();
     	$this->getResource('FrontController')->setRequest($request);
     }
-    
+
     protected function _initRouter()
     {
     	// potrzebny bedzie FrontController i baza
     	$this->bootstrap( 'FrontController' );
-    	
+
     	$this->getResource('FrontController')->registerPlugin(new Cms_Controller_Plugin_Router());
     }
-	
+
     protected function _initDbRegistry()
     {
 		//$this->bootstrap( 'db' );
     	//Zend_Registry::set('db',$this->getResource( 'db' ));
     }
-    
+
 	protected function _initAuth()
     {
     	$this->bootstrap( 'db' );
     	$this->bootstrap( 'FrontController' );
-    	
-    	
+
+
     	$this->getResource( 'FrontController' )
     		->registerPlugin( new Cms_Controller_Plugin_Auth(Zend_Layout::getMvcInstance()) );
     }
-    
+
     protected function _initWidgets()
     {
     	$this->bootstrap( 'FrontController' );
@@ -65,7 +67,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     	$front = $this->getResource('FrontController');
     	$front->registerPlugin(new Cms_Controller_Plugin_Widgets(Zend_Layout::getMvcInstance()));
     }
-    
+
     protected function _initHelpers()
     {
     	// action helper
@@ -75,7 +77,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     	$this->getResource('View')->addHelperPath(
     		realpath(APPLICATION_PATH . '/../library/Cms/View/Helper'), 'Cms_View_Helper');
     }
-    
+
 }
 
 /* Funkcja ladnie wyswietlajaca tablice i obiekty */

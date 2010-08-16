@@ -1,58 +1,22 @@
 <?php
 
-class Cms_Model_Page extends Cms_Model
+class Cms_Model_Page extends Zend_Navigation_Page_Mvc
 {
-    protected $_path;
-    protected $_controller;
-    protected $_action;
-    protected $_id;
-	protected $_isCms = false;
+    protected $_uri;
+    protected $_isCms = false;
 	protected $_blocks;
- 
-    public function setPath($path)
+
+    public function setUri( $uri )
     {
-        $this->_path = (string) $path;
+        $this->_uri = (string) $uri;
         return $this;
     }
- 
-    public function getPath()
+
+    public function getUri()
     {
-        return $this->_path;
+        return $this->_uri;
     }
- 
-    public function setController($controller)
-    {
-        $this->_controller = (string) $controller;
-        return $this;
-    }
- 
-    public function getController()
-    {
-        return $this->_controller;
-    }
- 
-    public function setAction($action)
-    {
-        $this->_action = $action;
-        return $this;
-    }
- 
-    public function getAction()
-    {
-        return $this->_action;
-    }
- 
-    public function setId($id)
-    {
-        $this->_id = (int) $id;
-        return $this;
-    }
- 
-    public function getId()
-    {
-        return $this->_id;
-    }
-    
+
     public function getBlocks()
     {
     	if( is_null($this->_blocks) )
@@ -62,8 +26,20 @@ class Cms_Model_Page extends Cms_Model
     	}
     	return $this->_blocks;
     }
-    
-    public function updateWidgets( $update )
+
+	public function getHref()
+    {
+        if ($this->_hrefCache) {
+            return $this->_hrefCache;
+        }
+
+        $baseUrl = new Zend_View_Helper_BaseUrl();
+        $url = $baseUrl->baseUrl( $this->getUri() );
+
+        return $this->_hrefCache = $url;
+    }
+
+    /*public function updateWidgets( $update )
     {
     	$this->getWidgets();
     	// aktualizacja pozycji widgetow
@@ -72,14 +48,14 @@ class Cms_Model_Page extends Cms_Model
     		$this->_widgets[$k]->setPriority($update[$widget->getInstanceId()]['priority']);
     		$this->_widgets[$k]->setPlaceholder($update[$widget->getInstanceId()]['placeholder']);
     	}
-    	
+
     	$widgets = new Cms_Model_Mapper_Widget();
     	// dodac nowe widgety
     	if( is_array($update['add']) )
     	{
 	    	foreach( $update['add'] as $id => $new )
 	    	{
-	    		
+
 	    		$widgets->find($id, $widget = new Cms_Model_Widget());
 	    		$widget->setPage($this);
 	    		$widget->setPriority($new['priority']);
@@ -88,8 +64,8 @@ class Cms_Model_Page extends Cms_Model
 	    	}
     	}
     	return $widgets->updateOnPage($this);
-    }
-    
+    }*/
+
     public function isCms( $bool = null )
     {
     	if(is_null($bool))

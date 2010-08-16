@@ -78,10 +78,10 @@ INSERT INTO `items_parameters_options` (`id`, `idParameter`, `value`) VALUES
 -- Zrzut danych tabeli `pages`
 --
 
-INSERT INTO `pages` (`id`, `path`, `controller`, `action`, `params`) VALUES
-(1, '/', 'index', 'index', NULL),
-(2, 'test/', 'test', 'index', NULL),
-(3, 'test/rest-products/', 'test', 'rest-products', NULL);
+INSERT INTO `pages` (`id`, `label`, `uri`, `controller`, `action`, `params`) VALUES
+(1, 'Home', '/', 'index', 'index', NULL),
+(2, 'Tests', 'test/', 'test', 'index', NULL),
+(3, 'REST Tests', 'test/rest-products/', 'test', 'rest-products', NULL);
 
 -- --------------------------------------------------------
 --

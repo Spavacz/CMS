@@ -114,9 +114,11 @@ CREATE TABLE IF NOT EXISTS `items_parameters_options` (
 -- Struktura tabeli dla  `pages`
 --
 
+
 CREATE TABLE IF NOT EXISTS `pages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `path` varchar(500) NOT NULL,
+  `label` varchar(255) NOT NULL,
+  `uri` varchar(500) NOT NULL,
   `controller` varchar(100) NOT NULL DEFAULT 'index',
   `action` varchar(100) NOT NULL DEFAULT 'index',
   `params` varchar(255) DEFAULT NULL,
