@@ -7,7 +7,7 @@
 --
 -- Struktura tabeli dla  `blocks`
 --
-
+DROP TABLE IF EXISTS `blocks`;
 CREATE TABLE IF NOT EXISTS `blocks` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `blocks` (
 --
 -- Struktura tabeli dla  `blocks_pages`
 --
-
+DROP TABLE IF EXISTS `blocks_pages`;
 CREATE TABLE IF NOT EXISTS `blocks_pages` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `idBlock` int(10) unsigned NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `blocks_pages` (
 --
 -- Struktura tabeli dla  `blocks_widgets`
 --
-
+DROP TABLE IF EXISTS `blocks_widgets`;
 CREATE TABLE IF NOT EXISTS `blocks_widgets` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `idBlock` int(10) unsigned NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `blocks_widgets` (
 --
 -- Struktura tabeli dla  `categories`
 --
-
+DROP TABLE IF EXISTS `categories`;
 CREATE TABLE IF NOT EXISTS `categories` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `idParent` int(10) unsigned NOT NULL,
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `categories` (
 --
 -- Struktura tabeli dla  `components`
 --
-
+DROP TABLE IF EXISTS `components`;
 CREATE TABLE IF NOT EXISTS `components` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `components` (
 --
 -- Struktura tabeli dla  `items_parameters`
 --
-
+DROP TABLE IF EXISTS `items_parameters`;
 CREATE TABLE IF NOT EXISTS `items_parameters` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `type` varchar(30) NOT NULL,
@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `items_parameters` (
 --
 -- Struktura tabeli dla  `items_parameters_options`
 --
-
+DROP TABLE IF EXISTS `items_parameters_options`;
 CREATE TABLE IF NOT EXISTS `items_parameters_options` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `idParameter` int(10) unsigned NOT NULL,
@@ -113,8 +113,7 @@ CREATE TABLE IF NOT EXISTS `items_parameters_options` (
 --
 -- Struktura tabeli dla  `pages`
 --
-
-
+DROP TABLE IF EXISTS `pages`;
 CREATE TABLE IF NOT EXISTS `pages` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `label` varchar(255) NOT NULL,
@@ -130,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `pages` (
 --
 -- Struktura tabeli dla  `products`
 --
-
+DROP TABLE IF EXISTS `products`;
 CREATE TABLE IF NOT EXISTS `products` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -147,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `products` (
 --
 -- Struktura tabeli dla  `products_parameters`
 --
-
+DROP TABLE IF EXISTS `products_parameters`;
 CREATE TABLE IF NOT EXISTS `products_parameters` (
   `idProduct` int(11) NOT NULL,
   `idParameter` int(11) NOT NULL,
@@ -160,6 +159,7 @@ CREATE TABLE IF NOT EXISTS `products_parameters` (
 --
 -- Struktura tabeli dla  `users`
 --
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `email` varchar(50) NOT NULL,
@@ -180,7 +180,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 -- Struktura tabeli dla  `widgets`
 --
-
+DROP TABLE IF EXISTS `widgets`;
 CREATE TABLE IF NOT EXISTS `widgets` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
