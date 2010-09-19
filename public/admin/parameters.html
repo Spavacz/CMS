@@ -1,0 +1,166 @@
+<!DOCTYPE html><html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />		
+		<title>REST Tests - CMS</title>
+		<link rel="stylesheet" href="../css/style.css" type="text/css" />
+		<link rel="stylesheet" href="../css/spav-theme/jquery-ui-1.8.1.custom.css" type="text/css" />
+		<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>    
+		<script type="text/javascript" src="../js/jquery-ui-1.8.1.custom.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.zend.jsonrpc.js"></script>
+		<script type="text/javascript" src="../js/json2.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('#index-test').bind('click', function(event) {
+					event.preventDefault();
+					jQuery.getJSON( '../rest/parameters', function(data, textData) {
+						console.log(data);
+						$('#index-test-response').html(textData);
+					});
+				});
+	
+				$('#get-test').bind('click', function(event) {
+					event.preventDefault();
+					if( $('#form-test-id').val() != '' ) {
+						// tu moze tez byc w get '?id=X
+						jQuery.getJSON( '../rest/parameters/' + $('#form-test-id').val(), function(data) {
+							console.log(data); 
+							if(data.success) {
+								$('#form-test-id').val( data.data.id );
+								$('#form-test-type').val( data.data.type );
+								$('#form-test-name').val( data.data.name );
+								$('#form-test-description').val( data.data.description );
+								var options = data.data.options; 
+								for( var i in options ) {
+									$('#options-list').append( $('<div>' +
+										'<input type="text" name="option-value[]" value="' + options[i].value + '">' +
+										'<input type="text" name="option-id[]" value="' + options[i].id + '">' +
+										'<a href="#">usun</a>' +
+									'</div>') );
+								}
+							} else {
+								alert( 'nie udalo sie wczytac parametru');
+							}
+						});
+					} else {
+						alert( 'podaj ID parametru do wczytania' );
+					}
+				});
+	
+				$('#post-test').bind('click', function(event) {
+					event.preventDefault();
+					jQuery.post( '../rest/parameters', 
+						{
+							'id'			: $('#form-test-id').val(),
+							'type'			: $('#form-test-type').val(),
+							'name'			: $('#form-test-name').val(),
+							'description'	: $('#form-test-description').val()
+						},
+						function(data) {
+							console.log(data);
+							if( data.success ) {
+								alert( 'zapisano poprawnie' );
+							} else {
+								alert( 'blad zapisu' );
+							}
+						},
+						"json"
+					);
+				});
+	
+				$('#delete-test').bind('click', function(event) {
+					event.preventDefault();
+					if( $('#form-test-id').val() != '' ) {
+						jQuery.post( '../rest/parameters/' + $('#form-test-id').val(), 
+							{
+								'_method' : 'DELETE'
+							}, 
+							function(data) {
+								console.log(data); 
+								if(data.success) {
+									$('#form-test')[0].reset();
+									alert('Parametr usuniety');
+								} else {
+									alert( 'nie udalo sie usunac parametru');
+								}
+							},
+							'json'
+						);
+					}
+				});
+					
+			});
+		</script>
+	</head>
+	<body>
+		<a name="top"></a>
+		<!-- wrap starts here -->
+		<div id="wrap">
+			<!-- header -->
+			<div id="header">			
+				<span id="slogan"> no to jazda...</span>
+				<!-- tabs -->
+				<ul>
+					<li id="current"><a href="/cms/public"><span>Strona Główna</span></a></li>
+				</ul>
+			</div>
+			<div id="header-logo">			
+				<div id="logo">Zero<span class="red">9ravity</span></div>		
+				<form method="post" class="search" action="#">
+					<p><input name="search_query" class="textbox" type="text" />
+  					<input name="search" class="searchbutton" value="Szukaj" type="submit" /></p>
+				</form>
+			</div>
+			<div id="left_col" class="sidebar widget-place">
+			<div class="widget>
+				<div class="widget-header">  
+					<h2>Testy</h2>  
+				</div>
+				<div class="widget-content">
+					<ul>
+						<li><a href="../test/group/1">Users</a></li>
+						<li><a href="../test/group/2">Parameters</a></li>
+						<li><a href="../test/group/3">Products</a></li>
+						<li><a href="categories.html">Categories REST</a></li>
+						<li><a href="products.html">Products REST</a></li>
+						<li><strong>Parameters REST</strong></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="right_col" class="sidebar float-right widget-place"></div>			
+		<div id="main">				
+			<h1>Testy</h1>
+				<h2>INDEX Test (lista w console.log)</h2>
+				<a name="index-test" id="index-test" href="#index-test">Pobierz liste</a>
+				<p id="index-test-response"></p>
+				
+				<h2>GET, POST, DELETE Test</h2>
+				<div id="get-test-response">
+					<form id="form-test">
+						Id: <input id="form-test-id" type="text"/><br/>
+						Type: <input id="form-test-type" type="text"/><br/>
+						Name: <input id="form-test-name" type="text"/><br/>
+						Description: <textarea id="form-test-description"></textarea><br/>
+						Options: <div id="options-list"></div>
+						<a href=#" onclick="addOption()">dodaj opcje</a>
+						<input id="get-test" type="button" value="Get"> 
+						<input id="post-test" type="button" value="Post">
+						<input id="delete-test" type="button" value="Delete">
+						<input type="reset" value="Reset">  
+					</form>
+				</div>
+				<br />					
+			</div>
+		<!-- wrap ends here -->
+		</div>
+		<!-- footer starts here -->
+		<div class="footer">
+			<p>	
+			&copy; 2008 <strong>Patryk Grandt</strong> &nbsp;&nbsp;	 
+			Design by: <a href="http://www.styleshout.com/">styleshout</a> 
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="/cms/public">Strona Główna</a> 
+			</p>
+		</div>	
+	</body>
+</html>

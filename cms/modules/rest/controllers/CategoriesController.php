@@ -14,7 +14,7 @@ class Rest_CategoriesController extends Zend_Rest_Controller
 	{
 		$mapper = new Cms_Model_Mapper_Category_Product();
 
-		$idParent = $this->_getParam('idParent');
+		$idParent = $this->_getParam('idParent',0);
 		$list = $mapper->fetchAll('idParent = '.$idParent);
 
 		$categories = array();
@@ -27,8 +27,7 @@ class Rest_CategoriesController extends Zend_Rest_Controller
 					'idParent'		=> $category->getIdParent(),
 					'text'			=> $category->getName(),
 					'leaf'			=> !$category->hasChildren(),
-					//TODO - ,'leaf'	=> ($category->getId()=="nie ma dzieci") ? true : false, // wtedy nie bedzie mozliwosci rozwiniecia noda
-					'iconCls'			=> 'folder',
+					'iconCls'		=> 'folder',
 					'qtip'			=> $category->getDescription()
 				);
 			}
@@ -40,20 +39,23 @@ class Rest_CategoriesController extends Zend_Rest_Controller
 	public function getAction()
 	{
 		$id = $this->_getParam('id');
-		$mapper = new Cms_Model_Mapper_Item_Product();
+		$mapper = new Cms_Model_Mapper_Category_Product();
 
-		if( !$mapper->find( $id, $product = new Cms_Model_Item_Product() ) )
+		if( !$mapper->find( $id, $category = new Cms_Model_Category_Product() ) )
 		{
 			$response = array( 'success' => false );
 		}
 		else
 		{
-			if( $product->getStatus() != 0 )
+			if( $category->getStatus() != 0 )
 			{
 				$data = array(
-					'id' 			=> $product->getId(),
-					'name'			=> $product->getName(),
-					'description'	=> $product->getDescription()
+					'id' 			=> $category->getId(),
+					'idParent'		=> $category->getIdParent(),
+					'name'			=> $category->getName(),
+					'description'	=> $category->getDescription(),
+					'dateCreated'	=> $category->getDateCreated(),
+					'dateModified'	=> $category->getDateModified(),
 				);
 				$response = array( 'success' => true, 'data' => $data );
 			}
@@ -69,13 +71,11 @@ class Rest_CategoriesController extends Zend_Rest_Controller
 
 	public function postAction()
 	{
-		$post = $this->_getParam('jsonObj');
-
 		$data = array(
-			'id'			=> (isset($post[1]['id'])) ? $post[1]['id'] : null,
-			'idParent'		=> $post[1]['idParent'],
-			'name'			=> $post[1]['name'],
-			'description'	=> $post[1]['description']
+			'id'			=> $this->_getParam('id'),
+			'idParent'		=> $this->_getParam('idParent'),
+			'name'			=> $this->_getParam('name'),
+			'description'	=> $this->_getParam('description')
 		);
 
 		$category = new Cms_Model_Category_Product( $data );

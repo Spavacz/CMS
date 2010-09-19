@@ -3,7 +3,7 @@
 /**
  * Script for creating and loading database etc
  */
- 
+
 // Initialize the application path and autoloading
 defined('APPLICATION_PATH')
     || define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/../cms'));
@@ -28,13 +28,13 @@ try {
 	echo $e->getUsageMessage();
     return false;
 }
- 
+
 // If help requested, report usage message
 if ($getopt->getOption('h')) {
     echo $getopt->getUsageMessage();
     return true;
 }
- 
+
 // Initialize values based on presence or absence of CLI options
 $loadData = $getopt->getOption('d');
 $env      = $getopt->getOption('e');
@@ -51,12 +51,12 @@ $application = new Zend_Application(
 $bootstrap = $application->getBootstrap();
 $bootstrap->bootstrap('db');
 $dbAdapter = $bootstrap->getResource('db');
- 
+
 // let the user know whats going on (we are actually creating a
 // database here)
 if ('testing' != APPLICATION_ENV) {
     if($loadData) {
-		echo 'Writing sample data to CMS Database in (control-c to cancel): ' . PHP_EOL;		
+		echo 'Writing sample data to CMS Database in (control-c to cancel): ' . PHP_EOL;
     } else {
     	echo 'Creating schema of CMS Database in (control-c to cancel): ' . PHP_EOL;
     }

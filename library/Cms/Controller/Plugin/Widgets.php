@@ -17,7 +17,6 @@ class Cms_Controller_Plugin_Widgets extends Zend_Layout_Controller_Plugin_Layout
 		}
 		$pages = new Cms_Model_Mapper_Page();
 		$page = $pages->fetchActive(); // to powinno dzialac inczej (cms_navigation->setActive())
-
 		$view->headTitle( $page->getLabel() ); // to powinno byc w jakims plugin_layout czy cos
 		$this->getLayout()->pageId = $page->getId(); // to tez
 
