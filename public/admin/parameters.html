@@ -9,6 +9,20 @@
 		<script type="text/javascript" src="../js/jquery.zend.jsonrpc.js"></script>
 		<script type="text/javascript" src="../js/json2.js"></script>
 		<script type="text/javascript">
+			function addOption(id, value) {
+				$('#options-list').append( $('<div>' +
+						'value: <input type="text" name="option-value" value="' + value + '">' +
+						'<input type="hidden" name="option-id" value="' + id + '">' +
+						'<a href="#" onclick="deleteOption(this);return false;">usun</a>' +
+					'</div>') );
+			}
+			function deleteOption(button) {
+				$(button).parent().remove();
+			}
+			function deleteAllOptions() {
+				$('#options-list').empty();
+			}
+			
 			$(document).ready(function(){
 				$('#index-test').bind('click', function(event) {
 					event.preventDefault();
@@ -21,6 +35,7 @@
 				$('#get-test').bind('click', function(event) {
 					event.preventDefault();
 					if( $('#form-test-id').val() != '' ) {
+						deleteAllOptions();
 						// tu moze tez byc w get '?id=X
 						jQuery.getJSON( '../rest/parameters/' + $('#form-test-id').val(), function(data) {
 							console.log(data); 
@@ -31,11 +46,7 @@
 								$('#form-test-description').val( data.data.description );
 								var options = data.data.options; 
 								for( var i in options ) {
-									$('#options-list').append( $('<div>' +
-										'<input type="text" name="option-value[]" value="' + options[i].value + '">' +
-										'<input type="text" name="option-id[]" value="' + options[i].id + '">' +
-										'<a href="#">usun</a>' +
-									'</div>') );
+									addOption(options[i].id, options[i].value);
 								}
 							} else {
 								alert( 'nie udalo sie wczytac parametru');
@@ -48,13 +59,22 @@
 	
 				$('#post-test').bind('click', function(event) {
 					event.preventDefault();
-					jQuery.post( '../rest/parameters', 
-						{
-							'id'			: $('#form-test-id').val(),
-							'type'			: $('#form-test-type').val(),
-							'name'			: $('#form-test-name').val(),
-							'description'	: $('#form-test-description').val()
-						},
+					var postData = {
+						'id'			: $('#form-test-id').val(),
+						'type'			: $('#form-test-type').val(),
+						'name'			: $('#form-test-name').val(),
+						'description'	: $('#form-test-description').val(),
+						'optionsValue'	: [],
+						'optionsId'		: []
+					};
+					$("input[name='option-value']").each(function(index){
+						postData.optionsValue[index] = $(this).val();
+					}); 
+					$("input[name='option-id']").each(function(index){
+						postData.optionsId[index] = $(this).val();
+					});
+					
+					jQuery.post( '../rest/parameters', postData,
 						function(data) {
 							console.log(data);
 							if( data.success ) {
@@ -69,6 +89,7 @@
 	
 				$('#delete-test').bind('click', function(event) {
 					event.preventDefault();
+					deleteAllOptions();
 					if( $('#form-test-id').val() != '' ) {
 						jQuery.post( '../rest/parameters/' + $('#form-test-id').val(), 
 							{
@@ -121,8 +142,8 @@
 						<li><a href="../test/group/2">Parameters</a></li>
 						<li><a href="../test/group/3">Products</a></li>
 						<li><a href="categories.html">Categories REST</a></li>
-						<li><a href="products.html">Products REST</a></li>
 						<li><strong>Parameters REST</strong></li>
+						<li><a href="products.html">Products REST</a></li>
 					</ul>
 				</div>
 			</div>
@@ -142,7 +163,7 @@
 						Name: <input id="form-test-name" type="text"/><br/>
 						Description: <textarea id="form-test-description"></textarea><br/>
 						Options: <div id="options-list"></div>
-						<a href=#" onclick="addOption()">dodaj opcje</a>
+						<a href="#add-option" onclick="addOption('','');return false;">dodaj opcje</a>
 						<input id="get-test" type="button" value="Get"> 
 						<input id="post-test" type="button" value="Post">
 						<input id="delete-test" type="button" value="Delete">

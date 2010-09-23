@@ -21,14 +21,14 @@ class Rest_ParametersController extends Zend_Rest_Controller
 		{
 			$parameters[] = array(
 				'id' 			=> $parameter->getId(),
-				'text'			=> $parameter->getName(),
-				'leaf'			=> false,
-				'iconCls'		=> $parameter->getType(),
-				'qtip'			=> $parameter->getDescription()
+				'name'			=> $parameter->getName(),
+				'type'			=> $parameter->getType(),
+				'description'	=> $parameter->getDescription(),
+				'options'		=> $parameter->getOptionsValues()
 			);
 		}
 
-		echo trim(json_encode($parameters),'{}');
+		echo json_encode($parameters);
 	}
 
 	public function getAction()
@@ -59,27 +59,34 @@ class Rest_ParametersController extends Zend_Rest_Controller
 	public function postAction()
 	{
 		// dodaje nowy parametr
-    	/*$data = array(
-			'type'			=> 'Selectbox',
-			'name'			=> 'Test Parameter',
-			'description'	=> 'Test Description',
-			'optionsValues'	=> array(
-				array('value' => 'Test Option One'),
-				array('value' => 'Test Option Two')
-			)
-		);*/
-
-		$data = array(
+    	$data = array(
 			'id'			=> $this->_getParam('id'),
 			'type'			=> $this->_getParam('type'),
 			'name'			=> $this->_getParam('name'),
 			'description'	=> $this->_getParam('description')
 		);
 
+		// opcje parametru
+		$optionsId = $this->_getParam('optionsId', array());
+		$optionsValue = $this->_getParam('optionsValue', array());
+		$data['optionsValues'] = array();
+		foreach( $optionsId as $index => $id )
+		{
+			if( !empty($optionsValue[$index]) )
+			{
+				$data['optionsValues'][$index] = array(
+					'id'	=> $id,
+					'value' => $optionsValue[$index]
+				);
+			}
+		}
+
+		// tworzymy parametr
 		$className = 'Cms_Model_Item_Parameter_' . $data['type'];
 		$parameter = new $className( $data );
 		$parameters = new Cms_Model_Mapper_Item_Parameter();
 
+		// zapisujemy
 		if( $parameters->save($parameter) !== false )
 		{
 			$response = array('success' => true, 'data' => array('id' => $parameter->getId()) );
@@ -89,6 +96,7 @@ class Rest_ParametersController extends Zend_Rest_Controller
 			$response = array('success' => false);
 		}
 
+		// wyswietlamy odpowiedz
 		echo json_encode($response);
 	}
 

@@ -9,7 +9,40 @@
 		<script type="text/javascript" src="../js/jquery.zend.jsonrpc.js"></script>
 		<script type="text/javascript" src="../js/json2.js"></script>
 		<script type="text/javascript">
+			function updateParams( parameters ){
+				$(parameters).each( function() {
+					var param = $(':input[name=parameter\\['+this.id+'\\]]');
+					if( param.is('input:checkbox') && this.value == 1 ) {
+						param.attr('checked','checked');
+					} else if( param.is('select') ) {
+						$('option[value='+this.value+']', param).attr('selected','selected');
+					}						
+				});
+			}
+
 			$(document).ready(function(){
+				//wczytuje i tworze parametry
+				jQuery.getJSON( '../rest/parameters', function(data) {
+					var html = '';
+					$(data).each(function() {
+						html += '<div>';
+						switch(this.type){
+							case "Checkbox":
+								html += '<input type="checkbox" name="parameter[' + this.id + ']" value="1">';
+								break;
+							case "Selectbox":
+								html += '<select name="parameter[' + this.id + ']"><option value=""></option>';
+								$(this.options).each( function(){ 
+									html += '<option value="' + this.id + '">' + this.value + '</option>';
+								});
+								html += '</select>';
+								break;
+						}
+						html += ' ' + this.name + ' <i>' + this.description + '</i></div>';
+					});
+					$('#parameters-list').append($(html));
+				});
+				
 				$('#index-test').bind('click', function(event) {
 					event.preventDefault();
 					jQuery.getJSON( '../rest/products', function(data, textData) {
@@ -28,6 +61,7 @@
 								$('#form-test-id').val( data.data.id );
 								$('#form-test-name').val( data.data.name );
 								$('#form-test-description').val( data.data.description );
+								updateParams( data.data.parameters );
 							} else {
 								alert( 'nie udalo sie wczytac produktu');
 							}
@@ -39,12 +73,22 @@
 	
 				$('#post-test').bind('click', function(event) {
 					event.preventDefault();
+
+					postData = {
+						'id'				: $('#form-test-id').val(),
+						'name'				: $('#form-test-name').val(),
+						'description'		: $('#form-test-description').val(),
+						'parameterId'		: [],
+						'parameterValue'	: []
+					};
+					var parameters = $('#form-test').serializeArray();
+					$(parameters).each(function(index){
+						postData.parameterId[index] = this.name.substr(10,1);
+						postData.parameterValue[index] = this.value;
+					});
+					
 					jQuery.post( '../rest/products', 
-						{
-							'id'			: $('#form-test-id').val(),
-							'name'			: $('#form-test-name').val(),
-							'description'	: $('#form-test-description').val()
-						},
+						postData,
 						function(data) {
 							console.log(data);
 							if( data.success ) {
@@ -130,9 +174,9 @@
 						Id: <input id="form-test-id" type="text"/><br/>
 						Name: <input id="form-test-name" type="text"/><br/>
 						Description: <textarea id="form-test-description"></textarea><br/>
+						Parameters: <div id="parameters-list"></div><br/>
 						<input id="get-test" type="button" value="Get"> 
 						<input id="post-test" type="button" value="Post">
-				
 						<input id="delete-test" type="button" value="Delete">
 						<input type="reset" value="Reset">  
 					</form>
