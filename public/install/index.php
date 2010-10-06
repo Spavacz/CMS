@@ -3,81 +3,79 @@
 <head>
       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
       <title>ZeroGravity CMS Setup</title>
+	<link type="text/css" href="../css/spav-theme/jquery-ui-1.8.1.custom.css" rel="Stylesheet" />
+	<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="../js/jquery-ui-1.8.1.custom.min.js"></script>
+	<script type="text/javascript">
+	<!--
+	$(function() {
+		$("button, input:submit, a").button();
+	});
+	//-->
+	</script>
+	
+	<style>
+	html, form {
+		height: 100%;
+		width: 100%;
+	}
+	
+	body{
+		font-family: Verdana,Arial,sans-serif;
+		font-size: 16px;
+		height: 100%;
+		width: 100%;
+		background-color: #3c64a2;
+		margin: 0px;
+		color: #a0bfef;
+	}
+	.searchbox{
+		margin: 20px auto;
+		width: 300px;
+		font-size: 24px;
+		height: 36px;
+	}
+	.header{
+		font-family: Tahoma,Verdana,Arial,sans-serif;
+		font-size: 36px;
+		font-weight: bold;
+		height: 85px;
+		width: 100%;
+		line-height: 85px;
+		padding-left: 30px;
+	}
+	.hr_light{
+	  	background-color: #a0bfef;
+	  	height: 10px;
+	}
+	.darkbox{
+	  	background-color: #3a4556;
+	  	min-height: 70%;
+		padding: 20px;
+	}
+	.footer{
+		height: 20px;
+	}
+	.container{
+		margin-left:auto;
+		margin-right:auto;
+		width:800px;
+	}
+	.controls{
+		text-align:center;
+		margin-top: 40px;
+	}
+	#progressbar{
+		width: 680px;
+		margin: 20px auto 5px;
+	}
+	#progressdesc{
+		font-weight: bold;
+		width: 680px;
+		margin: 0px auto 40px auto;
+	}
+	</style>
 </head>
-<link type="text/css" href="../css/spav-theme/jquery-ui-1.8.1.custom.css" rel="Stylesheet" />
-<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
-<script type="text/javascript" src="../js/jquery-ui-1.8.1.custom.min.js"></script>
-<script type="text/javascript">
-<!--
-$(function() {
-	$("button, input:submit, a").button();
-});
-//-->
-</script>
-
-<style>
-html, form {
-	height: 100%;
-	width: 100%;
-}
-
-body{
-	font-family: Verdana,Arial,sans-serif;
-	font-size: 16px;
-	height: 100%;
-	width: 100%;
-	background-color: #3c64a2;
-	margin: 0px;
-	color: #a0bfef;
-}
-.searchbox{
-	margin: 20px auto;
-	width: 300px;
-	font-size: 24px;
-	height: 36px;
-}
-.header{
-	font-family: Tahoma,Verdana,Arial,sans-serif;
-	font-size: 36px;
-	font-weight: bold;
-	background-image: url("headerbg.png");
-	background-repeat: repeat-x;
-	height: 85px;
-	width: 100%;
-	line-height: 85px;
-	padding-left: 30px;
-}
-.hr_light{
-  	background-color: #a0bfef;
-  	height: 10px;
-}
-.darkbox{
-  	background-color: #3a4556;
-  	min-height: 70%;
-	padding: 20px;
-}
-.footer{
-	height: 20px;
-}
-.container{
-	margin-left:auto;
-	margin-right:auto;
-	width:800px;
-}
-.controls{
-	text-align:center;
-	margin-top: 40px;
-}
-#progressbar{
-	width: 680px;
-	margin: 20px auto 5px;
-}
-#progressdesc{
-	font-weight: bold;
-	width: 680px;
-	margin: 0px auto 40px auto;
-}
-</style>
 <body>
 	<div class="header">Zero9ravity CMS Setup</div>
 	<div class="hr_light"></div>

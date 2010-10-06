@@ -39,7 +39,12 @@ class Cms_Controller_Plugin_Router extends Zend_Controller_Plugin_Abstract
 		// regula panelu admina
     	$router->addRoute(
 		    'cms',
-		    new Zend_Controller_Router_Route( 'cms/:controller/:action/*', array('module' => 'cms','page' => 'cms') )
+		    new Zend_Controller_Router_Route( 'cms/:controller/:action/*', array(
+		    	'module'		=> 'cms',
+		    	'controller'	=> 'index',
+		    	'action'		=> 'index',
+		    	'page'			=> 'cms'
+		    ) )
 		);
 	}
 }
