@@ -11,11 +11,6 @@ class Cms_IndexController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        if( !Zend_Auth::getInstance()->hasIdentity() )
-        {
-			$this->_redirect('cms/login');
-			die();
-        }
         $this->view->name = Zend_Auth::getInstance()->getIdentity()->name;
     }
 
