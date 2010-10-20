@@ -14,6 +14,8 @@ abstract class Cms_Model_Item_Abstract extends Cms_Model
 	protected $_description;
 	protected $_parameters;
 	protected $_status = 1;
+	protected $_created;
+	protected $_modified;
 	
 	public function setId( $id )
 	{
@@ -77,5 +79,27 @@ abstract class Cms_Model_Item_Abstract extends Cms_Model
 	public function getStatus()
 	{
 		return $this->_status;
+	}
+	
+	public function setCreated( $datetime )
+	{
+		$this->_created = $datetime;
+		return $this;
+	}
+	
+	public function getCreated()
+	{
+		return $this->_created;
+	}
+	
+	public function setModified( $datetime )
+	{
+		$this->_modified = $datetime;
+		return $this;
+	}
+	
+	public function getModified()
+	{
+		return $this->_modified;
 	}
 }
