@@ -1,53 +1,58 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
-   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="pl" xml:lang="pl">
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-	
-	<!-- JEZYKI -->
-	<script type="text/javascript" src="js/ImbaShop/lang/is-lang-pl_PL.js"></script>
-	<!--<script type="text/javascript" src="js/ImbaShop/lang/is-lang-en_US.js"></script>-->
-	
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />  
-  <title> ImbaShop :: Administration Zone - Entrence </title>
-  <link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css" />
-  <link rel="stylesheet" type="text/css" href="css/lang.css" />
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<title>Login Platinum Admin</title>
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+<link href="css/colors/dark_blue.css" rel="stylesheet" type="text/css" />
+<script src="js/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script src="js/jquery.tools.min.js" type="text/javascript"></script>
+<script src="js/platinum-admin-login.js" type="text/javascript"></script>
 </head>
-	<body>
-		<script type="text/javascript" src="extjs/adapter/ext/ext-base.js"></script>
-		<script type="text/javascript" src="extjs/ext-all-debug.js"></script>
-  		
-		<!-- JEZYKI -->
-		<script type="text/javascript" src="extjs/src/locale/ext-lang-pl.js"></script>
-		<script type="text/javascript" src="js/ImbaShop/lang/is-lang-pl_PL.js"></script>
 
-		<script type="text/javascript" src="extjs/ux/Ext.ux.Direct.ZendFrameworkProvider.js"></script>
-		<script type="text/javascript" src="extjs/ux/Ext.ux.IconCombo.js"></script>
+<body>
 
-		<!-- UTILS -->
-		<script type="text/javascript" src="js/ImbaShop/utils/Language.js"></script>
-		<script type="text/javascript" src="js/ImbaShop/utils/Window.js"></script>
-		<script type="text/javascript" src="js/ImbaShop/utils/Exceptions.js"></script>
-		<script type="text/javascript" src="js/ImbaShop/utils/Hax.js"></script>
-		
-		
-		<script type="text/javascript" src="js/ImbaShop/Login.js"></script>
-		
-		
-		<script type="text/javascript">
-			Ext.onReady(function(){  
-				Ext.BLANK_IMAGE_URL = 'extjs/resources/images/default/s.gif';
-				Ext.QuickTips.init();
-				cp = new Ext.state.CookieProvider({
-				       path: '/imba/',
-				       expires: new Date(new Date().getTime()+(1000*60*60*24*30)), //30 days
-				       domain: document.domain
-				});
-				Ext.state.Manager.setProvider(cp);				   
-				new ImbaShop.Login();						
-			});
-		</script>
-		
-		<noscript><div class="noscript">&nbsp;&nbsp;&nbsp;System wymaga przeglądarki z obsługą JavaScript.&nbsp;&nbsp;&nbsp;</div></noscript>
-	</body>
+<div id="login">
+	<h2 class="head-alt">Platinum Login</h2>
+	<ul class="tabs">
+		<li><a href="#">Login</a></li>
+		<li><a href="#">Lost Password ?</a></li>
+	</ul>
+	<div class="panes">
+		<div>
+			<form action="index.html" method="post">
+				<fieldset>
+				<legend>Please enter user information!</legend>
+				<label for="username">Username:</label><input id="username" name="username" type="text" />
+				<label for="password">Password:</label><input id="password" name="password" type="password" />
+				<input class="button" type="submit" value="Log in!" />
+				</fieldset>
+			</form>
+		</div>
+		<div>
+			<form action="index.html" method="post">
+				<fieldset>
+				<legend>Give us your email then we post your password!</legend>
+				<label for="email">Email:</label><input id="email" name="email" type="text" />
+				<input class="button pink" type="submit" value="Recover" />
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>
+<div id="validation-summary">
+	<div class="notification info closable">
+		Just click Log in! </div>
+	<div class="notification errors closable">
+		<h3>Please correct the errors!</h3>
+		<ul>
+			<li>Wrong username!</li>
+			<li>Wrong password!</li>
+		</ul>
+	</div>
+</div>
+
+</body>
+
 </html>
-

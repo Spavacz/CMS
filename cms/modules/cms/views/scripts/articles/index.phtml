@@ -1,0 +1,77 @@
+<div class="innerdiv clear">
+	<!-- Tabs -->
+	<h2 class="head-alt-white">Artykuły</h2>
+	<div class="innercontent">
+		<!-- tab "panes" -->
+		<div class="panes">
+			<div style="display: block;">
+				<table class="full">
+					<thead>
+						<tr class="alt">
+							<th><input type="checkbox" class="check-all"></th>
+							<th>Tytuł</th>
+							<th>Status</th>
+							<th>Adres</th>
+							<th>Kategoria</th>
+						</tr>
+					</thead>
+					<tfoot>
+						<tr>
+							<td colspan="6">
+								<div class="bulk-actions">
+									<select name="dropdown">
+									<option value="option1">Wybierz akcję...
+									</option>
+									<option value="option2">Edytuj</option>
+									<option value="option3">Usuń</option>
+									<option value="option3">Zatwierdź</option>
+									</select> <a href="#" class="button">Wykonaj dla zaznaczonych</a> </div>
+								<div class="pagination">
+									<a title="First Page" href="#">« Pierwsza</a><a title="Previous Page" href="#">« Poprzednia</a>
+									<a title="1" href="#" class="number">1</a>
+									<a title="2" href="#" class="number">2</a>
+									<a title="3" href="#" class="number">3</a>
+									<a title="4" href="#" class="number current">
+									4</a>
+									<a title="Next Page" href="#" class="disabled-page">
+									Następna »</a><a title="Last Page" href="#" class="disabled-page">Ostatnia »</a> </div>
+								<!-- End .pagination -->
+								<div class="clear">
+								</div>
+							</td>
+						</tr>
+					</tfoot>
+					<tbody class="tooltip-enabled">
+						<?php foreach($this->articles as $article): ?>
+							<tr class="alt">
+								<td><input type="checkbox"></td>
+								<td><h5><?=$article->getName()?></h5></td>
+								<td>
+									<?php if($article->getStatus() == 1): ?>
+										<img src="<?=$this->baseUrl('admin/images/icons/ok.png')?>" alt="Zatwierdzony">
+									<?php else: ?>
+										Oczekujący
+									<?php endif ?>
+								</td>
+								<td>
+									<a href="<?=$this->baseUrl($article->getUrl())?>">
+										<?=$this->baseUrl($article->getUrl())?>
+									</a>
+								</td>
+								<td>todo</td>
+								<td>
+									<!-- Icons --><a title="Edit" href="#">
+									<img src="images/icons/edit.png" alt="Edit"></a>
+									<a title="Delete" href="#">
+									<img src="images/icons/delete.png" alt="Delete"></a>
+									<a title="Add" href="#">
+									<img src="images/icons/add.png" alt="Add"></a>
+								</td>
+							</tr>
+						<?php endforeach ?>
+						</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

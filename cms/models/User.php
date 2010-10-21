@@ -120,4 +120,9 @@ class Cms_Model_User extends Cms_Model
 	{
 		return $this->_description;
 	}
+	
+	public function getNewMessagesNumber()
+	{
+		return 0;
+	}
 }

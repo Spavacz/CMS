@@ -74,8 +74,10 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     	Zend_Controller_Action_HelperBroker::addPath(
     		realpath(APPLICATION_PATH . '/../library/Cms/Action/Helper'), 'Cms_Action_Helper');
     	// view helper
-    	$this->getResource('View')->addHelperPath(
-    		realpath(APPLICATION_PATH . '/../library/Cms/View/Helper'), 'Cms_View_Helper');
+    	//$this->getResource('View')->addHelperPath(
+    	//	realpath(APPLICATION_PATH . '/helpers'), 'Cms_View_Helper');
+    	// scripts patch
+    	//$this->getResource('View')->addBasePath(realpath(APPLICATION_PATH . '/views'), 'Cms_View');
     }
 
 }

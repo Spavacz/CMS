@@ -1,0 +1,14 @@
+﻿#header
+{
+	background-color: #C46D0F;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#C59A23', EndColorStr='#CC5A0F')";
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #C59A23),color-stop(1, #CC5A0F));/* Saf4+, Chrome */
+}
+h2.head-alt
+{
+	background-color: #C46D0F;
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#C59A23', EndColorStr='#CC5A0F')";
+	color: #fff;
+	text-shadow: 1px 0px 1px #333;
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #C59A23),color-stop(1, #CC5A0F));/* Saf4+, Chrome */
+}

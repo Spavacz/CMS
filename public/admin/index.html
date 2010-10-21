@@ -1,131 +1,854 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html
-PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title> ImbaShop :: Administration Zone </title>
-	<link rel="stylesheet" type="text/css" href="css/loading.css" />	
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+<title>Platinum Admin</title>
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+<link href="css/colors/dark_blue.css" rel="stylesheet" type="text/css" />
+<link href="css/superfish.css" rel="stylesheet" type="text/css" />
+
+<script src="js/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script src="js/jquery.hoverIntent.minified.js" type="text/javascript"></script>
+<script src="js/superfish.js" type="text/javascript"></script>
+<script src="js/jquery.tools.min.js" type="text/javascript"></script>
+<script src="js/jquery.simplemodal.js" type="text/javascript"></script>
+<script src="js/jquery.notifyBar.js" type="text/javascript"></script>
+<script src="js/jquery.tipsy.js" type="text/javascript"></script>
+<script src="js/enhance.js" type="text/javascript"></script>
+<script src="js/excanvas.js" type="text/javascript"></script>
+<script src="js/visualize.jQuery.js" type="text/javascript"></script>
+<script src="js/jQuery.collapsible.js" type="text/javascript"></script>
+<script src="js/jquery.autoSuggest.packed.js" type="text/javascript"></script>
+<script src="js/platinum-admin.js" type="text/javascript"></script>
 </head>
+
 <body>
-	<div id="loading-mask" style=""></div>
-	<div id="loading">
-		<div class="loading-indicator">
-			<img src="extjs/resources/images/default/shared/blue-loading.gif" width="32" height="32" style="margin-right:8px;float:left;vertical-align:top;" alt="imbashop" />
-			 <a href="http://www.imbashop.pl/">ImbaShop</a>
-		<br />
-		<span id="loading-msg">Ładowanie styli i obrazków...</span>
+
+<div id="header">
+	<div id="header-top">
+		<div id="logo">
+			<h1>Platinum Admin</h1>
+			<span id="slogan">a platinum shiny admin template!</span> </div>
+		<!-- end logo -->
+		<div id="login-info">
+			<img id="profile" alt="profile" src="images/icons/user.png" />
+			<p id="top"><span id="name">John Doe</span><br />
+			<span id="links">
+			<a id="message-link" href="#" title="click to see the messages!">
+			<span id="message-count">1</span> new message. </a></span></p>
+			<div id="messages-box">
+				<h4>Messages</h4>
+				<h5><a id="new-message" href="#">New Message</a></h5>
+				<hr />
+				<ul id="messages">
+					<li class="new"><a href="#">
+					<img alt="user" src="images/icons/sender.png" />
+					<span class="sender">John Doe</span>
+					<span class="description">Hi this is just a description...</span>
+					<span class="date">20 minutes ago...</span> </a></li>
+					<li><a href="#">
+					<img alt="user" src="images/icons/sender.png" />
+					<span class="sender">John Doe</span>
+					<span class="description">Hi this is just a description...</span>
+					<span class="date">24 minutes ago...</span> </a></li>
+					<li><a href="#">
+					<img alt="user" src="images/icons/sender.png" />
+					<span class="sender">John Doe</span>
+					<span class="description">Hi this is just a description...</span>
+					<span class="date">50 minutes ago...</span> </a></li>
+					<li id="last"><a id="all-messages" href="#">See all messages!
+					<span id="unreaded">8 unreaded.</span> </a></li>
+				</ul>
+				<br class="clear" />
+			</div><!-- end messages-box -->
+			<a id="power" href="#" title="Logout">logout</a>
+		</div>
+		<!-- end login -->
+		<div id="nav">
+			<ul class="sf-menu sf-navbar">
+				<li><a id="dashboard" href="#a">Dashboard</a>
+				<ul>
+					<li><a href="#">dashboard with no submenu, this is description!</a>
+					</li>
+				</ul>
+				</li>
+				<li class="current"><a id="articles" href="#a">Articles</a>
+				<ul>
+					<li class="current"><a href="#aa">write an article</a> </li>
+					<li><a href="#ab">manage articles</a>
+					<ul>
+						<li><a href="#">New Article</a></li>
+						<li><a href="#aba">List All</a></li>
+						<li><a href="#abb">Add New</a></li>
+						<li><a href="#abc">Categorys</a></li>
+						<li><a href="#abd">Tags</a></li>
+					</ul>
+					</li>
+					<li><a href="#">categorys</a> </li>
+					<li><a href="#">tags</a> </li>
+				</ul>
+				</li>
+				<li><a id="users" href="#">Users</a>
+				<ul>
+					<li><a href="#">list users</a>
+					<ul>
+						<li><a href="#">Admins</a></li>
+						<li><a href="#">Editors</a></li>
+						<li><a href="#">Writers</a></li>
+						<li><a href="#">Others</a></li>
+					</ul>
+					</li>
+					<li><a href="#">roles</a>
+					<ul>
+						<li><a href="#">List Roles</a></li>
+						<li><a href="#">Add Role</a></li>
+						<li><a href="#">Delete Role</a></li>
+						<li><a href="#">Edit Roles</a></li>
+					</ul>
+					</li>
+					<li><a href="#">manage</a> </li>
+					<li><a href="#">edit</a> </li>
+				</ul>
+				</li>
+				<li><a id="settings" href="#">Settings</a>
+				<ul>
+					<li><a href="#">themes</a>
+					<ul>
+						<li><a href="#">Change Theme</a></li>
+						<li><a href="#">Edit Theme</a></li>
+					</ul>
+					</li>
+					<li><a href="#">profile</a>
+					<ul>
+						<li><a href="#">Profile picture</a></li>
+						<li><a href="#">Messages</a></li>
+						<li><a href="#">Other Settings</a></li>
+					</ul>
+					</li>
+					<li><a href="#">menu item</a> </li>
+					<li><a href="#">menu item</a> </li>
+				</ul>
+				</li>
+			</ul>
+		</div>
+		<!-- end div#nav --></div>
+	<!-- end div#header-top -->
+	<div class="breadCrumb">
+		<ul>
+			<li class="first"><a href="#">Home</a> </li>
+			<li><a href="#">Users</a> </li>
+			<li><a href="#">Roles</a> </li>
+			<li class="last">Add new role </li>
+		</ul>
+	</div>
+	<!-- end div#breadCrumb -->
+	<div id="search-box">
+		<form id="searchform" action="" method="get">
+			<fieldset class="search"><span>Search</span>
+			<input class="box" type="text" />
+			<button class="btn" title="Submit Search">Search</button></fieldset>
+		</form>
+	</div>
+	<!-- end div#search-box --></div>
+<!-- end header -->
+<div id="page-wrap">
+	<div id="right-sidebar">
+		<div class="innerdiv">
+			<h2 class="head">Comments</h2>
+			<div class="innercontent clear">
+				<h4>Recent Comments</h4>
+				<ul id="comments" class="tooltip-enabled">
+					<li><a href="#" title="this comment is from John Doe">
+					<img alt="user" src="images/icons/sender.png" />
+					<span class="sender">John Doe</span>
+					<span class="description">Hey i liked your theme!</span>
+					<span class="date">20 minutes ago...</span> </a>
+					<span class="floatright"><a title="Aprrove this comment" href="#">Approve</a> | 
+					<a title="Delete this comment"  href="#">Delete</a>
+					</span>
+					<br class="clear" />
+					</li>
+					<li><a href="#" title="again this guy!">
+					<img alt="user" src="images/icons/sender.png" />
+					<span class="sender">John Doe</span>
+					<span class="description">Hi, i need some help.</span>
+					<span class="date">24 minutes ago...</span> </a>
+					<span class="floatright"><a title="Aprrove this comment"  href="#">Approve</a> | 
+					<a title="Delete this comment"  href="#">Delete</a>
+					</span>
+					<br class="clear" />
+					</li>
+					<li><a href="#" title="is he a spammer?">
+					<img alt="user" src="images/icons/sender.png" />
+					<span class="sender">John Doe</span>
+					<span class="description">Thank you for your help.</span>
+					<span class="date">50 minutes ago...</span> </a>
+					<span class="floatright"><a title="Aprrove this comment"  href="#">Approve</a> | 
+					<a title="Delete this comment"  href="#">Delete</a>
+					</span>
+					<br class="clear" />
+					</li>
+					<li class="last"><a class="all-messages" title="See all comments awaiting confirmation." href="#">See all comments!
+					<span class="unreaded">8 awaiting confirm.</span> </a></li>
+				</ul>
+
+			</div>
+		</div>
+		<div class="innerdiv">
+			<h2 class="head">Mini Form</h2>
+			<div class="innercontent">
+				<form action="">
+				<fieldset class="compact">
+				<label>Category</label><input type="text" />
+				<label>Other input</label><input type="text" />
+				<input type="submit" class="button" value="Ok" />
+				</fieldset></form>
+			</div>
 		</div>
 	</div>
-	
-	
-	
-	<link rel="stylesheet" type="text/css" href="extjs/resources/css/ext-all.css" />
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
-	<link rel="stylesheet" type="text/css" href="css/lang.css" />    
-	<link rel="stylesheet" type="text/css" href="css/image-chooser-view.css" />
-	
-	
-	
-	<!-- JEZYKI -->
-	
-	<script type="text/javascript" src="js/ImbaShop/lang/is-lang-pl_PL.js"></script>
-	<!--<script type="text/javascript" src="js/ImbaShop/lang/is-lang-en_US.js"></script>-->
-	  
-	
-	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Ładowanie API';</script>
-    
-	<!-- LIBS -->
-    <script type="text/javascript" src="extjs/adapter/ext/ext-base.js"></script>
-    <script type="text/javascript" src="extjs/ext-all-debug.js"></script>
-	
-	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Ładowanie wtyczek';</script>
-	<!-- USER EXTENSIONS -->
-	<script type="text/javascript" src="extjs/ux/Ext.ux.util.js"></script>
-	<script type="text/javascript" src="extjs/ux/Ext.ux.UploadDialog.js"></script>
-	<script type="text/javascript" src="extjs/ux/DataView-more.js"></script>
-	<script type="text/javascript" src="extjs/ux/Ext.ux.DataView.LightBox.js"></script>
-	<script type="text/javascript" src="extjs/ux/Ext.ux.grid.Search.js"></script>
-	
-	
-	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Ładowanie modułów';</script>    	
-	<!-- MODULES -->
-	<script type="text/javascript" src="js/ImbaShop/utils/Exceptions.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/TopMenu.js"></script>
-    <script type="text/javascript" src="js/ImbaShop/AdminPanel.js"></script>
-    <script type="text/javascript" src="js/ImbaShop/Products.js"></script>
-    <script type="text/javascript" src="js/ImbaShop/Help.js"></script>
-    <script type="text/javascript" src="js/ImbaShop/Dashboard.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/Cms.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/ExtraFields.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/Users.js"></script>    
-	<script type="text/javascript" src="js/ImbaShop/Loading.js"></script>
-	
-	
-	
-	<!-- ITEMS -->
-	<script type="text/javascript" src="js/ImbaShop/items/ProductsGrid.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/items/CmsGrid.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/items/CategoryTree.js"></script>
-	
-	<script type="text/javascript" src="js/ImbaShop/items/ExtraFieldsGrid.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/items/ExtraFields.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/items/UsersGrid.js"></script>
-	
-	
-	<!-- BUTTONS -->
-	<script type="text/javascript" src="js/ImbaShop/items/buttons/ImageButton.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/items/buttons/AddButton.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/items/buttons/EditButton.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/items/buttons/DeleteButton.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/items/buttons/DisableButton.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/items/buttons/ShowAllButton.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/items/buttons/ShowPreviewButton.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/items/buttons/HelpButton.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/items/buttons/CloseButton.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/items/buttons/ConfigButton.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/items/buttons/PublishButton.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/items/buttons/UnpublishButton.js"></script>
-	
-	
-	
-	<script type="text/javascript" src="js/ImbaShop/items/tabs/ImageTab.js"></script>
-	
-	<!-- UTILS -->
-	<script type="text/javascript" src="js/ImbaShop/utils/Language.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/utils/Window.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/utils/ConfirmDelete.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/utils/LanguageTabs.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/utils/log.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/utils/MultilanguageTabPanel.js"></script>
-	
-	<script type="text/javascript" src="js/ImbaShop/utils/Ajax.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/utils/Hax.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/utils/Format.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/utils/Vtypes.js"></script>	
-	
-	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Ładowanie języka';</script>
-   <script type="text/javascript" src="extjs/src/locale/ext-lang-pl.js"></script>
-			
-	<script type="text/javascript" src="extjs/ux/Ext.ux.IconCombo.js"></script>
-	<script type="text/javascript" src="js/ImbaShop/Login.js"></script>
+	<!-- end right-sidebar -->
+	<div id="main-content">
+		<div>
+			<div>
+				<h3>What would you like to do?</h3>
+				<ul class="iconset">
+					<li><a href="#"><span>
+					<img alt="event" src="images/icons/write.png" /> <br />
+					Write an Article </span></a></li>
+					<li><a href="#"><span>
+					<img alt="event" src="images/icons/event.png" /> <br />
+					Add an Event </span></a></li>
+					<li><a href="#"><span>
+					<img alt="event" src="images/icons/adduser.png" /> <br />
+					Add User </span></a></li>
+					<li><a href="#"><span>
+					<img alt="event" src="images/icons/database.png" /> <br />
+					Backup </span></a></li>
+					<li><a href="#"><span>
+					<img alt="event" src="images/icons/theme.png" /> <br />
+					Change Theme </span></a></li>
+					<li><a href="#"><span>
+					<img alt="event" src="images/icons/stats.png" /> <br />
+					Stats </span></a></li>
+					<li><a class="modal-box" href="#modal-content"><span>
+					<img alt="event" src="images/icons/dialog.png" /> <br />
+					Open Modal </span></a></li>
+				</ul>
+				<div id="dialog" class="modal">
+					<h3>Modal Box</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+						Donec nec feugiat eros. Ut venenatis condimentum rhoncus. 
+						Curabitur in dolor urna. Nullam convallis tincidunt magna id ultricies. 
+						Curabitur id lorem orci, sed rutrum mi. Etiam eget odio lectus, 
+						a fringilla dui. Donec ac mollis eros. Integer ultrices magna ac 
+						felis adipiscing semper dictum neque adipiscing. Mauris consectetur 
+						congue velit, quis egestas neque pharetra non. Pellentesque habitant 
+						morbi tristique senectus et netus et malesuada fames ac turpis egestas. 
+						Aenean ac ligula nec mi eleifend auctor. In in mauris a dolor pharetra 
+						sollicitudin. Etiam sodales velit at quam aliquam egestas. Pellentesque 
+						ipsum elit, posuere ac mollis a, imperdiet in nisl. Fusce in sapien non 
+						mauris iaculis sodales. Vestibulum tempor nibh et justo egestas feugiat. 
+						Vestibulum ornare pulvinar eros non feugiat.
+					</p>
+					</div>
+				<br class="clear" />
+			</div>
+		</div>
+		<div class="innerdiv clear">
+			<!-- Tabs -->
+			<h2 class="head-alt-white">Tabs</h2>
+			<!-- the tabs -->
+			<ul class="tabs">
+				<li><a href="#">Tables</a></li>
+				<li><a href="#">Typography</a></li>
+				<li><a href="#">Forms</a></li>
+			</ul>
+			<div class="innercontent">
+				<!-- tab "panes" -->
+				<div class="panes">
+					<div>
+						<table class="full">
+							<thead>
+								<tr>
+									<th>
+									<input class="check-all" type="checkbox" /></th>
+									<th>Article</th>
+									<th>Status</th>
+									<th>Url</th>
+									<th>Column 3</th>
+									<th>Column 4</th>
+									<th>Column 5</th>
+								</tr>
+							</thead>
+							<tfoot>
+								<tr>
+									<td colspan="7">
+									<div class="bulk-actions">
+										<select name="dropdown">
+										<option value="option1">Choose an action...
+										</option>
+										<option value="option2">Edit</option>
+										<option value="option3">Delete</option>
+										<option value="option3">Approve</option>
+										</select> <a class="button" href="#">Apply 
+										to selected</a> </div>
+									<div class="pagination">
+										<a href="#" title="First Page">« First</a><a href="#" title="Previous Page">« 
+										Previous</a>
+										<a class="number" href="#" title="1">1</a>
+										<a class="number" href="#" title="2">2</a>
+										<a class="number" href="#" title="3">3</a>
+										<a class="number current" href="#" title="4">
+										4</a>
+										<a class="disabled-page" href="#" title="Next Page">
+										Next »</a><a class="disabled-page" href="#" title="Last Page">Last 
+										»</a> </div>
+									<!-- End .pagination -->
+									<div class="clear">
+									</div>
+									</td>
+								</tr>
+							</tfoot>
+							<tbody class="tooltip-enabled">
+								<tr>
+									<td><input type="checkbox" /></td>
+									<td><h5>Best CSS Tricks!</h5></td>
+									<td><a href="#" title="Approved">
+									<img alt="Approved" src="images/icons/ok.png" /></a></td>
+									<td><a href="#" title="title">best_css_tricks</a></td>
+									<td>Consectetur adipiscing</td>
+									<td>Donec tortor diam</td>
+									<td>
+									<!-- Icons --><a href="#" title="Edit">
+									<img alt="Edit" src="images/icons/edit.png" /></a>
+									<a href="#" title="Delete">
+									<img alt="Delete" src="images/icons/delete.png" /></a>
+									<a href="#" title="Add">
+									<img alt="Add" src="images/icons/add.png" /></a>
+									</td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" /></td>
+									<td><h5>CSS3 Practices!</h5></td>
+									<td><a href="#" title="Approved">
+									<img alt="Approved" src="images/icons/ok.png" /></a></td>
+									<td><a href="#" title="title">Sit amet</a></td>
+									<td>Consectetur adipiscing</td>
+									<td>Donec tortor diam</td>
+									<td>
+									<!-- Icons --><a href="#" title="Edit">
+									<img alt="Edit" src="images/icons/edit.png" /></a>
+									<a href="#" title="Delete">
+									<img alt="Delete" src="images/icons/delete.png" /></a>
+									<a href="#" title="Add">
+									<img alt="Add" src="images/icons/add.png" /></a>
+									</td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" /></td>
+									<td>Lorem ipsum dolor</td>
+									<td>Waiting</td>
+									<td><a href="#" title="title">Sit amet</a></td>
+									<td>Consectetur adipiscing</td>
+									<td>Donec tortor diam</td>
+									<td>
+									<!-- Icons --><a href="#" title="Edit">
+									<img alt="Edit" src="images/icons/edit.png" /></a>
+									<a href="#" title="Delete">
+									<img alt="Delete" src="images/icons/delete.png" /></a>
+									<a href="#" title="Add">
+									<img alt="Add" src="images/icons/add.png" /></a>
+									</td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" /></td>
+									<td>Lorem ipsum dolor</td>
+									<td><a href="#" title="Approved">
+									<img alt="Approved" src="images/icons/ok.png" /></a></td>
+									<td><a href="#" title="title">Sit amet</a></td>
+									<td>Consectetur adipiscing</td>
+									<td>Donec tortor diam</td>
+									<td>
+									<!-- Icons --><a href="#" title="Edit">
+									<img alt="Edit" src="images/icons/edit.png" /></a>
+									<a href="#" title="Delete">
+									<img alt="Delete" src="images/icons/delete.png" /></a>
+									<a href="#" title="Add">
+									<img alt="Add" src="images/icons/add.png" /></a>
+									</td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" /></td>
+									<td>Lorem ipsum dolor</td>
+									<td><a href="#" title="Approved">
+									<img alt="Approved" src="images/icons/ok.png" /></a></td>
+									<td><a href="#" title="title">Sit amet</a></td>
+									<td>Consectetur adipiscing</td>
+									<td>Donec tortor diam</td>
+									<td>
+									<!-- Icons --><a href="#" title="Edit">
+									<img alt="Edit" src="images/icons/edit.png" /></a>
+									<a href="#" title="Delete">
+									<img alt="Delete" src="images/icons/delete.png" /></a>
+									<a href="#" title="Add">
+									<img alt="Add" src="images/icons/add.png" /></a>
+									</td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" /></td>
+									<td>Lorem ipsum dolor</td>
+									<td><a href="#" title="Approved">
+									<img alt="Approved" src="images/icons/ok.png" /></a></td>
+									<td><a href="#" title="title">Sit amet</a></td>
+									<td>Consectetur adipiscing</td>
+									<td>Donec tortor diam</td>
+									<td>
+									<!-- Icons --><a href="#" title="Edit">
+									<img alt="Edit" src="images/icons/edit.png" /></a>
+									<a href="#" title="Delete">
+									<img alt="Delete" src="images/icons/delete.png" /></a>
+									<a href="#" title="Add">
+									<img alt="Add" src="images/icons/add.png" /></a>
+									</td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" /></td>
+									<td>Lorem ipsum dolor</td>
+									<td>Waiting</td>
+									<td><a href="#" title="title">Sit amet</a></td>
+									<td>Consectetur adipiscing</td>
+									<td>Donec tortor diam</td>
+									<td>
+									<!-- Icons --><a href="#" title="Edit">
+									<img alt="Edit" src="images/icons/edit.png" /></a>
+									<a href="#" title="Delete">
+									<img alt="Delete" src="images/icons/delete.png" /></a>
+									<a href="#" title="Add">
+									<img alt="Add" src="images/icons/add.png" /></a>
+									</td>
+								</tr>
+								<tr>
+									<td><input type="checkbox" /></td>
+									<td>Lorem ipsum dolor</td>
+									<td>Waiting</td>
+									<td><a href="#" title="title">Sit amet</a></td>
+									<td>Consectetur adipiscing</td>
+									<td>Donec tortor diam</td>
+									<td>
+									<!-- Icons --><a href="#" title="Edit">
+									<img alt="Edit" src="images/icons/edit.png" /></a>
+									<a href="#" title="Delete">
+									<img alt="Delete" src="images/icons/delete.png" /></a>
+									<a href="#" title="Add">
+									<img alt="Add" src="images/icons/add.png" /></a>
+									</td>
+								</tr>
+								</tbody>
+						</table>
+					</div>
+					<div>
+						<h2>Header h2</h2>
+						<h3>Header h3</h3>
+						<h4>Header h4</h4>
+						<h5>Header h5</h5>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+						<a href="#">Nam sapien dolor</a>, ultrices a rutrum quis, 
+						convallis nec nisi. <del>Morbi lorem est</del>, pellentesque 
+						ac suscipit ut, fringilla sit amet elit. Cras blandit turpis 
+						vitae augue laoreet gravida. Suspendisse potenti. Nullam 
+						vitae dui quam. Cras fringilla tincidunt metus venenatis 
+						suscipit. Vestibulum feugiat felis tincidunt felis fermentum 
+						fringilla. In a ante metus. Nullam consequat hendrerit orci 
+						quis volutpat. Etiam a libero nunc. Sed convallis suscipit 
+						lectus quis hendrerit. Aliquam et elementum risus. Proin 
+						at feugiat lacus. Suspendisse non odio ante, et porta turpis. 
+						Integer bibendum augue at nisi porta vel luctus nisl fringilla. 
+						Donec in libero erat.</p>
+						<blockquote>
+						<p>
+							Hello this is a beautiful pullquote, elini a consectetuer 
+							mist adipiscing elit. Nunc euismod adipiscing min an 
+							agna. Quisque sollicitudin adipicin athenisi a nisi.
+							</p>
+						</blockquote>
+						<h3>Unoredered List</h3>
+						<ul>
+							<li>Element of unordered list</li>
+							<li>Element of unordered list</li>
+							<li>Element of unordered list</li>
+						</ul>
+						<hr />
+						<h3>Ordered List</h3>
+						<ol>
+							<li>Element of ordered list</li>
+							<li>Element of ordered list</li>
+							<li>Element of ordered list</li>
+						</ol>
+						<p>That&#39;s <em>em</em> and here is <strong>strong</strong>. 
+						And some <small>small text</small></p>
+					</div>
+					<div>
+						<p>This is a form example.</p>
+						<fieldset>
+						<legend>Register</legend>
+						<h4>Please fill in the form.</h4>
+						<label>Username:</label><input type="text" /><p class="validation error">
+						this field is required!</p>
+						<label>Full Name:</label><input type="text" /><p class="validation">
+						*required</p>
+						<label>Medium:</label><input class="medium" type="text" /><p class="validation">
+						a short descripton about the field.</p>
+						<label>Long:</label><input class="long" type="text" />
+						<div class="select-group">
+							<label><input type="checkbox" /> checkbox</label>
+							<label><input type="checkbox" /> checkbox</label>
+							<label><input type="checkbox" /> checkbox</label>
+							<label><input type="checkbox" /> checkbox</label>
+						</div>
+						<div class="select-group">
+							<label><input type="radio" /> radio button</label> 
+							<label><input type="radio" /> radio button 2</label> 
+							<label><input type="radio" /> radio button 3</label> 
+						</div>
 
-	
-	<script type="text/javascript">document.getElementById('loading-msg').innerHTML = 'Uruchomienie systemu';</script>
-	<script type="text/javascript">
-	  	Ext.onReady(function(){  
-			Ext.BLANK_IMAGE_URL = 'extjs/resources/images/default/s.gif';
-			Ext.QuickTips.init();		
-			
-			Loading = new ImbaShop.utils.Loading();
-			Loading.init();			
-	      	Is = new ImbaShop.AdminPanel();
-			Is.LANGUAGE = 'pl_PL';			
-			Is.north.getTopToolbar().products.toggle();			
-		});
-	</script>
+						</fieldset>
+						<fieldset>
+						<legend>Legend</legend>
+						<label>Text area:</label><textarea cols="12" rows="6"></textarea>
+						<label>Text area:</label><textarea cols="16" class="large" rows="10"></textarea>
+						<p class="alignright">
+						<input class="button black bigger" type="button" value="Register" />
+						</p>
+						</fieldset> </div>
+				</div>
+			</div>
+		</div>
+		<!-- end div.tab -->
+		
+		<div class="innerdiv clear">
+			<h2 class="head">Image Gallery</h2>
+			<a class="button top-button" href="#">New Gallery</a><a class="button pink top-button" href="#">Delete 
+			Gallery</a>
+			<div class="innercontent">
+				<h3>This is a sample image gallery view.</h3>
+				<h5>Hover over images to see the quick menu!</h5>
+				<h5>And also try to delete an image.</h5>
+				<!-- modal content -->
+				<div id="confirm" class="modal">
+					<h2 class="head-alt">Are you sure ?</h2>
+					<div class="message">
+					</div>
+					<div class="buttons">
+						<div class="yes ">
+							<a class="button red">YES</a></div>
+						<div class="no simplemodal-close">
+							<a class="button gray">NO</a></div>
+					</div>
+				</div>
+				<div id="image-modal" class="modal">
+					<div id="image-wrap">
+						<img id="modal-image" src="" alt="modal picture" /></div>
+				</div>
+				<ul class="imageList">
+					<li id="image1">
+					<img alt="image" src="images/gallery/envato004.jpg" />
+					<ul>
+						<li>
+						<a class="image-modal" href="images/gallery/envato004-big.jpg">
+						View</a>
+						<a class="confirm-image-delete" href="#" onclick="confirm('Do you really want to delete this image?', deleteimage, $(this).attr('rel')); return false;" rel="image1">
+						Delete</a> </li>
+					</ul>
+					</li>
+					<li id="image2">
+					<img alt="image" src="images/gallery/envato012.jpg" />
+					<ul>
+						<li>
+						<a class="image-modal" href="images/gallery/envato012-big.jpg">
+						View</a>
+						<a class="confirm-image-delete" href="#" rel="image2">Delete</a>
+						</li>
+					</ul>
+					</li>
+					<li id="image3"><a>
+					<img alt="image" src="images/gallery/envato031.jpg" /></a>
+					<ul>
+						<li>
+						<a class="image-modal" href="images/gallery/envato031-big.jpg">
+						View</a>
+						<a class="confirm-image-delete" href="#" rel="image3">Delete</a>
+						</li>
+					</ul>
+					</li>
+					<li id="image4">
+					<img alt="image" src="images/gallery/envato071.jpg" />
+					<ul>
+						<li>
+						<a class="image-modal" href="images/gallery/envato071-big.jpg">
+						View</a>
+						<a class="confirm-image-delete" href="#" rel="image4">Delete</a>
+						</li>
+					</ul>
+					</li>
+					<li id="image5">
+					<img alt="image" src="images/gallery/g.jpg" />
+					<ul>
+						<li>
+						<a class="image-modal" href="images/gallery/g-big.jpg">
+						View</a>
+						<a class="confirm-image-delete" href="#" rel="image5">Delete</a>
+						</li>
+					</ul>
+					</li>
+					<li id="image6">
+					<img alt="image" src="images/gallery/scottwills_eggsnest.jpg" />
+					<ul>
+						<li>
+						<a class="image-modal" href="images/gallery/scottwills_eggsnest-big.jpg">
+						View</a>
+						<a class="confirm-image-delete" href="#" rel="image6">Delete</a>
+						</li>
+					</ul>
+					</li>
+					<li class="clear display-none"></li>
+				</ul>
+				<br class="clear" />
+			</div>
+		</div>
+		<div class="innerdiv">
+			<!-- Highlight / Error -->
+			<h2 class="head">Inline Notification Messages</h2>
+			<div class="innercontent">
+				<div class="notification successfull closable">
+					Yes! This is a succes message! </div>
+				<div class="notification info closable">
+					Did you know this? This is an info message! </div>
+				<div class="notification errors closable">
+					Oh no! Something went really wrong, sorry... </div>
+				<div class="notification errors">
+					Something went wrong and i have some details about it.
+					<p class="collapsible">Show me the details!</p>
+					<ul>
+						<li>Error while establishing database connection.</li>
+						<li>Error while closing database conneciton.</li>
+						<li>This bad luck!</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- end innerdiv notification -->
+		<div class="innerdiv half floatleft">
+			<h2 class="head">Quick Notification Messages </h2>
+			<div class="innercontent">
+				<h5>Here are some notifications, with styles. You can customize 
+				the look whatever you like! </h5>
+				<p>
+				<a class="button green" onclick="showSuccess('Need a success notification?, i am at your service ;)')">
+				Show me a succes message!</a> </p>
+				<p>
+				<a class="button red" onclick="showError('Nothing is perfect, right?')">
+				Show me an error!</a> </p>
+				<p>
+				<a class="button blue" onclick="showCustomMessage('Hey, this is a custom message!')">
+				Custom message!</a></p>
+			</div>
+		</div>
+		<!-- end div.notify -->
+		<div class="innerdiv half floatright">
+			<h2 class="head-alt">Alert Dialogs </h2>
+			<div class="innercontent">
+				<!-- Alert Dialog -->
+				<div id="alert" class="modal">
+					<h2 class="head-alt">Warning!</h2>
+					<div class="alert-content message">
+					</div>
+					<br class="clear" />
+				</div>
+				<h5>Overrided versions of confirm and alert functions! </h5>
+				<p>
+				<a class="button big gray alert" onclick="alert('This an example of overrided alert() funciton!')">
+				alert() overrided!</a><a class="button big gray confirm-link" href="http://www.google.com"> 
+				confirm() overrided!</a> </p>
+			</div>
+		</div>
+		<!-- end div alerts -->
+		<div class="innerdiv clear buttons">
+			<h2 class="head">Button Styles</h2>
+			<div class="innercontent">
+				<h4>There are 3 different sizes and 4 different color buttons, all 
+				styled with pure css3, no images!</h4>
+				<p><a class="button">usual button!</a> <a class="button red">usual 
+				button!</a> <a class="button green">usual button!</a>
+				<a class="button blue">usual button!</a>
+				<a class="button disabled">disabled</a> </p>
+				<p><a class="button big">big button!</a>
+				<a class="button red big">big button!</a>
+				<a class="button green big">big button!</a>
+				<a class="button blue big">big button!</a> </p>
+				<p><a class="button bigger">bigger button!</a>
+				<a class="button red bigger">bigger button!</a>
+				<a class="button green bigger">bigger button!</a>
+				<a class="button blue bigger">bigger button!</a> </p>
+			</div>
+		</div>
+		<!-- end div.buttons -->
+		<div class="innerdiv buttons">
+			<h2 class="head">Extra Button Styles</h2>
+			<div class="innercontent">
+				<h4>4 more bonus button styles!</h4>
+				<p><a class="button gray">usual button!</a>
+				<a class="button pink">usual button!</a>
+				<a class="button dark-green">usual button!</a>
+				<a class="button dark-blue">usual button!</a> </p>
+				<p><a class="button gray big">big button!</a>
+				<a class="button pink big">big button!</a>
+				<a class="button dark-green big">big button!</a>
+				<a class="button dark-blue big">big button!</a> </p>
+				<p><a class="button gray bigger">bigger button!</a>
+				<a class="button pink bigger">bigger button!</a>
+				<a class="button dark-green bigger">bigger button!</a>
+				<a class="button dark-blue bigger">bigger button!</a> </p>
+			</div>
+		</div>
+		<!-- end div.buttons -->
+		<div id="charts" class="innerdiv">
+			<h2 class="head">Charts</h2>
+			<div class="innercontent">
+				<h2>Chart Examples</h2>
+				<p>You can turn any html table into a visual chart.</p>
+				<table class="graph">
+					<caption>2009 Employee Sales by Department</caption>
+					<thead>
+						<tr>
+							<td></td>
+							<th scope="col">food</th>
+							<th scope="col">auto</th>
+							<th scope="col">household</th>
+							<th scope="col">furniture</th>
+							<th scope="col">kitchen</th>
+							<th scope="col">bath</th>
+						</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<th scope="row">Mary</th>
+						<td>190</td>
+						<td>160</td>
+						<td>40</td>
+						<td>120</td>
+						<td>30</td>
+						<td>70</td>
+					</tr>
+					<tr>
+						<th scope="row">Tom</th>
+						<td>3</td>
+						<td>40</td>
+						<td>30</td>
+						<td>45</td>
+						<td>35</td>
+						<td>49</td>
+					</tr>
+					<tr>
+						<th scope="row">Brad</th>
+						<td>10</td>
+						<td>180</td>
+						<td>10</td>
+						<td>85</td>
+						<td>25</td>
+						<td>79</td>
+					</tr>
+					<tr>
+						<th scope="row">Kate</th>
+						<td>40</td>
+						<td>80</td>
+						<td>90</td>
+						<td>25</td>
+						<td>15</td>
+						<td>119</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="innerdiv half floatleft">
+			<h2 class="head">Collabsible Content</h2>
+			<div class="innercontent">
+				<h4>Upload: 2 issues</h4>
+				<p>The rest of your photos were uploaded successfully but 2 photos 
+				were not uploaded because they are not a supported format.</p>
+				<h5 class="collapsible">Details</h5>
+				<ul>
+					<li><span class="file">purple-flower.tif</span> <em>Not a supported 
+					file format</em></li>
+					<li><span class="file">flower-photos.zip</span> <em>Not a supported 
+					file format</em></li>
+				</ul>
+			</div>
+		</div>
+		<div class="innerdiv half floatright">
+			<h2 class="head">AutoSuggest Textbox</h2>
+			<div class="innercontent">
+				<p>Type <b>&#39;a&#39;</b> for beginning.</p>
+				<input class="autoSuggest" type="text" /> </div>
+		</div>
+		<div class="innerdiv half clear floatleft">
+			<h2 class="head">Left Half Box</h2>
+			<div class="innercontent">
+				Nam posuere, felis sed feugiat viverra, quam felis dapibus eros, 
+				vitae pulvinar nisl quam ut eros. Curabitur eget fringilla mi. Vivamus 
+				sed justo sit amet elit malesuada bibendum. Pellentesque consectetur 
+				blandit nisl, a eleifend arcu adipiscing eu. In et neque nec urna 
+				mollis fermentum gravida at turpis. Vestibulum rhoncus commodo porttitor. 
+				Maecenas mauris libero, suscipit posuere adipiscing dignissim, varius 
+				non felis. Nulla vel lorem at enim rhoncus porttitor. Etiam sem 
+				enim, scelerisque eu laoreet ac, eleifend ut augue. Ut consectetur 
+				eros urna. Nulla nulla justo, venenatis eu sodales eget, pulvinar 
+				et nunc. Donec nisl massa, ultrices at aliquet nec, lobortis eu 
+				magna. Pellentesque metus eros, adipiscing a dapibus vitae, bibendum 
+				id arcu. Cras dignissim, libero tincidunt aliquam venenatis, lectus 
+				quam auctor lorem, at semper magna quam et sapien. Pellentesque 
+				volutpat mi nulla. Quisque nec magna magna. Etiam justo nulla, imperdiet 
+				sit amet commodo at, pretium quis augue. Mauris euismod congue lorem 
+				id euismod. Vivamus lorem eros, dapibus quis ullamcorper consequat, 
+				posuere non ante. </div>
+		</div>
+		<div class="innerdiv half floatright">
+			<h2 class="head">Left Half Box</h2>
+			<div class="innercontent">
+				Nam posuere, felis sed feugiat viverra, quam felis dapibus eros, 
+				vitae pulvinar nisl quam ut eros. Curabitur eget fringilla mi. Vivamus 
+				sed justo sit amet elit malesuada bibendum. Pellentesque consectetur 
+				blandit nisl, a eleifend arcu adipiscing eu. In et neque nec urna 
+				mollis fermentum gravida at turpis. Vestibulum rhoncus commodo porttitor. 
+				Maecenas mauris libero, suscipit posuere adipiscing dignissim, varius 
+				non felis. Nulla vel lorem at enim rhoncus porttitor. Etiam sem 
+				enim, scelerisque eu laoreet ac, eleifend ut augue. Ut consectetur 
+				eros urna. Nulla nulla justo, venenatis eu sodales eget, pulvinar 
+				et nunc. Donec nisl massa, ultrices at aliquet nec, lobortis eu 
+				magna. Pellentesque metus eros, adipiscing a dapibus vitae, bibendum 
+				id arcu. Cras dignissim, libero tincidunt aliquam venenatis, lectus 
+				quam auctor lorem, at semper magna quam et sapien. Pellentesque 
+				volutpat mi nulla. Quisque nec magna magna. Etiam justo nulla, imperdiet 
+				sit amet commodo at, pretium quis augue. Mauris euismod congue lorem 
+				id euismod. Vivamus lorem eros, dapibus quis ullamcorper consequat, 
+				posuere non ante. </div>
+		</div>
+		<div class="innerdiv half floatleft closable clear">
+			<h2 class="head-alt">Closable Box</h2>
+			<div class="innercontent">
+				<h5>You can close me if you dont like me?</h5>
+				<p>You can make any div closable by adding .closable class!</p>
+			</div>
+		</div>
+	</div>
+	<!-- end main-content --></div>
+<!-- end page-wrap -->
+<div id="footer">
+	<p>© 2010 Platinum Admin</p>
+</div>
+<!-- end footer -->
 
-	<div id="infoPanel" style="display: block;  width: 100%; position: absolute; top:28px;"></div>
 </body>
+
 </html>

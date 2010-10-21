@@ -1,95 +1,116 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />		
-	<title>CMS</title>
-	<link rel="stylesheet" href="<?=$this->baseUrl('css/spav-theme/jquery-ui-1.8.1.custom.css')?>" type="text/css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Zero9gravity Admin</title>
+	
+	<link type="text/css" href="<?=$this->baseUrl('admin/css/main.css')?>" rel="stylesheet" />
+	<link type="text/css" href="<?=$this->baseUrl('admin/css/colors/dark_blue.css')?>" rel="stylesheet" />
+	<link type="text/css" href="<?=$this->baseUrl('admin/css/superfish.css')?>" rel="stylesheet" />
+	
 	<script type="text/javascript" src="<?=$this->baseUrl('js/jquery-1.4.2.min.js')?>"></script>    
 	<script type="text/javascript" src="<?=$this->baseUrl('js/jquery-ui-1.8.1.custom.min.js')?>"></script>
+
+	<script type="text/javascript" src="<?=$this->baseUrl('admin/js/jquery.hoverIntent.minified.js')?>"></script>
+	<script type="text/javascript" src="<?=$this->baseUrl('admin/js/superfish.js')?>"></script>
+	<script type="text/javascript" src="<?=$this->baseUrl('admin/js/jquery.tools.min.js')?>"></script>
+	<script type="text/javascript" src="<?=$this->baseUrl('admin/js/jquery.simplemodal.js')?>"></script>
+	<script type="text/javascript" src="<?=$this->baseUrl('admin/js/jquery.notifyBar.js')?>"></script>
+	<script type="text/javascript" src="<?=$this->baseUrl('admin/js/jquery.tipsy.js')?>"></script>
+	<script type="text/javascript" src="<?=$this->baseUrl('admin/js/enhance.js')?>"></script>
+	<script type="text/javascript" src="<?=$this->baseUrl('admin/js/excanvas.js')?>"></script>
+	<script type="text/javascript" src="<?=$this->baseUrl('admin/js/visualize.jQuery.js')?>"></script>
+	<script type="text/javascript" src="<?=$this->baseUrl('admin/js/jQuery.collapsible.js')?>"></script>
+	<script type="text/javascript" src="<?=$this->baseUrl('admin/js/jquery.autoSuggest.packed.js')?>"></script>
+	<script type="text/javascript" src="<?=$this->baseUrl('admin/js/platinum-admin.js')?>"></script>
+
 	<script type="text/javascript" src="<?=$this->baseUrl('js/jquery.zend.jsonrpc.js')?>"></script>
 	<script type="text/javascript" src="<?=$this->baseUrl('js/json2.js')?>"></script>
+	
 	<script type="text/javascript">
 		// rpc server
 		var client = jQuery.Zend.jsonrpc({url: '<?=$this->baseUrl('rpc')?>'});
-		$(document).ready(function(){});
+		$(document).ready(function(){
+			$('a#power').click(function(e){
+				e.stopPropagation();
+				client.logout();
+				location.reload();
+				return false;
+			})
+		});
 	</script>
-	
-	<style>
-	html, form {
-		height: 100%;
-		width: 100%;
-	}
-	
-	body{
-		font-family: Verdana,Arial,sans-serif;
-		font-size: 16px;
-		height: 100%;
-		width: 100%;
-		background-color: #3c64a2;
-		margin: 0px;
-		color: #a0bfef;
-	}
-	.searchbox{
-		margin: 20px auto;
-		width: 300px;
-		font-size: 24px;
-		height: 36px;
-	}
-	.header{
-		font-family: Tahoma,Verdana,Arial,sans-serif;
-		font-size: 36px;
-		font-weight: bold;
-		height: 85px;
-		width: 100%;
-		line-height: 85px;
-		padding-left: 30px;
-	}
-	.hr_light{
-	  	background-color: #a0bfef;
-	  	height: 10px;
-	}
-	.darkbox{
-	  	background-color: #3a4556;
-	  	min-height: 70%;
-		padding: 20px;
-	}
-	.footer{
-		height: 20px;
-	}
-	.container{
-		margin-left:auto;
-		margin-right:auto;
-		width:800px;
-	}
-	.controls{
-		text-align:center;
-		margin-top: 40px;
-	}
-	#progressbar{
-		width: 680px;
-		margin: 20px auto 5px;
-	}
-	#progressdesc{
-		font-weight: bold;
-		width: 680px;
-		margin: 0px auto 40px auto;
-	}
-	</style>
 </head>
+
 <body>
 
-<div class="header">Zero9ravity CMS</div>
-	<div class="hr_light"></div>
-	<div class="darkbox">
-		<div class="container">
-			<?=$this->layout()->content?>
+<div id="header">
+	<div id="header-top">
+		<div id="logo">
+			<h1>Zergo9ravity Admin</h1>
+			<span id="slogan">lorem ipsum dolor asmet!</span> 
 		</div>
+		<!-- end logo -->
+		<div id="login-info">
+			<img src="<?=$this->baseUrl('admin/images/icons/user.png')?>" alt="profile" id="profile">
+			<p id="top"><span id="name"><?=$this->user()->getName().' '.$this->user()->getSurname()?></span><br>
+			<span id="links">
+			<a title="click to see the messages!" href="#" id="message-link">
+				<?php if ($this->user()->getNewMessagesNumber()): ?>
+					<span id="message-count"><?=$this->user()->getNewMessagesNumber()?></span> nowych wiadomosści.
+				<?php else: ?>
+					nie masz nowych wiadomości
+				<?php endif ?>
+			</a></span></p>
+			<div id="messages-box">
+				<h4>Messages</h4>
+				<h5><a href="#" id="new-message">New Message</a></h5>
+				<hr>
+				<ul id="messages">
+					<li class="new"><a href="#">
+					<img src="images/icons/sender.png" alt="user">
+					<span class="sender">John Doe</span>
+					<span class="description">Hi this is just a description...</span>
+					<span class="date">20 minutes ago...</span> </a></li>
+					<li><a href="#">
+					<img src="images/icons/sender.png" alt="user">
+					<span class="sender">John Doe</span>
+					<span class="description">Hi this is just a description...</span>
+					<span class="date">24 minutes ago...</span> </a></li>
+					<li><a href="#">
+					<img src="images/icons/sender.png" alt="user">
+					<span class="sender">John Doe</span>
+					<span class="description">Hi this is just a description...</span>
+					<span class="date">50 minutes ago...</span> </a></li>
+					<li id="last"><a href="#" id="all-messages">See all messages!
+					<span id="unreaded">8 unreaded.</span> </a></li>
+				</ul>
+				<br class="clear">
+			</div><!-- end messages-box -->
+			<a title="Logout" href="#" id="power">logout</a>
+		</div>
+		<?=$this->adminMenu()?>
 	</div>
-	<div class="hr_light"></div>
-	<div class="footer">
-		<p>	
-		&copy; 2010 <strong>Patryk Grandt</strong>&nbsp;<a href="<?=$this->baseUrl()?>">Strona Główna</a> 
-		</p>
-	</div>	
+	<!-- end div#header-top -->
+	<?=$this->adminBreadcrumbs()?>
+	<!-- end div#search-box -->
+</div>
+<!-- end header -->
+<div id="page-wrap">
+	<div id="right-sidebar">
+		<?=$this->placeholder('sidebar')?>
+	</div>
+	<!-- end right-sidebar -->
+	<div id="main-content">
+		<?=$this->layout()->content?>
+	</div>
+	<!-- end main-content -->
+</div>
+<!-- end page-wrap -->
+<div id="footer">
+	<p>© 2010 Spav.com.pl</p>
+</div>
+<!-- end footer -->
+
 </body>
 </html>

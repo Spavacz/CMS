@@ -1,0 +1,333 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head lang="en">
+<meta content="text/html;charset=utf-8" http-equiv="content-type">
+<title>Platinum Admin Documentation</title>
+<!-- Framework CSS -->
+<link href="assets/blueprint-css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+<link href="assets/blueprint-css/print.css" media="print" rel="stylesheet" type="text/css">
+<!--[if lt IE 8]>
+<link href="assets/blueprint-css/ie.css" media="screen, projection" rel="stylesheet" type="text/css">
+<![endif]-->
+<link href="assets/blueprint-css/plugins/fancy-type/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+<style media="screen" type="text/css">
+p, table, hr, .box {
+	margin-bottom: 25px;
+}
+.box p {
+	margin-bottom: 10px;
+}
+ol li {
+	margin-top:24px;
+}
+ol li li {
+	margin-top:6px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+	<h3 class="center alt">“Platinum Admin” Documentation by “Ahmet Sali” v1.0</h3>
+	<hr>
+	<h1 class="center">“Platinum Admin”</h1>
+	<div class="borderTop">
+		<div class="span-6 colborder info prepend-1">
+			<p class="prepend-top"><strong>Created: 7/10/2010<br>By: Ahmet Sali<br>
+			Email: <a href="mailto:ahmetsali@gmail.com">ahmetsali@gmail.com</a>
+			</strong></p>
+		</div>
+		<!-- end div .span-6 -->
+		<div class="span-12 last">
+			<p class="prepend-top append-0">Thank you for purchasing my theme. If 
+			you have any questions that are beyond the scope of this help file, 
+			please feel free to email via my user page contact form
+			<a href="http://themeforest.net/user/ahmetsali">here</a>. Thanks so 
+			much!</p>
+		</div>
+	</div>
+	<!-- end div .borderTop --><hr>
+	<h2 id="toc" class="alt">Table of Contents</h2>
+	<ol class="alpha">
+		<li><a href="#htmlStructure">HTML Structure</a></li>
+		<li><a href="#cssFiles">CSS Files and Structure</a></li>
+		<li><a href="#javascript">JavaScript</a></li>
+		<li><a href="#credits">Sources and Credits</a></li>
+	</ol>
+	<hr>
+	<h3 id="htmlStructure"><strong>A) HTML Structure</strong> - <a href="#toc">top</a></h3>
+	<p>This theme is a fluid layout with two columns.</p>
+	<p>&lt;div id=&quot;main-content&quot;&gt; is the fluid main content on the left.<br>&lt;div 
+	id=&quot;right-sidebar&quot;&gt; is the static-width sidebar content on the right.</p>	
+	
+	<h3>Header Html Structure</h3>
+	<img alt="header html structure" src="assets/images/header-html.PNG"><br><br>
+	<h3>Main Content Html Structure</h3>
+	<img alt="main content html structure" src="assets/images/main-content-html.PNG">
+	<br><br>
+	<h3>Content Boxes</h3>
+	The content boxes consist of a div with a class <b>.innerdiv</b> at the top, and inside 
+	h2 with class <b>.head</b> or <b>.head-alt</b> or <b>.head-alt-white</b> following div with a class <b>.innercontent</b>.
+	<br>
+	<br>
+	<p>
+	<img alt="box-markup" src="assets/images/box-markup.PNG">
+	</p>
+	
+	<h3>Navigation</h3>
+	<p>This theme uses Superfish jquery plugin for menu, supports three level navigation.</p>
+	<p>All the menu styles are in the <b>css/superfish.css</b> file, execpt the first level menu items styled
+	 over id for background icon, this styles can be found in <b>css/main.css</b> at navigation section.</p>
+	 	
+	 	<img alt="menu markup" src="assets/images/menu-markup.PNG">
+	 <p>
+	 	To indicate the current page in the menu, add <b>.current</b> class to menu items
+	 	<b>( li's ).</b>
+	 	</p>
+	<h3>BREADCRUMB</h3>
+	<p>Here is the markup for breadcrumb:</p>
+	<img alt="breadcrumb markup" src="assets/images/breadcrumb-markup.PNG">
+	<hr>
+	
+	
+	<h3 id="cssFiles"><strong>B) CSS Files and Structure</strong> -
+	<a href="#toc">top</a></h3>
+	<ul>
+		<li>css/main.css</li>
+		<li>css/superfish.css</li>
+	</ul>
+	<p>I&#39;m using two CSS files in this theme. The first one is <b>superfish.css</b> for styling menu. 
+	
+	<p>The second file <b>main.css</b> contains all of the specific stylings for the page. The file 
+	is separated into sections using:</p>
+	
+	<pre>	
+	/* === Reset === */
+
+	you shouldn't change this styles!
+
+	/* === GENERAL STYLE === */
+
+	some code
+
+	/* === HEADINGS === */
+	
+	some code
+	
+	/* === LAYOUT === */
+	
+	some code
+	
+	/* === HEADER === */
+	
+	some code
+	
+	etc, etc. 
+</pre>
+	<h3>Changing Color</h3>
+	<p>If you want to change the color of the theme just add related <b>color-name.css</b> file.
+	<br>
+	like, <b>css/colors/green.css </b>
+	</p>
+	<p>If you would like to edit a specific section of the site, simply find the 
+	appropriate label in the CSS file, and then scroll down until you find the appropriate 
+	style that needs to be edited.</p>
+	
+	<h3>Button Styles</h3>
+	<h4>3 different size;</h4>
+	<ul>
+		<li>normal:  (no additional class required, by default a button is in normal size)</li>
+		<li>big : add <b>.big</b> class.</li>
+		<li>bigger : add <b>.bigger</b> class.</li>
+
+	</ul>
+	<h4>6 different color;</h4>
+	<ul>
+		<li>.blue</li>
+		<li>.red</li>
+		<li>.green</li>
+		<li>.pink</li>
+		<li>.dark-blue</li>
+		<li>.dark-green</li>
+		<li>.gray</li>
+	</ul>
+	Example: <h4>
+	&lt;a 
+	class=&quot;button green big&quot;&gt;big 
+	button!&lt;/a&gt;</h4>
+	
+	<h3>Inline Notification Messages</h3>
+	Create inline notification messages as belove;
+	<br><br>
+	<h4>
+	&lt;div 
+	class=&quot;notification successfull&quot;&gt;message here 
+	&lt;/div&gt;</h4>
+	<h4>
+	&lt;div 
+	class=&quot;notification errors&quot;&gt;message here 
+	&lt;/div&gt;</h4>
+	<h4>
+	&lt;div 
+	class=&quot;notification info closable&quot;&gt;message here 
+	&lt;/div&gt;</h4>
+	
+	<h3>CSS Helper Classes</h3>
+	
+	Some of the helper css classes;
+	<ul>
+		<li><b>.hidden :</b> hides the elements.</li>
+		<li><b>.half : </b> 50% width.</li>
+		<li><b>.trio :</b> 1/3 width. </li>
+		<li><b>.quad :</b> 1/4 width.</li>
+		<li><b>.full :</b> full width.</li>
+		<li>.alignleft</li>
+		<li>.alignright</li>
+		<li>.aligncenter</li>
+		<li>.floatleft</li>
+		<li>.floatright</li>
+		<li>.clear</li>
+	</ul>
+
+	
+	<hr>
+	<h3 id="javascript"><strong>C) JavaScript</strong> - <a href="#toc">top</a></h3>
+	<p>This theme imports these Javascript files;</p>
+	<ol>
+		<li>jQuery
+			<ul>
+				<li><b>js/jquery-1.4.2.min.js</b></li>
+				<li>jQuery Javascript framework</li>
+				<li><a href="http://jquery.com/">jquery.com</a></li>
+			</ul>
+		</li>
+		<li>Superfish
+			<ul>
+				<li><b>js/jquery.hoverIntent.minified.js</b></li>
+				<li><b>js/superfish.js</b></li>
+				<li>jQuery plugin for multi level navigation, for more information
+				<a href="http://users.tpg.com.au/j_birch/plugins/superfish/">visit project page.</a></li>
+			</ul>
+		</li>
+		<li>jQuery Tools (for tabs)
+			<ul>
+				<li><b>js/jquery.tools.min.js</b></li>
+				<li>For more information on creating tabs
+					<a href="http://flowplayer.org/tools/tabs/index.html">visit project page.</a>
+				</li>
+				<li>Markup and implementation is as same as the link above.</li>
+			</ul>
+		</li>
+		<li>jQuery Simple Modal
+			<ul>
+				<li><b>js/jquery.simplemodal.js</b></li>
+				<li>For more information on using simpla modal
+					<a href="http://www.ericmmartin.com/projects/simplemodal/">visit project page.</a>
+				</li>
+			</ul>
+		</li>
+		<li>jQuery NotifyBar
+			<ul>
+				<li><b>js/jquery.notifyBar.js</b></li>
+				<li>Three javascript functions for informing user;
+					<ul>
+						<li>showSuccess(msg)</li>
+						<li>showError(msg)</li>
+						<li>showCustomMessage(msg)</li>
+						<li><b>msg :</b> is a parameter for the message which will display.</li>
+					</ul>
+				</li>
+				<li>For more information on using NotifyBar
+				<a href="http://www.dmitri.me/blog/notify-bar/">visit project page.</a></li>
+			</ul>
+		</li>
+		<li>jQuery Tipsy (Tooltip)
+			<ul>
+				<li><b>js/jquery.tipsy.js</b></li>
+				<li>This plugin shows the link's ( a tag) <b>'title'</b> attirubute as a tooltip. To enable add
+				 <b>.tooltip-enabled</b> class to the container element of links you want enable tooltip.</li>
+				<li>For more information 
+				<a href="http://onehackoranother.com/projects/jquery/tipsy/">visit project page.</a></li>
+			</ul>
+		</li>
+		<li>jQuery Visualize
+			<ul>
+				<li><b>js/enhance.js</b></li>
+				<li><b>js/excanvas.js</b></li>
+				<li><b>js/visualize.jQuery.js</b></li>
+				<li>For more information 
+				<a href="http://www.filamentgroup.com/lab/update_to_jquery_visualize_accessible_charts_with_html5_from_designing_with/">
+				visit project page.			 </a></li>
+			</ul>
+		</li>
+		<li>jQuery Collapsible
+			<ul>
+				<li><b>js/jQuery.collapsible.js</b></li>
+				<li>Add <b>.collapsible</b> class to any element that you want it to be collapsible.The content
+				after this element will be collabsiple.</li>
+				<li>For more information 
+				<a href="http://www.filamentgroup.com/lab/expand_and_collapse_content_accessibly_with_progressive_enhancement_jquery/">
+				visit project page.</a>
+				</li>
+			</ul>
+		</li>
+		<li>Closable
+			<ul>
+				<li>
+					To add closable function just add <b>.closable</b> class to any container element you wish.
+				</li>
+			</ul>
+		</li>
+		<li>jQuery AutoSuggest
+			<ul>
+				<li><b>js/jquery.autoSuggest.packed.js</b></li>
+				<li>For more information 
+				<a href="http://code.drewwilson.com/entry/autosuggest-jquery-plugin">
+				visit project page.
+	</a>
+				</li>
+			</ul>
+		</li>
+		<li>Custom Scripts (plugin setups)
+			<ul>
+				<li><b>js/platinum-admin.js</b></li>
+				<li>All the plugins above have been setup in this javascript file. Check out this file 
+				for plugin usages with comments.</li>
+			</ul>
+		</li>
+		<li>Login Script (plugin setups)
+			<ul>
+				<li><b>js/platinum-admin-login.js</b></li>
+				<li>This file is only used in login page.</li>
+			</ul>
+		</li>
+	</ol>
+	<hr>
+	<h3 id="credits"><strong>E) Sources and Credits</strong> - <a href="#toc">top</a></h3>
+	<p>I&#39;ve used the following images, icons or other files as listed. </p>
+	<ul>
+		<li>logo.png from <a href="http://www.doublejdesign.co.uk/2010/07/super-mono-icons/">
+			Super Mono Icons		</a></li>
+		<li>user.png from <a href="http://http://pixel-mixer.com/">pixel-mixer.</a></li>
+		<li>user-login.png from <a href="http://kde-look.org/usermanager/search.php?username=mentalrey">
+					 Alessandro Rei	  </a></li>
+		<li>menu icons from <a href="http://iconsweets.com/">iconsweets.</a></li>
+		<li>other icons from <a href="http://www.iconfinder.com">
+						  iconfinder.com</a> allowed for commerical use.</li>
+	</ul>
+	<hr>
+	<p>Once again, thank you so much for purchasing this theme. As I said at the 
+	beginning, I&#39;d be glad to help you if you have any questions relating to this 
+	theme. No guarantees, but I&#39;ll do my best to assist. If you have a more general 
+	question relating to the themes on ThemeForest, you might consider visiting 
+	the forums and asking your question in the &quot;Item Discussion&quot; section.</p>
+	<p class="append-bottom alt large"><strong>Ahmet Sali</strong></p>
+	<p><a href="#toc">Go To Table of Contents</a></p>
+	<hr class="space"></div>
+<!-- end div .container -->
+
+</body>
+
+</html>

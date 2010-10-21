@@ -35,4 +35,9 @@ class Cms_Model_Item_Article extends Cms_Model_Item_Abstract
 		return $this->_idAuthor;
 	}
 	
+	public function getUrl()
+	{
+		return 'url/todo';
+	}
+	
 }

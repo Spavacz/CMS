@@ -26,7 +26,6 @@ class Cms_Rpc_Widget
 			{
 				$class =  $widget->getController();
 				$view = new Zend_View();
-				$view->addBasePath(APPLICATION_PATH . '/modules/default/views');
 				$widgetObject = new $class( $view, $widget->getParams(), $widget->getInstanceId() );
 	    		// wywolujemy akcje
 	    		$widgetObject->{$widget->getAction()}();

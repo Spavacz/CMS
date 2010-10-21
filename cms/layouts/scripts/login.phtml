@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+	<title>Zegro9ravity Login</title>
+	<link href="<?=$this->baseUrl('admin/css/main.css')?>" rel="stylesheet" type="text/css" />
+	<link href="<?=$this->baseUrl('admin/css/colors/dark_blue.css')?>" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="<?=$this->baseUrl('js/jquery-1.4.2.min.js')?>"></script>    
+	<script type="text/javascript" src="<?=$this->baseUrl('js/jquery-ui-1.8.1.custom.min.js')?>"></script>
+	<script type="text/javascript" src="<?=$this->baseUrl('admin/js/jquery.tools.min.js')?>"></script>
+	<script type="text/javascript" src="<?=$this->baseUrl('js/jquery.zend.jsonrpc.js')?>"></script>
+	<script type="text/javascript" src="<?=$this->baseUrl('js/json2.js')?>"></script>
+	<script src="<?=$this->baseUrl('admin/js/platinum-admin-login.js')?>" type="text/javascript"></script>
+	<script type="text/javascript">
+		// rpc server
+		var client = jQuery.Zend.jsonrpc({url: '<?=$this->baseUrl('rpc')?>'});
+		$(document).ready(function(){
+			$('#login-form').submit( function(e){
+				e.stopPropagation();
+				var result = client.login($("input[name='login']", e.currentTarget).val(),$("input[name='password']", e.currentTarget).val(), $("input[name='rememberme']:checked", e.currentTarget).val());
+				if(client.error) {
+
+					$('div#validation-summary').html( '<div class="notification errors closable">'
+							+ '<h3>Wystąpił błąd logowania</h3>' 
+							+ '<ul><li>' + client.error_message + '</li></ul></div>' );
+				} else {
+					location.reload();
+				}
+				return false;
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+<?=$this->layout()->content?>
+
+</body>
+</html>

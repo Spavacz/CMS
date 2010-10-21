@@ -1,0 +1,14 @@
+﻿#header
+{
+	background-color: #ABA81B;
+	ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#E3D729', EndColorStr='#8F7F40')";
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#E3D729), to(#8F7F40));
+}
+h2.head-alt
+{
+	background-color: #ABA81B;
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#E3D729', EndColorStr='#8F7F40')";
+	color: #fff;
+	text-shadow: 1px 0px 1px #333;
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #E3D729),color-stop(1, #8F7F40));/* Saf4+, Chrome */
+}
