@@ -54,9 +54,16 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
     	$this->bootstrap( 'db' );
     	$this->bootstrap( 'FrontController' );
 
-
     	$this->getResource( 'FrontController' )
     		->registerPlugin( new Cms_Controller_Plugin_Auth(Zend_Layout::getMvcInstance()) );
+    		
+    	$user = new Cms_Model_User();
+		if( Zend_Auth::getInstance()->hasIdentity() )
+		{
+			$userMapper	= new Cms_Model_Mapper_User();
+			$userMapper->find( Zend_Auth::getInstance()->getIdentity(), $user );
+		}
+		Zend_Registry::set( 'user', $user );
     }
 
     protected function _initWidgets()

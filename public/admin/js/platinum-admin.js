@@ -38,7 +38,7 @@
 			$("tr:even").addClass("alt");
 			
 			//tab funciton
-			$("ul.tabs").tabs("div.panes > div");
+			$("ul.tabbed").tabs("div.panes > div");
 			
 			//superfish menu setup
         	$("ul.sf-menu").superfish({ 

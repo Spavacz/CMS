@@ -1171,13 +1171,16 @@ input.medium {
 	width: 300px;
 }
 input.long {
-	width: 500px;
+	width: 700px;
 }
 input.full-width {
 	width: 98%;
 }
 textarea.large {
-	width: 500px;
+	width: 700px;
+}
+textarea.full-width {
+	width: 98%;
 }
 .display-none {
 	display: none;

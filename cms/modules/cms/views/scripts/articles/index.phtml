@@ -1,6 +1,10 @@
 <div class="innerdiv clear">
 	<!-- Tabs -->
 	<h2 class="head-alt-white">Artykuły</h2>
+	<ul class="tabs">
+		<li><a class="current" href="<?=$this->baseUrl('cms/articles')?>">Lista</a></li>
+		<li><a href="<?=$this->baseUrl('cms/articles/add')?>">Dodaj nowy</a></li>
+	</ul>
 	<div class="innercontent">
 		<!-- tab "panes" -->
 		<div class="panes">
@@ -60,12 +64,13 @@
 								</td>
 								<td>todo</td>
 								<td>
-									<!-- Icons --><a title="Edit" href="#">
-									<img src="images/icons/edit.png" alt="Edit"></a>
+									<!-- Icons -->
+									<a title="Edit" href="#">
+										<img src="<?=$this->baseUrl('admin/images/icons/edit.png')?>" alt="Edit">
+									</a>
 									<a title="Delete" href="#">
-									<img src="images/icons/delete.png" alt="Delete"></a>
-									<a title="Add" href="#">
-									<img src="images/icons/add.png" alt="Add"></a>
+										<img src="<?=$this->baseUrl('admin/images/icons/delete.png')?>" alt="Delete">
+									</a>
 								</td>
 							</tr>
 						<?php endforeach ?>

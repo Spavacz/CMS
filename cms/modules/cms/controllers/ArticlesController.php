@@ -15,5 +15,10 @@ class Cms_ArticlesController extends Zend_Controller_Action
     	$this->view->articles = $mapper->fetchAll();
     }
 
+    public function addAction()
+    {
+    	$this->view->form = new Cms_Form_Article();
+    }
+    
 }
 

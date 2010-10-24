@@ -26,11 +26,15 @@ $application = new Zend_Application(
 $application->bootstrap('autoload');
 $application->bootstrap('db');
 $application->bootstrap('translate');
+$application->bootstrap('auth');
 
 $server = new Zend_Json_Server();
+Zend_Registry::set('rpcServer', $server);
+
 $server->setClass('Cms_Rpc_Widget');
 $server->setClass('Cms_Rpc_Auth');
 $server->setClass('Cms_Rpc_Page');
+$server->setClass('Cms_Rpc_Article', 'article');
 
 if ('GET' == $_SERVER['REQUEST_METHOD']) 
 {

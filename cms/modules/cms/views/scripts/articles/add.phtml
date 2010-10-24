@@ -1,0 +1,32 @@
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+	$('#article-form').submit( function(e){
+		e.stopPropagation();
+		var result = client['article.add']($('#article-form').serialize());
+		if(client.error) {
+			showError(client.error_message);
+		} else {
+			showSuccess(result);
+		}
+		return false;
+	});
+});	
+//-->
+</script>
+<div class="innerdiv clear">
+	<!-- Tabs -->
+	<h2 class="head-alt-white">Nowy artykuł</h2>
+	<ul class="tabs">
+		<li><a href="<?=$this->baseUrl('cms/articles')?>">Lista</a></li>
+		<li><a class="current" href="<?=$this->baseUrl('cms/articles/add')?>">Dodaj nowy</a></li>
+	</ul>
+	<div class="innercontent">
+		<!-- tab "panes" -->
+		<div class="panes">
+			<div style="display: block;">
+				<?=$this->form?>
+			</div>
+		</div>
+	</div>
+</div>
