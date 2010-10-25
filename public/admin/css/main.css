@@ -143,9 +143,9 @@ div.innerdiv {
 	margin: 0 0px 20px 0;
 	border: 1px solid #fff;
 	background: #f0f0f0;
-	-moz-box-shadow: 0px 2px 3px #fff inset; /* FF3.5+ */;
-	-webkit-box-shadow: 0px 2px 3px #fff inset; /* Saf3.0+, Chrome */;
-	box-shadow: 0px 2px 3px #fff inset; /* Opera 10.5, IE 9.0 */
+	/*-moz-box-shadow: 0px 2px 3px #fff inset;*/ /* FF3.5+ */;
+	/*-webkit-box-shadow: 0px 2px 3px #fff inset;*/ /* Saf3.0+, Chrome */;
+	/*box-shadow: 0px 2px 3px #fff inset;*/ /* Opera 10.5, IE 9.0 */
 }
 div.innercontent {
 	clear: left;
@@ -960,9 +960,9 @@ table {
 	-webkit-border-radius: 4px; /* Saf3-4 */;
 	border-radius: 4px; /* Opera 10.5, IE 9, Saf5, Chrome */;
 	overflow: hidden;
-	-moz-box-shadow: 1px 1px 1px #fff; /* FF3.5+ */;
-	-webkit-box-shadow: 1px 1px 1px #fff; /* Saf3.0+, Chrome */;
-	box-shadow: 1px 1px 1px #fff; /* Opera 10.5, IE 9.0 */;
+	/*-moz-box-shadow: 1px 1px 1px #fff;*/ /* FF3.5+ */;
+	/*-webkit-box-shadow: 1px 1px 1px #fff;*/ /* Saf3.0+, Chrome */;
+	/*box-shadow: 1px 1px 1px #fff;*/ /* Opera 10.5, IE 9.0 */;
 	margin: 0;
 	padding: 0;
 	border-collapse: collapse;
@@ -1022,7 +1022,7 @@ tr {
 	background: #F8F8F8;
 	color: #666;
 }
-tbody tr:hover {
+.full tbody tr:hover {
 	background: #F2F9FF;
 }
 .bulk-actions {
@@ -1134,6 +1134,12 @@ label {
 	color: #990000;
 	font-weight: bold;
 	text-shadow: 1px 1px 0px #fff;
+}
+input.error {
+	border-color: #990000 !important;
+}
+input.required {
+	background-color: #ffffff !important;
 }
 input[type=text] {
 	width: 200px;

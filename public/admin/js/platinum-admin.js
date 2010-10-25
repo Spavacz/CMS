@@ -1,4 +1,8 @@
 ﻿$(function(){
+			// validator form
+			$.validator.messages.required = 'To pole nie może być puste';
+			$.validator.defaults.errorElement = 'p';
+			$.validator.defaults.errorClass = 'error';		
 
 				// Closable function
 			$('.closable').append('<span class="closelink" title="Close"></span>');

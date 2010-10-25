@@ -1,14 +1,25 @@
 <script type="text/javascript">
 <!--
 $(document).ready(function(){
+	$('#article-form').validate();
 	$('#article-form').submit( function(e){
 		e.stopPropagation();
-		var result = client['article.add']($('#article-form').serialize());
-		if(client.error) {
-			showError(client.error_message);
+		if( $('#article-form').valid() ) {
+			var result = client['article.add']($('#article-form').serialize());
+			if(client.error) {
+				showError('Zapis nie powiódł się :(');
+				error_message = jQuery.parseJSON(client.error_message);
+				for( var field in error_message ) {
+					for( var error in error_message[field] ) {
+						$('input[name=name]')
+					} 
+				}
+			} else {
+				showSuccess(result);
+			}
 		} else {
-			showSuccess(result);
-		}
+			showError('Wypełnij poprawnie formularz');
+		}				
 		return false;
 	});
 });	

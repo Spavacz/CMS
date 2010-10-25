@@ -11,7 +11,7 @@
 			<div style="display: block;">
 				<table class="full">
 					<thead>
-						<tr class="alt">
+						<tr>
 							<th><input type="checkbox" class="check-all"></th>
 							<th>Tytuł</th>
 							<th>Status</th>
@@ -46,8 +46,8 @@
 						</tr>
 					</tfoot>
 					<tbody class="tooltip-enabled">
-						<?php foreach($this->articles as $article): ?>
-							<tr class="alt">
+						<?php foreach($this->articles as $key => $article): ?>
+							<tr <?=($key%1) ? 'class="alt"' : ''?>">
 								<td><input type="checkbox"></td>
 								<td><h5><?=$article->getName()?></h5></td>
 								<td>

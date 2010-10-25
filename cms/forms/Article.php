@@ -24,7 +24,7 @@ class Cms_Form_Article extends Zend_Form
 		$this->setAttrib('id', 'article-form');
 		
 		$this->addElement( 'text', 'name', array(
-			'class'			=> 'full-width',
+			'class'			=> 'full-width required',
 			'decorators'	=> $this->inputElementDecorators,
 			'label'			=> 'Tytuł',
 			'filters'		=> array('StringTrim'),
@@ -47,7 +47,7 @@ class Cms_Form_Article extends Zend_Form
 		));
 		
 		$this->addElement( 'textarea', 'text', array(
-			'class'			=> 'full-width',
+			'class'			=> 'full-width ckeditor',
 			'decorators'	=> $this->inputElementDecorators,
 			'rows'			=> 10,
 			'label'			=> 'Treść',
