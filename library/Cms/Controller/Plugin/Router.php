@@ -16,10 +16,13 @@ class Cms_Controller_Plugin_Router extends Zend_Controller_Plugin_Abstract
 
     	// pobieram reguly z bazy
     	$pages = new Cms_Model_Mapper_Page();
+    	//$nav = $pages->fetchNavigation();
+    	//_d($nav->toArray());
     	$iterator = new RecursiveIteratorIterator($pages->fetchNavigation(), RecursiveIteratorIterator::SELF_FIRST);
-        // dodaje reguly
+    	// dodaje reguly
         foreach($iterator as $page)
         {
+        	//_d($page);
         	$router->addRoute(
 			    $page->getUri(),
 			    new Zend_Controller_Router_Route( $page->getUri().'*', array(

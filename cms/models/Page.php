@@ -5,7 +5,19 @@ class Cms_Model_Page extends Zend_Navigation_Page_Mvc
     protected $_uri;
     protected $_isCms = false;
 	protected $_blocks;
-
+	protected $_idParent;
+	
+	public function setIdParent( $id )
+	{
+		$this->_idParent = $id;
+		return $this;
+	}
+	
+	public function getIdParent()
+	{
+		return $this->_idParent;
+	}
+	
     public function setUri( $uri )
     {
         $this->_uri = (string) $uri;
