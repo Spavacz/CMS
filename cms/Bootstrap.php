@@ -105,3 +105,9 @@ function _d($data)
 		echo '<script language="Javascript">function toggleDisplay(id) { document.getElementById(id).style.display = (document.getElementById(id).style.display == "block") ? "none" : "block"; }</script>'."\n<pre style=\"background-color: white;text-align:left;\">$out</pre>";
 	}
 }
+function _vd($var)
+{
+	echo '<pre>';
+	print_r($var);
+	echo '</pre>';
+}
