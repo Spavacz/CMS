@@ -1113,6 +1113,10 @@ label {
 	color: #666;
 	margin-right:10px;
 }
+label.checkbox{
+	display: inline;
+	margin-left: 5px !important;
+}
 .select-group
 {
 	margin-top:15px;
@@ -2086,7 +2090,8 @@ div#login input[type=text], input[type=password] {
 }
 div#login .button {
 	padding: 6px 45px;
-	margin: 0;
+	margin: 0px;
+	margin-top: 10px;
 	font-size: 1.1em;
 	float: right;
 }

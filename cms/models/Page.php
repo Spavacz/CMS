@@ -77,4 +77,16 @@ class Cms_Model_Page extends Zend_Navigation_Page_Mvc
     		$this->_isCms = (bool)$bool;
     	}
     }
+    
+    public static function normalizeUrl( $string, $length = 255 )
+	{
+		$file_name = mb_strtolower($string);
+		$file_name = strtr($file_name, array('ę' => 'e', 'ó' => 'o', 'ą' => 'a', 'ś' => 's', 'ł' => 'l', 'ż' => 'z', 'ź' => 'z', 'ć' => 'c', 'ń' => 'n'));
+		$file_name = ereg_replace("[^a-z^A-Z^0-9^ ^-]", "", $file_name);
+		$file_name = preg_replace('/\s+/', " ", $file_name);
+		$file_name = substr($file_name, 0, $length);
+		$file_name = trim($file_name);
+		$file_name = str_replace(" ", "-", $file_name);
+		return $file_name;
+    }
 }

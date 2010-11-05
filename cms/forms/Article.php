@@ -62,7 +62,7 @@ class Cms_Form_Article extends Zend_Form
 		));
 		
 		
-		$this->addElement( 'submit', 'cancel', array(
+		$this->addElement( 'button', 'cancel', array(
 			'class'			=> 'button big',
 			'label'			=> 'Anuluj',
 			'decorators'	=> $this->buttonElementDecorators

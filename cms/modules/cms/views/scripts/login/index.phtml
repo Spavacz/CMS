@@ -8,11 +8,11 @@
 		<div>
 			<form id="login-form" name="login" action="#login" method="post">
 				<fieldset>
-					<legend>Wprowadź dane!</legend>
-					<label for="username">Email:</label><input id="login" name="login" type="text" />
-					<label for="password">Hasło:</label><input id="password" name="password" type="password" />
+					<legend>Podaj swój email i hasło</legend>
+					<label for="username">Email:</label><input id="iLogin" name="login" type="text" />
+					<label for="password">Hasło:</label><input id="iPassword" name="password" type="password" />
 					<input type="checkbox" name="rememberme"/><label class="checkbox" for="rememberme">zapamietaj&nbsp;mnie&nbsp;w&nbsp;tej&nbsp;przeglądarce</label>
-					<input class="button" type="submit" value="Log in!" />
+					<input class="button" type="submit" value="Log in!" /><div class="clear"></div>
 				</fieldset>
 			</form>
 			<div id="validation-summary"></div>
@@ -29,3 +29,6 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+$('#iLogin').focus();
+</script>

@@ -6,7 +6,7 @@ $(document).ready(function(){
 		e.stopPropagation();
 		if( $('#article-form').valid() ) {
 			$('#text').val( CKEDITOR.instances.text.getData() );
-			var result = client['article.add']($('#article-form').serializeArray());
+			var result = client['article.edit']('<?=$this->id?>', $('#article-form').serializeArray());
 			if(client.error) {
 				showError('Zapis nie powiódł się :(');
 				return false;
@@ -35,10 +35,10 @@ $(document).ready(function(){
 </script>
 <div class="innerdiv clear">
 	<!-- Tabs -->
-	<h2 class="head-alt-white">Nowy artykuł</h2>
+	<h2 class="head-alt-white">Edycja artykułu</h2>
 	<ul class="tabs">
 		<li><a href="<?=$this->baseUrl('cms/articles')?>">Lista</a></li>
-		<li><a class="current" href="<?=$this->baseUrl('cms/articles/add')?>">Dodaj nowy</a></li>
+		<li><a href="<?=$this->baseUrl('cms/articles/add')?>">Dodaj nowy</a></li>
 	</ul>
 	<div class="innercontent">
 		<!-- tab "panes" -->

@@ -58,17 +58,17 @@
 									<?php endif ?>
 								</td>
 								<td>
-									<a href="<?=$this->baseUrl($article->getUrl())?>">
-										<?=$this->baseUrl($article->getUrl())?>
+									<a href="<?=$article->getUrl()?>">
+										<?=$article->getUrl()?>
 									</a>
 								</td>
 								<td>todo</td>
 								<td>
 									<!-- Icons -->
-									<a title="Edit" href="#">
+									<a title="Edit" href="<?=$this->baseUrl('cms/articles/edit/id/').$article->getId()?>">
 										<img src="<?=$this->baseUrl('admin/images/icons/edit.png')?>" alt="Edit">
 									</a>
-									<a title="Delete" href="#">
+									<a name="<?=$article->getId()?>" class="delete-btn" title="Delete" href="#delete">
 										<img src="<?=$this->baseUrl('admin/images/icons/delete.png')?>" alt="Delete">
 									</a>
 								</td>
@@ -80,3 +80,19 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+<!--
+	$('.delete-btn').click( function(e){
+		e.stopPropagation();
+		console.log(e.currentTarget.href);
+		var result = client['article.delete'](e.currentTarget.name);
+		if(client.error) {
+			showError('Usunięcie nie powiódło się :(');
+		} else {
+			window.location.reload();
+		}
+		return false;
+	});
+//-->
+</script>

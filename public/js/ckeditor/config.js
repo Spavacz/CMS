@@ -9,7 +9,6 @@ CKEDITOR.editorConfig = function( config )
 	config.language = 'pl';
 	// config.uiColor = '#AADC6E';
 	config.toolbar = 'Medium';
-	
 	config.toolbar_Medium =
     [
 		['Source','-','NewPage','Preview','-','Templates'],
