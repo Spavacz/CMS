@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<home>
+		<label>Home</label>
+		<module>cms</module>
+		<controller>index</controller>
+		<action>index</action>
+		<pages>
+		<articles>
+			<label>Artykuły</label>
+			<module>cms</module>
+			<controller>articles</controller>
+			<action>index</action>
+			<pages>
+           		<articles_add>
+           			<label>Nowy artykuł</label>
+           			<module>cms</module>
+					<controller>articles</controller>
+					<action>add</action>
+           		</articles_add>
+           		<articles_edit>
+            		<label>Edycja</label>
+            		<module>cms</module>
+					<controller>articles</controller>
+					<action>edit</action>
+				</articles_edit>
+			</pages>
+		</articles>
+		</pages>
+	</home>
+</config>

@@ -1,8 +1,15 @@
 <div class="breadCrumb">
-	<ul>
-		<li class="first"><a href="<?=$this->baseUrl('cms')?>">Home</a> </li>
-		<li><a href="#">Users</a> </li>
-		<li><a href="#">Roles</a> </li>
-		<li class="last">Add new role </li>
-	</ul>
+	<?php if( count($this->pages) ): ?>
+		<ul>
+			<?php foreach( $this->pages as $i => $page ): ?>
+				<?php if($i == 0):?>
+					<li class="first"><a href="<?=$page->getHref()?>"><?=$page->getLabel()?></a></li>
+				<?php elseif ($i == count($this->pages)-1):?>
+					<li class="last"><?=$page->getLabel()?></li>
+				<?php else:?>
+					<li><a href="<?=$page->getHref()?>"><?=$page->getLabel()?></a></li>
+				<?php endif?>
+			<?php endforeach ?>
+		</ul>
+	<?php endif ?>
 </div>

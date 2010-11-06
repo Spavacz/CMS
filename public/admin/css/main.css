@@ -587,25 +587,25 @@ ul#comments span.date {
 }
 /* MENU   
 ----------------------------------------------------------*/
-#dashboard {
+#menu-dashboard {
 	background-image: url('../images/icons/home.png');
 	background-repeat: no-repeat;
 	background-position: 5px 6px;
 	padding-left: 30px;
 }
-#users {
+#menu-users {
 	background-image: url('../images/icons/users.png');
 	background-repeat: no-repeat;
 	background-position: 5px 8px;
 	padding-left: 30px;
 }
-#settings {
+#menu-settings {
 	background-image: url('../images/icons/settings.png');
 	background-repeat: no-repeat;
 	background-position: 5px 7px;
 	padding-left: 30px;
 }
-#articles {
+#menu-articles {
 	background-image: url('../images/icons/articles.png');
 	background-repeat: no-repeat;
 	background-position: 5px 8px;

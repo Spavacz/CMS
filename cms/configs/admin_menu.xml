@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<home>
+		<id>dashboard</id><label>Strona Główna</label>
+		<module>cms</module>
+		<controller>index</controller>
+		<action>index</action>
+		<pages>
+		
+		<home_2>
+			<label>wróć do strony głównej panelu</label>
+			<module>cms</module>
+			<controller>index</controller>
+			<action>index</action></home_2></pages>
+		</home><articles>
+			<id>articles</id>
+			<label>Artykuły</label>
+			<module>cms</module>
+			<controller>articles</controller>
+			<action>index</action>
+			<pages>
+           		<articles_add>
+           			<label>napisz artykuł</label>
+           			<module>cms</module>
+					<controller>articles</controller>
+					<action>add</action>
+           		</articles_add>
+           		<articles_2>
+           			<label>zarządzaj artykułami</label>
+           			<module>cms</module>
+           			<controller>articles</controller>
+           			<action>index</action></articles_2>
+           		<categories>
+           			<label>kategorie</label>
+           			<module>cms</module>
+           			<controller>categories</controller>
+           			<action>index</action></categories></pages>
+		</articles>
+</config>
