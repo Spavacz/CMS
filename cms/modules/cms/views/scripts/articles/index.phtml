@@ -9,8 +9,8 @@
 		<!-- tab "panes" -->
 		<div class="panes">
 			<div style="display: block;">
-				<table class="full">
-					<thead>
+				<table id="article-list" class="full">
+					<!-- <thead>
 						<tr>
 							<th><input type="checkbox" class="check-all"></th>
 							<th>Tytuł</th>
@@ -18,7 +18,7 @@
 							<th>Adres</th>
 							<th>Kategoria</th>
 						</tr>
-					</thead>
+					</thead>-->
 					<tfoot>
 						<tr>
 							<td colspan="6">
@@ -45,36 +45,7 @@
 							</td>
 						</tr>
 					</tfoot>
-					<tbody class="tooltip-enabled">
-						<?php foreach($this->articles as $key => $article): ?>
-							<tr <?=($key%1) ? 'class="alt"' : ''?>">
-								<td><input type="checkbox"></td>
-								<td><h5><?=$article->getName()?></h5></td>
-								<td>
-									<?php if($article->getStatus() == 1): ?>
-										<img src="<?=$this->baseUrl('admin/images/icons/ok.png')?>" alt="Zatwierdzony">
-									<?php else: ?>
-										Oczekujący
-									<?php endif ?>
-								</td>
-								<td>
-									<a href="<?=$article->getUrl()?>">
-										<?=$article->getUrl()?>
-									</a>
-								</td>
-								<td>todo</td>
-								<td>
-									<!-- Icons -->
-									<a title="Edit" href="<?=$this->baseUrl('cms/articles/edit/id/').$article->getId()?>">
-										<img src="<?=$this->baseUrl('admin/images/icons/edit.png')?>" alt="Edit">
-									</a>
-									<a name="<?=$article->getId()?>" class="delete-btn" title="Delete" href="#delete">
-										<img src="<?=$this->baseUrl('admin/images/icons/delete.png')?>" alt="Delete">
-									</a>
-								</td>
-							</tr>
-						<?php endforeach ?>
-						</tbody>
+					<tbody class="tooltip-enabled"></tbody>
 				</table>
 			</div>
 		</div>
@@ -83,16 +54,49 @@
 
 <script type="text/javascript">
 <!--
-	$('.delete-btn').click( function(e){
-		e.stopPropagation();
-		console.log(e.currentTarget.href);
-		var result = client['article.delete'](e.currentTarget.name);
-		if(client.error) {
-			showError('Usunięcie nie powiódło się :(');
-		} else {
-			window.location.reload();
+	$('#article-list').zGrid({
+		url: '/rest/articles',
+		checkboxes: true,
+		controls: true,
+		paginator: true,
+		pageTag: 'page',
+		sortable: true,
+		sortTag: 'sort',
+		cols: [{
+			label: 'Tytuł',
+			id: 'name',
+			type: 'head',
+			sortable: true
+		},{
+			label: 'Status',
+			id: 'status',
+			type: 'img',
+			sortable: true
+		},{
+			label: 'Adres',
+			id: 'url',
+			type: 'url',
+			sortable: false
+		},{
+			label: 'Kategorie',
+			id: 'categories',
+			type: 'string',
+			sortable: false
+		}],
+		onLoad: function(){
+			$('.delete-btn').click( function(e){
+				e.stopPropagation();
+				var result = client['article.delete'](e.currentTarget.name);
+				if(client.error) {
+					showError('Usunięcie nie powiódło się :(');
+				} else {
+					//window.location.reload();
+					$('#article-list').zGridDeleteRow(e.currentTarget.name);
+					showSuccess(result);
+				}
+				return false;
+			});
 		}
-		return false;
 	});
 //-->
 </script>

@@ -65,4 +65,15 @@ class Cms_Model_Item_Article extends Cms_Model_Item_Abstract
 		return Zend_Controller_Front::getInstance()->getBaseUrl() . '/' . $url;
 	}
 	
+	public function toArray()
+	{
+		return array(
+			'id'			=> $this->getId(),
+			'name'			=> $this->getName(),
+			'status'		=> $this->getStatus(),
+			'url'			=> $this->getUrl(),
+			'categories'	=> 'todo'
+		);
+	}
+	
 }

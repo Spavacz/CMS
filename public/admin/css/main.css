@@ -994,6 +994,21 @@ th {
 	text-transform: uppercase;
 	font-size: 1.2em;
 }
+th.sortable {
+	background-image: url('../images/icons/icon-triangle-2.png');
+	background-position: 95%;
+	background-repeat: no-repeat;
+	padding: 0px;
+}
+th.sortable:hover {
+	background-color: #DEDEDE;
+}
+th.sort-asc {
+	background-position: 95% -75px; 
+}
+th.sort-desc {
+	background-position: 95% 16px; 
+}
 tr.alt {
 	background-color: #fff;
 }
@@ -1009,8 +1024,11 @@ th + th + th {
 	text-align: left;
 }
 th a {
-	color: #F06;
+	color: #336699;
 	text-decoration: none;
+	display: block;
+	padding: 10px;
+	padding-left: 30px;
 }
 thead tr, tfoot tr {
 	color: #555;

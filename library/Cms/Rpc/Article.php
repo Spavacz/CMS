@@ -24,7 +24,7 @@ class Cms_Rpc_Article
 		if( $valid == 'true' )
 		{
 			$article = new Cms_Model_Item_Article( $data );
-			if( $this->mapper()->save($article) === false )
+			if( $this->_mapper()->save($article) === false )
 			{
 				$this->_server->fault('Cos nie pojszlo', Zend_Json_Server_Error::ERROR_INTERNAL);
 				return false;
@@ -50,13 +50,13 @@ class Cms_Rpc_Article
 		$valid = $form->processAjax($data);
 		if( $valid == 'true' )
 		{
-			if( !$this->mapper()->find( $id, $article = new Cms_Model_Item_Article() ) )
+			if( !$this->_mapper()->find( $id, $article = new Cms_Model_Item_Article() ) )
 			{
 				$this->_server->fault('Article not found', Zend_Json_Server_Error::ERROR_INTERNAL);
 				return false;
 			}
 			$article->setOptions($data);
-			if( $this->mapper()->save($article) === false )
+			if( $this->_mapper()->save($article) === false )
 			{
 				$this->_server->fault('cos nie pojszlo', Zend_Json_Server_Error::ERROR_INTERNAL);
 				return false;
@@ -75,7 +75,7 @@ class Cms_Rpc_Article
 	{
 		$this->_mapper()->find( $id, $article = new Cms_Model_Item_Article() );
 		$this->_mapper()->delete( $article );
-		$this->_message->success('Artykuł "' . $article->getName() . '" usunięty');
+		//$this->_message->success('Artykuł "' . $article->getName() . '" usunięty');
 		return 'Artykuł "' . $article->getName() . '" usunięty';
 	}
 	
