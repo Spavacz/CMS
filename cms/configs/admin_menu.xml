@@ -5,35 +5,61 @@
 		<module>cms</module>
 		<controller>index</controller>
 		<action>index</action>
+		<pages>	
+			<home_2>
+				<label>wróć do strony głównej panelu</label>
+				<module>cms</module>
+				<controller>index</controller>
+				<action>index</action>
+			</home_2>
+		</pages>
+	</home>
+	<products>
+		<id>products</id>
+		<label>Oferty</label>
+		<module>cms</module>
+		<controller>products</controller>
+		<action>index</action>
 		<pages>
-		
-		<home_2>
-			<label>wróć do strony głównej panelu</label>
-			<module>cms</module>
-			<controller>index</controller>
-			<action>index</action></home_2></pages>
-		</home><articles>
-			<id>articles</id>
-			<label>Artykuły</label>
-			<module>cms</module>
-			<controller>articles</controller>
-			<action>index</action>
-			<pages>
-           		<articles_add>
-           			<label>napisz artykuł</label>
-           			<module>cms</module>
-					<controller>articles</controller>
-					<action>add</action>
-           		</articles_add>
-           		<articles_2>
-           			<label>zarządzaj artykułami</label>
-           			<module>cms</module>
-           			<controller>articles</controller>
-           			<action>index</action></articles_2>
-           		<categories>
-           			<label>kategorie</label>
-           			<module>cms</module>
-           			<controller>categories</controller>
-           			<action>index</action></categories></pages>
-		</articles>
+			<products_add>
+           		<label>dodaj ofertę</label>
+           		<module>cms</module>
+				<controller>products</controller>
+				<action>add</action>
+          	</products_add>
+           	<products_2>
+       			<label>zarządzaj ofertami</label>
+       			<module>cms</module>
+       			<controller>products</controller>
+      			<action>index</action>
+       		</products_2>
+       	</pages>
+	</products>
+	<articles>
+		<id>articles</id>
+		<label>Artykuły</label>
+		<module>cms</module>
+		<controller>articles</controller>
+		<action>index</action>
+		<pages>
+			<articles_add>
+           		<label>napisz artykuł</label>
+           		<module>cms</module>
+				<controller>articles</controller>
+				<action>add</action>
+          	</articles_add>
+           	<articles_2>
+       			<label>zarządzaj artykułami</label>
+       			<module>cms</module>
+       			<controller>articles</controller>
+      			<action>index</action>
+       		</articles_2>
+       		<categories>
+         		<label>kategorie</label>
+      			<module>cms</module>
+       			<controller>categories</controller>
+       			<action>index</action>
+       		</categories>
+       	</pages>
+	</articles>
 </config>

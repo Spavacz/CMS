@@ -13,18 +13,31 @@ class Rest_ProductsController extends Zend_Rest_Controller
 	public function indexAction()
 	{
 		$mapper = new Cms_Model_Mapper_Item_Product();
-		$list = $mapper->fetchAll();
+		$sort = $this->_getParam( 'sort', 'id' );
+		$order = $this->_getParam( 'order', 'desc' );
+		$page = $this->_getParam( 'page', 1 );
+		$limit = $this->_getParam( 'limit' );
+		$list = $mapper->fetchAll(null, $sort.' '.$order, $limit, $page);
 		$products = array();
-		foreach( $list as $product )
+		foreach( $list as $i => $product )
 		{
-			if( $product->getStatus() != 0 )
-			{
-				$products[] = array(
-					'id' 			=> $product->getId(),
-					'name'			=> $product->getName(),
-					'description'	=> $product->getDescription()
-				);
-			}
+			$baseurl = new Zend_View_Helper_BaseUrl();
+			$products[$i]['cols'] = $product->toArray();
+			$products[$i]['cols']['status'] = $products[$i]['cols']['status'] == 1 ? $baseurl->baseUrl('admin/images/icons/ok.png') : $baseurl->baseUrl('admin/images/icons/delete.png');
+			$products[$i]['ctrl'] = array(
+				'edit'		=> array(
+					'url'	=> $baseurl->baseUrl('cms/products/edit/id/' . $product->getId()),
+					'label'	=> 'Edytuj',
+					'img'	=> $baseurl->baseUrl('admin/images/icons/edit.png'),
+					'css'	=> 'edit-btn'
+				),
+				'delete'	=> array(
+					'url'	=> '#delete',
+					'label'	=> 'Usuń',
+					'img'	=> $baseurl->baseUrl('admin/images/icons/delete.png'),
+					'css'	=> 'delete-btn'
+				)
+			);
 		}
 		$response = array( 'success' => true, 'data' => $products );
 		echo json_encode($response);

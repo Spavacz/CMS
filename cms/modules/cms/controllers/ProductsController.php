@@ -1,6 +1,6 @@
 <?php
 
-class Cms_ArticlesController extends Zend_Controller_Action
+class Cms_ProductsController extends Zend_Controller_Action
 {
 
     public function init()
@@ -11,30 +11,29 @@ class Cms_ArticlesController extends Zend_Controller_Action
 
     public function indexAction()
     {
-    	$mapper = new Cms_Model_Mapper_Item_Article();
+    	$mapper = new Cms_Model_Mapper_Item_Product();
     	$this->view->pageLimit = 10;
     	$this->view->pageTotal = ceil( $mapper->countAll() / $this->view->pageLimit );
     }
 
     public function addAction()
     {
-    	$this->view->form = new Cms_Form_Article();
+    	$this->view->form = new Cms_Form_Product();
     }
     
     public function editAction()
     {
-    	$this->view->form = new Cms_Form_Article();
-    	$mapper = new Cms_Model_Mapper_Item_Article();
-    	if( !$mapper->find( $this->_getParam('id'), $article = new Cms_Model_Item_Article() ) )
+    	$this->view->form = new Cms_Form_Product();
+    	$mapper = new Cms_Model_Mapper_Item_Product();
+    	if( !$mapper->find( $this->_getParam('id'), $product = new Cms_Model_Item_Product() ) )
  		{
  			$this->_forward('error', 'error', 'default');
  		}
  		
  		$this->view->form->populate( array(
- 			'name'			=> $article->getName(),
- 			'description'	=> $article->getDescription(),
- 			'text'			=> $article->getText()
- 		) );
+ 			'name'			=> $product->getName(),
+ 			'description'	=> $product->getDescription()
+		) );
  		
  		$this->view->id = $this->_getParam('id');
     }

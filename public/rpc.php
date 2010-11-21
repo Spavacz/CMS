@@ -35,6 +35,7 @@ $server->setClass('Cms_Rpc_Widget');
 $server->setClass('Cms_Rpc_Auth');
 $server->setClass('Cms_Rpc_Page');
 $server->setClass('Cms_Rpc_Article', 'article');
+$server->setClass('Cms_Rpc_Product', 'product');
 
 if ('GET' == $_SERVER['REQUEST_METHOD']) 
 {

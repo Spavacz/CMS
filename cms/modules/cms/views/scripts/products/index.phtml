@@ -1,15 +1,15 @@
 <div class="innerdiv clear">
 	<!-- Tabs -->
-	<h2 class="head-alt-white">Artykuły</h2>
+	<h2 class="head-alt-white">Oferty</h2>
 	<ul class="tabs">
-		<li><a class="current" href="<?=$this->baseUrl('cms/articles')?>">Lista</a></li>
-		<li><a href="<?=$this->baseUrl('cms/articles/add')?>">Dodaj nowy</a></li>
+		<li><a class="current" href="<?=$this->baseUrl('cms/products')?>">Lista</a></li>
+		<li><a href="<?=$this->baseUrl('cms/products/add')?>">Dodaj nowy</a></li>
 	</ul>
 	<div class="innercontent">
 		<!-- tab "panes" -->
 		<div class="panes">
 			<div style="display: block;">
-				<table id="article-list" class="full"></table>
+				<table id="product-list" class="full"></table>
 			</div>
 		</div>
 	</div>
@@ -17,8 +17,8 @@
 
 <script type="text/javascript">
 <!--
-	$('#article-list').zGrid({
-		url: '/rest/articles',
+	$('#product-list').zGrid({
+		url: '/rest/products',
 		pageTotal: <?=$this->pageTotal?>,
 		pageLimit: <?=$this->pageLimit?>,
 		checkboxes: true,
@@ -33,18 +33,18 @@
 			type: 'head',
 			sortable: true
 		},{
+			label: 'Opis',
+			id: 'description',
+			type: 'string',
+			sortable: false
+		},{
 			label: 'Status',
 			id: 'status',
 			type: 'img',
 			sortable: true
 		},{
-			label: 'Adres',
-			id: 'url',
-			type: 'url',
-			sortable: false
-		},{
-			label: 'Kategorie',
-			id: 'categories',
+			label: 'Strony',
+			id: 'pages',
 			type: 'string',
 			sortable: false
 		}],
@@ -56,7 +56,7 @@
 			$('.delete-btn').click( function(e){
 				e.stopPropagation();
 				confirm( 'usuwamy?', function() {
-					deleteArticle(e.currentTarget.name);
+					deleteProduct(e.currentTarget.name);
 				});
 				return false;
 			});
@@ -65,20 +65,20 @@
 			if( action == 'delete' ) {
 				confirm( 'usuwamy?', function() {
 					selected.each(function(i, chk) {
-						deleteArticle(chk.value);
+						deleteProduct(chk.value);
 					});
 				});
 			}
 		}
 	});
 
-	function deleteArticle(id) {
-		var result = client['article.delete'](id);
+	function deleteProduct(id) {
+		var result = client['product.delete'](id);
 		if(client.error) {
 			showError('Usunięcie nie powiódło się :(');
 		} else {
 			//window.location.reload();
-			$('#article-list').zGridDeleteRow(id);
+			$('#product-list').zGridDeleteRow(id);
 			showSuccess(result);
 		}
 	}

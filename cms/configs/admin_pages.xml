@@ -6,26 +6,46 @@
 		<controller>index</controller>
 		<action>index</action>
 		<pages>
-		<articles>
-			<label>Artykuły</label>
-			<module>cms</module>
-			<controller>articles</controller>
-			<action>index</action>
-			<pages>
-           		<articles_add>
-           			<label>Nowy artykuł</label>
-           			<module>cms</module>
-					<controller>articles</controller>
-					<action>add</action>
-           		</articles_add>
-           		<articles_edit>
-            		<label>Edycja</label>
-            		<module>cms</module>
-					<controller>articles</controller>
-					<action>edit</action>
-				</articles_edit>
-			</pages>
-		</articles>
+			<articles>
+				<label>Artykuły</label>
+				<module>cms</module>
+				<controller>articles</controller>
+				<action>index</action>
+				<pages>
+           			<articles_add>
+           				<label>Nowy artykuł</label>
+           				<module>cms</module>
+						<controller>articles</controller>
+						<action>add</action>
+           			</articles_add>
+           			<articles_edit>
+            			<label>Edycja</label>
+            			<module>cms</module>
+						<controller>articles</controller>
+						<action>edit</action>
+					</articles_edit>
+				</pages>
+			</articles>
+			<products>
+				<label>Oferty</label>
+				<module>cms</module>
+				<controller>products</controller>
+				<action>index</action>
+				<pages>
+					<products_add>
+           				<label>Nowa oferta</label>
+           				<module>cms</module>
+						<controller>products</controller>
+						<action>add</action>
+           			</products_add>
+           			<products_edit>
+            			<label>Edycja</label>
+            			<module>cms</module>
+						<controller>products</controller>
+						<action>edit</action>
+					</products_edit>
+				</pages>
+			</products>
 		</pages>
 	</home>
 </config>

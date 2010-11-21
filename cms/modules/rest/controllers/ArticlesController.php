@@ -14,8 +14,10 @@ class Rest_ArticlesController extends Zend_Rest_Controller
 	{
 		$mapper = new Cms_Model_Mapper_Item_Article();
 		$sort = $this->_getParam( 'sort', 'id' );
-		$order = $this->_getParam( 'order', 'asc' );
-		$list = $mapper->fetchAll(null, $sort.' '.$order);
+		$order = $this->_getParam( 'order', 'desc' );
+		$page = $this->_getParam( 'page', 1 );
+		$limit = $this->_getParam( 'limit' );
+		$list = $mapper->fetchAll(null, $sort.' '.$order, $limit, $page);
 		$articles = array();
 		foreach( $list as $i => $article )
 		{

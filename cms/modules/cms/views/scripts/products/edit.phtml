@@ -1,0 +1,51 @@
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+	$('#product-form').validate();
+	$('#product-form').submit( function(e){
+		e.stopPropagation();
+		if( $('#product-form').valid() ) {
+			$('#description').val( CKEDITOR.instances.description.getData() );
+			var result = client['product.edit']('<?=$this->id?>', $('#product-form').serializeArray());
+			if(client.error) {
+				showError('Zapis nie powiódł się :(');
+				return false;
+				error_message = jQuery.parseJSON(client.error_message);
+				for( var field in error_message ) {
+					for( var error in error_message[field] ) {
+						$('input[name=name]');
+					} 
+				}
+			} else {
+				//showSuccess(result);
+				document.location.href = '<?=$this->baseUrl('cms/products')?>';
+			}
+		} else {
+			showError('Wypełnij poprawnie formularz');
+		}				
+		return false;
+	});
+	$('#cancel').click( function(e) {
+		if( confirm('Uwaga! zmiany nie zostana zapisane.') ) {
+			document.location.href = '<?=$this->baseUrl('cms/products')?>';
+		}
+	});
+});	
+//-->
+</script>
+<div class="innerdiv clear">
+	<!-- Tabs -->
+	<h2 class="head-alt-white">Edycja oferty</h2>
+	<ul class="tabs">
+		<li><a href="<?=$this->baseUrl('cms/products')?>">Lista</a></li>
+		<li><a href="<?=$this->baseUrl('cms/products/add')?>">Dodaj nowy</a></li>
+	</ul>
+	<div class="innercontent">
+		<!-- tab "panes" -->
+		<div class="panes">
+			<div style="display: block;">
+				<?=$this->form?>
+			</div>
+		</div>
+	</div>
+</div>

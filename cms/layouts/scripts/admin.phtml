@@ -32,7 +32,7 @@
 	<script type="text/javascript" src="<?=$this->baseUrl('js/jquery.zend.jsonrpc.js')?>"></script>
 	<script type="text/javascript" src="<?=$this->baseUrl('js/json2.js')?>"></script>
 	
-	<script type="text/javascript" src="<?=$this->baseUrl('js/zgrid/zgrid.js')?>"></script>
+	<script type="text/javascript" src="<?=$this->baseUrl('js/jquery.zgrid.js')?>"></script>
 	
 	<script type="text/javascript">
 		// rpc server
@@ -93,7 +93,8 @@
 					<span id="unreaded">8 unreaded.</span> </a></li>
 				</ul>
 				<br class="clear">
-			</div><!-- end messages-box -->
+			</div>
+			<!-- end messages-box -->
 			<a title="Logout" href="#" id="power">logout</a>
 		</div>
 		<?=$this->adminMenu()?>
@@ -119,5 +120,19 @@
 </div>
 <!-- end footer -->
 
+<!-- Alert Dialog -->
+<div id="alert-modal" class="modal">
+	<h2 class="head-alt">Uwaga!</h2>
+	<div class="alert-content message"></div>
+	<br class="clear" />
+</div>
+<div id="confirm-modal" class="modal">
+	<h2 class="head-alt">Jesteś pewny ?</h2>
+	<div class="message"></div>
+	<div class="buttons">
+		<div class="yes"><a class="button red">TAK</a></div>
+		<div class="no simplemodal-close"><a class="button gray">NIE</a></div>
+	</div>
+</div>
 </body>
 </html>

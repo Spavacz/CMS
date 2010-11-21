@@ -4,7 +4,7 @@
 			$.validator.defaults.errorElement = 'p';
 			$.validator.defaults.errorClass = 'error';		
 
-				// Closable function
+			// Closable function
 			$('.closable').append('<span class="closelink" title="Close"></span>');
 				
 			$('.closelink').click(function() {
@@ -36,7 +36,7 @@
 			$('table.graph').visualize({type: 'bar',height: '100px', width: '400px'});			
 						
 			/* Tooltip effect for links */
-			$('.tooltip-enabled a').tipsy({gravity: 's'});
+			$('.tooltip-enabled a[title]').tipsy({gravity: 's'});
 			
 			//table styling
 			$("tr:even").addClass("alt");
@@ -146,35 +146,33 @@
 		
 		/* Overriding Javascript's Alert Dialog */
 		function alert(msg) {
-			$('#alert').find('div.alert-content')
-	      		.html(msg);
-	      		$('#alert').modal({
+			$('#alert-modal').find('div.alert-content').html(msg);
+      		$('#alert-modal').modal({
 				position: ["25%",],
 				containerId: 'confirm-container',
 				closeHTML: '<a class="button gray modal-close">OK</a>',
 				onClose: function (dialog) {
-						dialog.data.fadeOut('fast', function () {
-							dialog.container.hide('fast', function () {
-								dialog.overlay.fadeOut('fast', function () {
-									$.modal.close(); // must call this!
-								});
+					dialog.data.fadeOut('fast', function () {
+						dialog.container.hide('fast', function () {
+							dialog.overlay.fadeOut('fast', function () {
+								$.modal.close(); // must call this!
 							});
 						});
-			},
-			onOpen: function (dialog) {
-				dialog.overlay.fadeIn('fast', function () {
-					dialog.container.show('fast', function () {
-						dialog.data.fadeIn('fast');
 					});
-				});
-			}
-	
-				 });
+	      		},
+				onOpen: function (dialog) {
+					dialog.overlay.fadeIn('fast', function () {
+						dialog.container.show('fast', function () {
+							dialog.data.fadeIn('fast');
+						});
+					});
+				}
+			});
 		}
 						
 		//overrided confirm() func. uses jquery simplemodal
 		function confirm(message, callback, param) {
-			$('#confirm').modal({
+			$('#confirm-modal').modal({
 			position: ["25%",],
 			containerId: 'confirm-container', 
 			onShow: function (dialog) {
@@ -186,22 +184,21 @@
 					if ($.isFunction(callback)) {
 						callback(param);
 					}
-					if(typeof callback == 'string')
-			            {
-			            	window.location.href = callback;
-			            }
+					if(typeof callback == 'string'){
+			            window.location.href = callback;
+			        }
 					// close the dialog
 					$.modal.close();
+				});
+			},
+			onClose: function (dialog) {
+				dialog.data.fadeOut('fast', function () {
+					dialog.container.hide('fast', function () {
+						dialog.overlay.fadeOut('fast', function () {
+							$.modal.close(); // must call this!
 						});
-					},
-					onClose: function (dialog) {
-						dialog.data.fadeOut('fast', function () {
-							dialog.container.hide('fast', function () {
-								dialog.overlay.fadeOut('fast', function () {
-									$.modal.close(); // must call this!
-								});
-							});
-						});
+					});
+				});
 			},
 			onOpen: function (dialog) {
 				dialog.overlay.fadeIn('fast', function () {

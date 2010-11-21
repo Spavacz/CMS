@@ -252,11 +252,11 @@ button.btn:hover {
 ----------------------------------------------------------*/
 #logo {
 	float: left;
-	background-image: url('../images/icons/logo.png');
+	background-image: url('../images/icons/falling_man.png');
 	background-repeat: no-repeat;
-	background-position: 0px 10px;
+	/*background-position: 0px 10px;*/
 	margin: 0 0 0 15px;
-	padding: 12px 8px 6px 65px;
+	padding: 12px 8px 6px 75px;
 }
 #logo h1 {
 	font-weight: bold;
@@ -1028,7 +1028,6 @@ th a {
 	text-decoration: none;
 	display: block;
 	padding: 10px;
-	padding-left: 30px;
 }
 thead tr, tfoot tr {
 	color: #555;
